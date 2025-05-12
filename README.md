@@ -1,5 +1,3 @@
-# Dotfiles by LeoTrain
-
 Welcome to my personal dotfiles! This repository contains the configuration files I use for my development and daily computing environment, primarily focused on **macOS** and soon to be adapted more for **Linux** (especially Wayland and Ubuntu environments).
 
 ## ✨ Overview
