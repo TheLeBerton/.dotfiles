@@ -1,0 +1,14 @@
+#!/bin/bash
+
+DOTFILES_DIR=$HOME/.dotfiles
+CONFIG_DIR=$HOME/.config
+HYPRLAND_CONFIG=$CONFIG_DIR/hypr
+HYPRLAND_DOT=$DOTFILES_DIR/hypr
+
+echo "Linking hyprland config."
+rm $HYPRLAND_CONFIG
+if ln -s $HYPRLAND_DOT $HYPRLAND_CONFIG >> hyprland.log; then
+	echo "Linking sucessfull."
+else
+	echo "ERROR: linking the hyprland config"
+fi
