@@ -1,0 +1,63 @@
+#!/bin/bash
+
+PACKAGE_MANAGER=dnf
+
+GIT_DOTFILES=git@github.com:LeoTrain/.dotfiles.git
+DOTFILES_DIR=$HOME/.dotfiles
+NEOVIM_DIR=$HOME/.config/nvim
+NEOVIM_CONFIG=$DOTFILES_DIR/nvim
+
+link_neovim () {
+	echo "Linking neovim config..."
+	if ! [ -d $NEOVIM_CONFIG ]; then
+		echo "ERROR: No neovim config found."
+	else
+		if ln -s $NEOVIM_CONFIG $NEOVIM_DIR >> neovim.log; then
+			echo "Linking sucessfull."
+		else
+			echo "ERROR linking..."
+		fi
+	fi
+}
+
+check_neovim () {
+	if nvim --version >> neovim.log; then
+		echo "Neovim is installed."
+		echo "Checking in .config..."
+		if [ -d $NEOVIM_DIR ]; then
+			echo "neovim is in config."
+		else
+			echo "neovim is not in config."
+			echo "Checking dotfiles..."
+			if [ -d $DOTFILES_DIR ]; then
+				echo "dotfiles are there."
+				link_neovim
+			else
+				echo "Dotfiles are not there."
+				echo "Cloning git repo..."
+				git clone $GIT_DOTFILES $DOTFILES_DIR >> neovim.log
+				if [ $? -eq 0 ]; then
+					echo "Cloning sucessfull"
+					link_neovim
+				else
+					echo "ERROR: cloning $GIT_DOTFILES. Please check the logs."
+				fi
+			fi
+		fi
+		echo "Type nvim to run neovim"
+	else
+		echo "neovim not found, intalling..."
+	fi
+}
+
+>neovim.log
+
+
+if which vim >> neovim.log 2>neovim.log; then
+	echo "vim found."
+else
+	echo "vim not found. Checking for neovim..."
+	check_neovim
+fi
+
+
