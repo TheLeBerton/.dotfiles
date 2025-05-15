@@ -1,0 +1,16 @@
+#!/bin/bash
+
+DOTFILES_DIR=$HOME/.dotfiles
+ZSH_CONF=$HOME/.zshrc
+ZSH_DOT=$DOTFILES_DIR/zshrc/.zshrc
+
+if [ -f $ZSH_CONF ]; then
+	echo "Zsh config already in $HOME"
+else
+	echo "Zsh not found, linking..."
+	if ln -s $ZSH_DOT $ZSH_CONF >> zsh_conf.log; then
+		echo "Linking sucessfull."
+	else
+		echo "Error linking"
+	fi
+fi
