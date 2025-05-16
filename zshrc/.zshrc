@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 export ZSH="$HOME/.oh-my-zsh"
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 
 ZSH_THEME="robbyrussell"
 
@@ -12,4 +12,5 @@ bindkey -s ^f "$HOME/.local/scripts/tmux-sessionizer\n"
 
 alias zshconf="nvim ~/.zshrc"
 alias src="source ~/.zshrc"
+alias addlib="~/.dotfiles/scripts/addlib"
 

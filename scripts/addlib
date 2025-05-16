@@ -1,0 +1,5 @@
+#!/bin/bash
+
+LIB_DIR=$HOME/lab/libft/libft
+
+cp -r $LIB_DIR .
