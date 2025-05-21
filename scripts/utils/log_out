@@ -25,4 +25,5 @@ else
 	fi
 fi
 
-read -rp "Do you want to log out of all repositories? (y/n) " -e LOGOUT
+exit
+exit
