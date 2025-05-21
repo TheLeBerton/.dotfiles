@@ -29,10 +29,10 @@ for repo in "${repos[@]}"; do
     notify-send -u normal "$repo_name" "✏️ You have uncommitted changes."
 	  all_clean=false
 	elif [[ "$status_line" == *"[ahead "* ]]; then
-	  notify-send -u normal "$repo_name" "🔼 You have commits to push."
+	  notify-send -u critical "$repo_name" "🔼 You have commits to push."
 	  all_clean=false
 	elif [[ "$status_line" == *"[behind "* ]]; then
-	  notify-send -u normal "$repo_name" "🔽 There are commits to pull."
+	  notify-send -u critical "$repo_name" "🔽 There are commits to pull."
 	  all_clean=false
 	elif [[ "$status_line" == *"[diverged"* ]]; then
 	  notify-send -u critical "$repo_name" "⚠️ Branch has diverged."
