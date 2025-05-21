@@ -27,6 +27,7 @@ case "$1" in
 		$SCRIPT_DIR/show_undone_tasks
 		;;
 	-v|vim)
+		shift
 		$SCRIPT_DIR/vim_the_task "$@"
 		;;
 	*)

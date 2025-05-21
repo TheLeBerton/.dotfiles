@@ -1,0 +1,31 @@
+#!/bin/bash
+
+DOTFILES_DIR="$HOME/.dotfiles"
+LIBFT_DIR="$HOME/lab/libft"
+FT_PRINTF_DIR="$HOME/lab/ft_printf"
+GET_NEXT_LINE_DIR="$HOME/lab/get_next_line"
+MINITALK_DIR="$HOME/lab/MiniTalk"
+
+check_dir_existence() {
+  local dir="$1"
+  local dir_name="$(basename "$dir")"
+  if [ ! -d "$dir" ]; then
+	notify-send -u critical "Directory not found" "$dir_name does not exist."
+	exit 1
+  fi
+}
+
+check_uncommitted_changes() {
+  local dir="$1"
+  local dir_name="$(basename "$dir")"
+  check_dir_existence "$dir"
+  if ! git -C "$dir" diff --quiet --exit-code; then
+    notify-send -u critical "Uncommitted" "$dir_name has uncommitted changes."
+  fi
+}
+
+check_uncommitted_changes "$LIBFT_DIR"
+check_uncommitted_changes "$DOTFILES_DIR"
+check_uncommitted_changes "$FT_PRINTF_DIR"
+check_uncommitted_changes "$GET_NEXT_LINE_DIR"
+check_uncommitted_changes "$MINITALK_DIR"
