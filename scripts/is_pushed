@@ -14,31 +14,33 @@ for repo in "${repos[@]}"; do
   repo_name=$(basename "$repo")
 
   if [ ! -d "$repo/.git" ]; then
-    echo "$repo_name: Not a git repository."
+    echo "$repo_name: ❌ Not a git repository."
     all_clean=false
     continue
   fi
 
-  git -C "$repo" fetch
+  cd "$repo" || continue
+  git fetch &> /dev/null
 
-  LOCAL=$(git -C "$repo" rev-parse @)
-  REMOTE=$(git -C "$repo" rev-parse @{u} 2>/dev/null)
-  BASE=$(git -C "$repo" merge-base @ @{u} 2>/dev/null)
+  status_line=$(git status -sb 2>/dev/null | head -n 1)
+  uncommitted=$(git status --porcelain)
 
-  if [ "$REMOTE" = "$BASE" ]; then
-    echo "$repo_name: 🔼 You have commits to push."
-    all_clean=false
-  elif [ "$LOCAL" = "$BASE" ]; then
-    echo "$repo_name: 🔽 There are commits to pull."
-    all_clean=false
-  else
-    echo "$repo_name: ⚠️ Branch has diverged."
-    all_clean=false
+  if [ -n "$uncommitted" ]; then
+    notify-send -u normal "$repo_name" "✏️ You have uncommitted changes."
+	  all_clean=false
+	elif [[ "$status_line" == *"[ahead "* ]]; then
+	  notify-send -u normal "$repo_name" "🔼 You have commits to push."
+	  all_clean=false
+	elif [[ "$status_line" == *"[behind "* ]]; then
+	  notify-send -u normal "$repo_name" "🔽 There are commits to pull."
+	  all_clean=false
+	elif [[ "$status_line" == *"[diverged"* ]]; then
+	  notify-send -u critical "$repo_name" "⚠️ Branch has diverged."
+	  all_clean=false
   fi
 done
 
 if $all_clean; then
-  notify-send -u low "Git Push Check" "✅ All repositories are up-to-date."
-else
-  notify-send -u critical "Git Push Check" "⚠️ Some repositories need to be pushed or pulled."
+  notify-send -u normal "Git Push Check" "✅ All repositories are up-to-date."
 fi
+
