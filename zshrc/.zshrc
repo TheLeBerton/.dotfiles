@@ -2,6 +2,7 @@
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 export ZSH="$HOME/.oh-my-zsh"
+export DEV="$HOME/.dotfiles/scripts/conf/all"
 # source $ZSH/oh-my-zsh.sh
 
 ZSH_THEME="robbyrussell"
