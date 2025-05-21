@@ -13,4 +13,4 @@ bindkey -s ^f "$HOME/.local/scripts/tmux-sessionizer\n"
 alias zshconf="nvim ~/.zshrc"
 alias src="source ~/.zshrc"
 alias addlib="~/.dotfiles/scripts/addlib"
-
+alias pushvog="$HOME/.local/scripts/push_vog $1 $2"

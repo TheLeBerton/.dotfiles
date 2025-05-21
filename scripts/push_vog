@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Check arguments
+SRC_FOLDER=$1
+REMOTE_URL=$2
+
+if [ -z "$SRC_FOLDER" ] || [ -z "$REMOTE_URL" ]; then
+    echo "❌ Usage: $0 <source_folder> <remote_git_url>"
+    exit 1
+fi
+
+if [ ! -d "$SRC_FOLDER" ]; then
+    echo "❌ Folder '$SRC_FOLDER' not found."
+    exit 1
+fi
+
+TMP_DIR=$(mktemp -d)
+cp -r "$SRC_FOLDER"/. "$TMP_DIR"/
+
+cd "$TMP_DIR" || { echo "❌ Failed to enter $TMP_DIR"; exit 1; }
+
+git init > /dev/null
+git remote add vogs "$REMOTE_URL"
+git checkout -b master
+
+git add .
+git commit -m "Clean push for school" > /dev/null
+git push vogs master --force
+
+cd - > /dev/null
+rm -rf "$TMP_DIR"
+
+echo "✅ Clean push done from '$SRC_FOLDER' to Vogsphere."
+
