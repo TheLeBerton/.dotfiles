@@ -21,11 +21,18 @@ check_uncommitted_changes() {
   check_dir_existence "$dir"
   if ! git -C "$dir" diff --quiet --exit-code; then
     notify-send -u critical "Uncommitted" "$dir_name has uncommitted changes."
+	return 1
   fi
+  return 0
 }
 
-check_uncommitted_changes "$LIBFT_DIR"
-check_uncommitted_changes "$DOTFILES_DIR"
-check_uncommitted_changes "$FT_PRINTF_DIR"
-check_uncommitted_changes "$GET_NEXT_LINE_DIR"
-check_uncommitted_changes "$MINITALK_DIR"
+result=0
+for repo in "$LIBFT_DIR" "$DOTFILES_DIR" "$FT_PRINTF_DIR" "$GET_NEXT_LINE_DIR" "$MINITALK_DIR"; do
+  check_uncommitted_changes "$repo" || result=1
+done
+
+if [ $result -eq 0 ]; then
+  notify-send -u normal "Good news" "All repositories are clean."
+fi
+
+exit $result
