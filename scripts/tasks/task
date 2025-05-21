@@ -1,26 +1,33 @@
 #!/bin/bash
 
+SCRIPT_DIR="$HOME/.dotfiles/scripts/tasks"
+
+if [ ! -d "$SCRIPT_DIR" ]; then
+	echo "Script directory not found: $SCRIPT_DIR"
+	exit 1
+fi
+
 case "$1" in
 	-a|add)
 		shift
-		./add_task "$@"
+		$SCRIPT_DIR/add_task "$@"
 		;;
 	-m|mark)
 		shift
-		./mark_as_done "$@"
+		$SCRIPT_DIR/mark_task "$@"
 		;;
 	-d|delete)
 		shift
-		./remove_task "$@"
+		$SCRIPT_DIR/remove_task "$@"
 		;;
 	-s|show)
-		./show_all_tasks
+		$SCRIPT_DIR/show_all_tasks
 		;;
 	-su|show_undone)
-		./show_all_undone_tasks
+		$SCRIPT_DIR/show_undone_tasks
 		;;
 	-v|vim)
-		./vim_the_task "$@"
+		$SCRIPT_DIR/vim_the_task "$@"
 		;;
 	*)
 		echo "Usage: $0 {-a|add|-m|mark|-d|delete|remove|-s|show|-su|show-undone} [args]"

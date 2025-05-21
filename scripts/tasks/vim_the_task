@@ -9,7 +9,7 @@ TASK_PATH="$HOME/.dotfiles/scripts/tasks/tasks_json"
 GIT_REPO="$HOME/.dotfiles"
 
 TASK_FILE="$TASK_PATH/$2.json"
-if ! [ -f $TASK_FILE ]; then
+if [ ! -f $TASK_FILE ]; then
 	echo "Task $2 not found."
 	exit 1
 fi
