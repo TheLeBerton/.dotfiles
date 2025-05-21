@@ -5,8 +5,6 @@ for dir in "$HOME/lab"/*/; do
 	[ -d "$dir" ] && repos+=( "$dir" )
 done
 
-NOTIFY="$HOME/.dotfiles/scripts/utils/send_notification"
-
 all_clean=true
 
 for repo in "${repos[@]}"; do
@@ -25,21 +23,24 @@ for repo in "${repos[@]}"; do
   uncommitted=$(git status --porcelain)
 
   if [ -n "$uncommitted" ]; then
-    $NOTIFY "$repo_name" "✏️ You have uncommitted changes." -u normal
+    $SECHO "${YELLOW}✏️ You have uncommitted changes in ${repo}${RESET}"
 	  all_clean=false
 	elif [[ "$status_line" == *"[ahead "* ]]; then
-	  $NOTIFY "$repo_name" "🔼 You have commits to push." -u critical 
+	  $SECHO "${YELLOW}🔼 You have commits to push.${RESET}" 
 	  all_clean=false
 	elif [[ "$status_line" == *"[behind "* ]]; then
-	  $NOTIFY "$repo_name" "🔽 There are commits to pull." -u critical
+	  $SECHO "${RED}🔽 There are commits to pull.${RESET}"
 	  all_clean=false
 	elif [[ "$status_line" == *"[diverged"* ]]; then
-	  $NOTIFY "$repo_name" "⚠️ Branch has diverged." -u critical
+	  $SECHO "${RED}⚠️ Branch has diverged.${RESET}"
 	  all_clean=false
   fi
 done
 
 if $all_clean; then
-  $NOTIFY "Git Push Check" "✅ All repositories are up-to-date." -u normal
+  $SECHO "${GREEN}✅ All repositories are up-to-date.${GREEN}"
+else
+	$SECHO "${YELLOW}⚠️ Some repositories are not up-to-date.${RESET}"
+	$SECHO "${YELLOW}→ Please check the output above.${RESET}"
 fi
 

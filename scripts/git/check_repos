@@ -1,38 +1,61 @@
 #!/bin/bash
 
-DOTFILES_DIR="$HOME/.dotfiles"
-LIBFT_DIR="$HOME/lab/libft"
-FT_PRINTF_DIR="$HOME/lab/ft_printf"
-GET_NEXT_LINE_DIR="$HOME/lab/get_next_line"
-MINITALK_DIR="$HOME/lab/MiniTalk"
+repos=( "$HOME/.dotfiles" )
+for dir in "$HOME/lab"/*/; do
+	[ -d "$dir" ] && repos+=( "$dir" )
+done
 
 check_dir_existence() {
   local dir="$1"
   local dir_name="$(basename "$dir")"
   if [ ! -d "$dir" ]; then
-	notify-send -u critical "Directory not found" "$dir_name does not exist."
+	$SECHO "${RED}✖ ERROR: No directory found at ${dir_name}.${RESET}"
 	exit 1
   fi
 }
 
 check_uncommitted_changes() {
   local dir="$1"
-  local dir_name="$(basename "$dir")"
+  local dir_name
+  dir_name="$(basename "$dir")"
   check_dir_existence "$dir"
-  if ! git -C "$dir" diff --quiet --exit-code; then
-    notify-send -u critical "Uncommitted" "$dir_name has uncommitted changes."
-	return 1
+
+  cd "$dir" || return 1
+
+  if ! git diff --quiet --exit-code; then
+    $SECHO "${YELLOW}✏️ You have uncommitted changes in ${dir_name}${RESET}"
+    git diff --name-only | sed 's/^/   [ /; s/$/ ]/'
+    return 1
+  fi
+
+  untracked=$(git ls-files --others --exclude-standard)
+  if [ -n "$untracked" ]; then
+    $SECHO "${YELLOW}🆕 You have untracked files in ${dir_name}:${RESET}"
+    echo "$untracked" | sed 's/^/   [ /; s/$/ ]/'
+    return 1
+  fi
+  if git status -sb | grep -q "\[ahead"; then
+    $SECHO "${YELLOW}🔼 You have commits to push in ${dir_name}.${RESET}"
+    return 1
+  fi
+  if git status -sb | grep -q "\[behind"; then
+    $SECHO "${RED}🔽 There are commits to pull in ${dir_name}.${RESET}"
+    return 1
+  fi
+  if git status -sb | grep -q "\[diverged"; then
+    $SECHO "${RED}⚠️ Branch has diverged in ${dir_name}.${RESET}"
+    return 1
   fi
   return 0
 }
 
 result=0
-for repo in "$LIBFT_DIR" "$DOTFILES_DIR" "$FT_PRINTF_DIR" "$GET_NEXT_LINE_DIR" "$MINITALK_DIR"; do
+for repo in "${repos[@]}"; do
   check_uncommitted_changes "$repo" || result=1
 done
 
 if [ $result -eq 0 ]; then
-  notify-send -u normal "Good news" "All repositories are clean."
+	$SECHO "${GREEN}✅ All repositories are up-to-date.${GREEN}"
 fi
 
 exit $result

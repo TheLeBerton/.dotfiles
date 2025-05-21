@@ -1,5 +1,0 @@
-#!/bin/bash
-
-LIB_DIR=$HOME/lab/libft/libft
-
-ln -s $LIB_DIR ./libft
