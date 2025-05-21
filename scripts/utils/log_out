@@ -1,0 +1,28 @@
+#!/bin/bash
+
+repos=( "$HOME/.dotfiles" )
+for dir in "$HOME/lab"/*/; do
+	[ -d "$dir" ] && repos+=( "$dir" )
+done
+
+"$SCRIPTS/git/check_repos"
+
+if "$SCRIPTS/git/check_repos"; then
+	echo -e "${GREEN}→ All repositories are clean.${RESET}"
+else
+	read -rp "❓ Some repositories are not clean. Do you want to push them now? (y/n) " -e PUSH
+	if [[ $PUSH =~ ^[Yy]$ ]]; then
+		for repo in "${repos[@]}"; do
+			cd "$repo" || continue
+
+			if [[ -n $(git status --porcelain) || $(git status -sb) =~ \[ahead ]]; then
+				echo -e "${YELLOW}→ Pushing changes in $(basename "$repo")...${RESET}"
+				git add .
+				git commit -m "auto: quick commit"
+				git push
+			fi
+		done
+	fi
+fi
+
+read -rp "Do you want to log out of all repositories? (y/n) " -e LOGOUT
