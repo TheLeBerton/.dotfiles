@@ -1,0 +1,55 @@
+#!/bin/bash
+
+repos=(
+  "$HOME/lab/libft"
+  "$HOME/.dotfiles"
+  "$HOME/lab/ft_printf"
+  "$HOME/lab/get_next_line"
+  "$HOME/lab/MiniTalk"
+)
+
+read -p "Do you want to pull updates for all repositories? (o/n)" answer
+if [[ "$answer" =~ ^[Oo]$ ]]; then
+  notify-send -u low "Pull all" "Pulling updates for all repositories."
+else
+  notify-send -u critical -t 1500 "Pull all" "Pulling updates cancelled by user."
+  exit 0
+fi
+
+
+all_success=true
+
+for repo in "${repos[@]}"; do
+  repo_name=$(basename "$repo")
+
+  if [ ! -d "$repo" ]; then
+    notify-send -u normal "Pull error" "$repo_name directory not found."
+    all_success=false
+    continue
+  fi
+
+  git -C "$repo" fetch
+
+  LOCAL=$(git -C "$repo" rev-parse @)
+  REMOTE=$(git -C "$repo" rev-parse @{u} 2>/dev/null)
+  BASE=$(git -C "$repo" merge-base @ @{u} 2>/dev/null)
+
+  if [ "$LOCAL" = "$REMOTE" ]; then
+    continue
+  elif [ "$LOCAL" = "$BASE" ]; then
+    read -p "Pull updates for $repo_name? (o/n) " answer
+    if [[ "$answer" =~ ^[Oo]$ ]]; then
+      if ! git -C "$repo" pull; then
+        notify-send -u critical "Pull failed" "Failed to update $repo_name."
+        all_success=false
+      fi
+    fi
+  else
+    notify-send -u critical "$repo_name" "Local repository is ahead or diverged, manual intervention needed."
+    all_success=false
+  fi
+done
+
+if [ "$all_success" = true ]; then
+  notify-send -u low "Pull All" "All repositories are up to date."
+fi
