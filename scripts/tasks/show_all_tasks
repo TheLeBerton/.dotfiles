@@ -2,13 +2,22 @@
 
 TASK_DIR="$HOME/.dotfiles/scripts/tasks/tasks_json"
 
+SLOW_ECHO="$HOME/.dotfiles/scripts/utils/slow_echo"
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+RESET='\033[0m'
+
 if [ ! -d "$TASK_DIR" ] || [ -z "$(ls -A $TASK_DIR)" ]; then
-    echo "No tasks found."
+	echo -e "${RED}"
+    $SLOW_ECHO "No tasks found."
+	echo -e "${RESET}"
     exit 0
 fi
 
-echo -e "ID\tStatus\t\tDate\t\t\tDescription"
-echo "-----------------------------------------------------------------"
+$SLOW_ECHO "ID\tStatus\t\tDate\t\t\tDescription"
+
+$SLOW_ECHO "-----------------------------------------------------------------"
 
 for file in "$TASK_DIR"/*.json; do
     id=$(jq '.id' "$file")
@@ -25,5 +34,6 @@ for file in "$TASK_DIR"/*.json; do
         status_colored="$status"
     fi
 
-    printf "%-3s\t%-8b\t%-19s\t%s\n" "$id" "$status_colored" "$date" "$desc"
+    line="$(printf "%-3s\t%-25s\t%-19s\t%s" "$id" "$status_colored" "$date" "$desc")"
+    $SLOW_ECHO "$(echo -e "$line")"
 done

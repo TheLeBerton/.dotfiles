@@ -3,6 +3,7 @@
 slow_echo() {
   local text="$1"
   local delay=${2:-0.03}
+  text=$(echo -e "$text")
   for ((i=0; i<${#text}; i++)); do
     printf "%s" "${text:i:1}"
     sleep "$delay"
