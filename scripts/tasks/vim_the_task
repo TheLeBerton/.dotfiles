@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if [ -z "$2" ]; then
+	echo "Please provide a task ID."
+	exit 1
+fi
+
+TASK_PATH="$HOME/.dotfiles/scripts/tasks/tasks_json"
+GIT_REPO="$HOME/.dotfiles"
+
+TASK_FILE="$TASK_PATH/$2.json"
+if ! [ -f $TASK_FILE ]; then
+	echo "Task $2 not found."
+	exit 1
+fi
+nvim $TASK_FILE
+
+sleep 1
+
+git -C "$GIT_REPO" add "$TASK_FILE" > /dev/null 2>&1
+MSG="Automatic tasks: Vimmed $2"
+git -C "$GIT_REPO" commit -m "$MSG" > /dev/null 2>&1
+git -C "$GIT_REPO" push origin main > /dev/null 2>&1
+echo "Task pushed to git: $MSG"

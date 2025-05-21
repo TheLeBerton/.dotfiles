@@ -20,9 +20,7 @@ case "$1" in
 		./show_all_undone_tasks
 		;;
 	-v|vim)
-		nvim "$HOME/.dotfiles/scripts/tasks/tasks_json/$2.json"
-		sleep 1
-		git add . "$HOME/.dotfiles/scripts/tasks/tasks_json/$2.json"
+		./vim_the_task "$@"
 		;;
 	*)
 		echo "Usage: $0 {-a|add|-m|mark|-d|delete|remove|-s|show|-su|show-undone} [args]"
