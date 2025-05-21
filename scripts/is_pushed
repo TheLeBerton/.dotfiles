@@ -1,12 +1,11 @@
 #!/bin/bash
 
-repos=(
-  "$HOME/.dotfiles"
-  "$HOME/lab/libft"
-  "$HOME/lab/ft_printf"
-  "$HOME/lab/get_next_line"
-  "$HOME/lab/MiniTalk"
-)
+repos=( "$HOME/.dotfiles" )
+for dir in "$HOME/lab"/*/; do
+	[ -d "$dir" ] && repos+=( "$dir" )
+done
+
+NOTIFY="$HOME/.dotfiles/scripts/utils/send_notification"
 
 all_clean=true
 
@@ -14,7 +13,7 @@ for repo in "${repos[@]}"; do
   repo_name=$(basename "$repo")
 
   if [ ! -d "$repo/.git" ]; then
-    echo "$repo_name: ❌ Not a git repository."
+    $SECHO "${RED}$repo_name: ❌ Not a git repository.${RESET}"
     all_clean=false
     continue
   fi
@@ -26,21 +25,21 @@ for repo in "${repos[@]}"; do
   uncommitted=$(git status --porcelain)
 
   if [ -n "$uncommitted" ]; then
-    notify-send -u normal "$repo_name" "✏️ You have uncommitted changes."
+    $NOTIFY "$repo_name" "✏️ You have uncommitted changes." -u normal
 	  all_clean=false
 	elif [[ "$status_line" == *"[ahead "* ]]; then
-	  notify-send -u critical "$repo_name" "🔼 You have commits to push."
+	  $NOTIFY "$repo_name" "🔼 You have commits to push." -u critical 
 	  all_clean=false
 	elif [[ "$status_line" == *"[behind "* ]]; then
-	  notify-send -u critical "$repo_name" "🔽 There are commits to pull."
+	  $NOTIFY "$repo_name" "🔽 There are commits to pull." -u critical
 	  all_clean=false
 	elif [[ "$status_line" == *"[diverged"* ]]; then
-	  notify-send -u critical "$repo_name" "⚠️ Branch has diverged."
+	  $NOTIFY "$repo_name" "⚠️ Branch has diverged." -u critical
 	  all_clean=false
   fi
 done
 
 if $all_clean; then
-  notify-send -u normal "Git Push Check" "✅ All repositories are up-to-date."
+  $NOTIFY "Git Push Check" "✅ All repositories are up-to-date." -u normal
 fi
 

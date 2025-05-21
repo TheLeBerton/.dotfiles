@@ -3,6 +3,11 @@
 
 export ZSH="$HOME/.oh-my-zsh"
 export DEV="$HOME/.dotfiles/scripts/conf/all"
+export SECHO="$HOME/.dotfiles/scripts/utils/slow_echo"
+export RED='\033[0;31m'
+export GREEN='\033[0;32m'
+export YELLOW='\033[0;33m'
+export RESET='\033[0m'
 # source $ZSH/oh-my-zsh.sh
 
 ZSH_THEME="robbyrussell"
