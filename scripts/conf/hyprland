@@ -5,10 +5,50 @@ CONFIG_DIR=$HOME/.config
 HYPRLAND_CONFIG=$CONFIG_DIR/hypr
 HYPRLAND_DOT=$DOTFILES_DIR/hypr
 
-echo "Linking hyprland config."
-rm $HYPRLAND_CONFIG
-if ln -s $HYPRLAND_DOT $HYPRLAND_CONFIG >> hyprland.log; then
-	echo "Linking sucessfull."
-else
-	echo "ERROR: linking the hyprland config"
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+RESET='\033[0m'
+
+SLOW_ECHO_SCRIPT="$DOTFILES_DIR/scripts/slow_echo"
+LOGFILE="$DOTFILES_DIR/logs/hyprland.log"
+mkdir -p "$(dirname "$LOGFILE")"
+
+if [ -L "$HYPRLAND_CONFIG" ]; then
+	echo -e "${GREEN}"
+	$SLOW_ECHO_SCRIPT "✔ Hyprland config is already linked."
+	echo -e "${RESET}"
+	exit 0
+fi
+
+if [ -d "$HYPRLAND_CONFIG" ]; then
+	echo -e "${YELLOW}"
+	$SLOW_ECHO_SCRIPT "→ Hyprland config is not linked from dotfiles."
+	echo -e "${RESET}"
+	echo -e "${YELLOW}"
+	$SLOW_ECHO_SCRIPT "→ Removing existing config..."
+	echo -e "${RESET}"
+	rm -rf "$HYPRLAND_CONFIG"
+	echo -e "${YELLOW}"
+	$SLOW_ECHO_SCRIPT "→ Linking hyprland config..."
+	echo -e "${RESET}"
+	ln -s "$HYPRLAND_DOT" "$HYPRLAND_CONFIG" >> "$LOGFILE" 2>&1
+	exit 0
+fi
+
+if [ ! -d "$HYPRLAND_DOT" ]; then
+	echo -e "${RED}"
+	$SLOW_ECHO_SCRIPT "✖ ERROR: No hyprland config found in dotfiles."
+	echo -e "${RESET}"
+	exit 1
+fi
+
+if [ ! -d "$HYPRLAND_CONFIG" ] && [ -d "$HYPRLAND_DOT" ]; then
+	echo -e "${YELLOW}"
+	$SLOW_ECHO_SCRIPT "→ Linking hyprland config..."
+	echo -e "${RESET}"
+	ln -s "$HYPRLAND_DOT" "$HYPRLAND_CONFIG" >> "$LOGFILE" 2>&1
+	echo -e "${GREEN}"
+	$SLOW_ECHO_SCRIPT "✔ Linking successful."
+	echo -e "${RESET}"
 fi

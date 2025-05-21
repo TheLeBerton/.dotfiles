@@ -4,60 +4,75 @@ PACKAGE_MANAGER=dnf
 
 GIT_DOTFILES=git@github.com:LeoTrain/.dotfiles.git
 DOTFILES_DIR=$HOME/.dotfiles
-NEOVIM_DIR=$HOME/.config/nvim
-NEOVIM_CONFIG=$DOTFILES_DIR/nvim
+DOTFILES_CONFIG=$DOTFILES_DIR/nvim
+NEOVIM_CONFIG=$HOME/.config/nvim
 
-link_neovim () {
-	echo "Linking neovim config..."
-	if ! [ -d $NEOVIM_CONFIG ]; then
-		echo "ERROR: No neovim config found."
-	else
-		if ln -s $NEOVIM_CONFIG $NEOVIM_DIR >> neovim.log; then
-			echo "Linking sucessfull."
-		else
-			echo "ERROR linking..."
-		fi
-	fi
+LOGFILE="neovim.log"
+
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+RESET='\033[0m'
+
+SLOW_ECHO_SCRIPT="$DOTFILES_DIR/scripts/slow_echo"
+
+link_neovim() {
+  echo -e "${YELLOW}"
+  $SLOW_ECHO_SCRIPT "→ Linking neovim config..."
+  echo -e "${RESET}"
+
+  if [ ! -d "$DOTFILES_CONFIG" ]; then
+    echo -e "${RED}"
+    $SLOW_ECHO_SCRIPT "✖ ERROR: No neovim config found in dotfiles."
+    echo -e "${RESET}"
+    return
+  fi
+
+  if [ -L "$NEOVIM_CONFIG" ] || [ -d "$NEOVIM_CONFIG" ]; then
+    rm -rf "$NEOVIM_CONFIG"
+  fi
+
+  mkdir -p "$(dirname "$NEOVIM_CONFIG")"
+  if ln -s "$DOTFILES_CONFIG" "$NEOVIM_CONFIG" >> "$LOGFILE" 2>&1; then
+    echo -e "${GREEN}"
+    $SLOW_ECHO_SCRIPT "✔ Linking successful."
+    echo -e "${RESET}"
+  else
+    echo -e "${RED}"
+    $SLOW_ECHO_SCRIPT "✖ ERROR: linking failed."
+    echo -e "${RESET}"
+  fi
 }
 
-check_neovim () {
-	if nvim --version >> neovim.log; then
-		echo "Neovim is installed."
-		echo "Checking in .config..."
-		if [ -d $NEOVIM_DIR ]; then
-			echo "neovim is in config."
-		else
-			echo "neovim is not in config."
-			echo "Checking dotfiles..."
-			if [ -d $DOTFILES_DIR ]; then
-				echo "dotfiles are there."
-				link_neovim
-			else
-				echo "Dotfiles are not there."
-				echo "Cloning git repo..."
-				git clone $GIT_DOTFILES $DOTFILES_DIR >> neovim.log
-				if [ $? -eq 0 ]; then
-					echo "Cloning sucessfull"
-					link_neovim
-				else
-					echo "ERROR: cloning $GIT_DOTFILES. Please check the logs."
-				fi
-			fi
-		fi
-		echo "Type nvim to run neovim"
+# Clear the log
+: > "$LOGFILE"
+
+if command -v nvim >> "$LOGFILE" 2>&1; then
+	echo -e "${GREEN}"
+	$SLOW_ECHO_SCRIPT "✔ Neovim is available."
+	echo -e "${RESET}"
+	if [ -L "$NEOVIM_CONFIG" ]; then
+		echo -e "${GREEN}"
+		$SLOW_ECHO_SCRIPT "→ Neovim config is linked from dotfiles."
+		echo -e "${RESET}"
 	else
-		echo "neovim not found, intalling..."
+		echo -e "${YELLOW}"
+		$SLOW_ECHO_SCRIPT "→ Neovim config is not linked from dotfiles."
+		echo -e "${RESET}"
+		link_neovim
 	fi
-}
-
->neovim.log
-
-
-if which vim >> neovim.log 2>neovim.log; then
-	echo "vim found."
 else
-	echo "vim not found. Checking for neovim..."
-	check_neovim
+	echo -e "${YELLOW}"
+	$SLOW_ECHO_SCRIPT "→ Neovim not found. Checking for Vim..."
+	echo -e "${RESET}"
+	if command -v vim >> "$LOGFILE" 2>&1; then
+		echo -e "${GREEN}"
+		$SLOW_ECHO_SCRIPT "✔ Vim is available."
+		echo -e "${RESET}"
+	else
+		echo -e "${YELLOW}"
+		$SLOW_ECHO_SCRIPT "→ Vim not found. Checking for package manager..."
+		echo -e "${RESET}"
+		#link_neovim
+	fi
 fi
-
-

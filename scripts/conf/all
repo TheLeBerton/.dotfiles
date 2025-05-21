@@ -1,0 +1,37 @@
+#!/bin/bash
+
+DOTFILES_DIR="$HOME/.dotfiles"
+MY_CONF_DIR="$DOTFILES_DIR/scripts/conf"
+CONFIG_DIR="$HOME/.config"
+SCRIPTS_LIST="$MY_CONF_DIR/scripts_to_run.txt"
+
+if [ ! -d "$MY_CONF_DIR" ]; then
+  echo "Directory $MY_CONF_DIR does not exist."
+  exit 1
+fi
+
+if [ ! -f "$SCRIPTS_LIST" ]; then
+  echo "Scripts list file $SCRIPTS_LIST does not exist."
+  exit 1
+fi
+
+while IFS= read -r scriptname || [ -n "$scriptname" ]; do
+  # Nettoyer ligne vide ou commentaires (optionnel)
+  [[ -z "$scriptname" || "$scriptname" =~ ^# ]] && continue
+
+  scriptpath="$MY_CONF_DIR/$scriptname"
+
+  if [ ! -f "$scriptpath" ]; then
+    echo "Script $scriptname not found in $MY_CONF_DIR, skipping."
+    continue
+  fi
+
+  if [ ! -x "$scriptpath" ]; then
+    echo "Script $scriptname is not executable, skipping."
+    continue
+  fi
+
+  echo "Executing $scriptname"
+  "$scriptpath"
+done < "$SCRIPTS_LIST"
+
