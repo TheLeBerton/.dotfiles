@@ -11,11 +11,11 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     elif grep -q "Fedora" $release_file; then
         sudo dnf update
     else
-        echo "Linux distro not recognized. Please update manually or modify the 'update' script."
+        $SECHO "${RED}Linux distro not recognized. Please update manually or modify the 'update' script.${RESET}"
     fi
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     softwareupdate -i -a
 else
-    echo "Système non pris en charge : $OSTYPE"
+    echo "${RED}System not taken in charge : $OSTYPE${RESET}"
 fi

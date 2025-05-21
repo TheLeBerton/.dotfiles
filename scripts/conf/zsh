@@ -1,0 +1,20 @@
+#!/bin/bash
+
+DOTFILES_DIR="$HOME/.dotfiles"
+ZSH_CONF="$HOME/.zshrc"
+ZSH_DOT="$DOTFILES_DIR/zshrc/.zshrc"
+LOGFILE="zsh_conf.log"
+
+: > "$LOGFILE"
+
+if [ -f "$ZSH_CONF" ]; then
+  $SECHO "${GREEN}✔ Zsh config already exists at ~/.zshrc${RESET}"
+else
+  $SECHO "${YELLOW}→ No Zsh config found, linking from dotfiles...${RESET}"
+  if ln -s "$ZSH_DOT" "$ZSH_CONF" >> "$LOGFILE" 2>&1; then
+    $SECHO "${GREEN}✔ Linking successful.${RESET}"
+  else
+    $SECHO "${RED}✖ ERROR: Linking failed. See $LOGFILE${RESET}"
+  fi
+fi
+

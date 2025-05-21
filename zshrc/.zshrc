@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 export ZSH="$HOME/.oh-my-zsh"
-export DEV="$HOME/.dotfiles/scripts/conf/all"
+export DEV="$HOME/.dotfiles/scripts/conf/dev"
 export SECHO="$HOME/.dotfiles/scripts/utils/slow_echo"
 export RED='\033[0;31m'
 export GREEN='\033[0;32m'

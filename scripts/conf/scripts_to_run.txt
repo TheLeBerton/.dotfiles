@@ -1,4 +1,4 @@
 update
 hyprland
-zsh_conf
+zsh
 neovim
