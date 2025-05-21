@@ -1,0 +1,4 @@
+1;todo;[2025-05-21 14:27:54];Go to sport
+2;done;[2025-05-21 14:28:00];Do laundry
+3;todo;[2025-05-21 14:28:06];Get 3 eval points
+4;todo;[2025-05-21 14:33:10];Does it work?

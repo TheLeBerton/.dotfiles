@@ -1,0 +1,22 @@
+#!/bin/bash
+
+TASK_FILE="$HOME/.dotfiles/scripts/tasks/tasks.txt"
+TEMP_FILE="/tmp/tasks.tmp"
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 <task_id>"
+    exit 1
+fi
+
+ID="$1"
+
+if ! grep -q "^$ID;" "$TASK_FILE"; then
+    echo "Task with ID $ID not found."
+    exit 1
+fi
+
+awk -v id="$ID" 'BEGIN {FS=OFS=";"} $1 != id {print}' "$TASK_FILE" > "$TEMP_FILE"
+
+mv "$TEMP_FILE" "$TASK_FILE"
+
+echo "Task $ID removed."

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+TASK_FILE="tasks.txt"
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 \"Task description\""
+    exit 1
+fi
+
+DESCRIPTION="$1"
+DATE=$(date '+%Y-%m-%d %H:%M:%S')
+
+if [ -s "$TASK_FILE" ]; then
+    LAST_ID=$(tail -n 1 "$TASK_FILE" | cut -d ";" -f 1)
+    ID=$((LAST_ID + 1))
+else
+    ID=1
+fi
+
+echo "$ID;todo;[$DATE];$DESCRIPTION" >> "$TASK_FILE"
+echo "Task added: $DESCRIPTION"
+

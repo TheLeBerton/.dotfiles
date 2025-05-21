@@ -1,0 +1,26 @@
+#!/bin/bash
+
+case "$1" in
+	-a|add)
+		shift
+		./add_task "$@"
+		;;
+	-m|mark)
+		shift
+		./mark_as_done "$@"
+		;;
+	-d|delete)
+		shift
+		./remove_task "$@"
+		;;
+	-s|show)
+		./show_all_tasks
+		;;
+	-su|show_undone)
+		./show_all_undone_tasks
+		;;
+	*)
+		echo "Usage: $0 {-a|add|-m|mark|-d|delete|remove|-s|show|-su|show-undone} [args]"
+		;;
+esac
+
