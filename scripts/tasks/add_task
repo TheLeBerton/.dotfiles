@@ -1,22 +1,31 @@
 #!/bin/bash
 
-TASK_FILE="tasks.txt"
+TASK_DIR="$HOME/.dotfiles/scripts/tasks/tasks_json"
+
+mkdir -p "$TASK_DIR"
 
 if [ -z "$1" ]; then
-    echo "Usage: $0 \"Task description\""
+    echo "Please provide a task description."
     exit 1
 fi
 
-DESCRIPTION="$1"
+DESCRIPTION="$*"
 DATE=$(date '+%Y-%m-%d %H:%M:%S')
 
-if [ -s "$TASK_FILE" ]; then
-    LAST_ID=$(tail -n 1 "$TASK_FILE" | cut -d ";" -f 1)
-    ID=$((LAST_ID + 1))
-else
-    ID=1
-fi
+# Trouver dernier ID
+LAST_ID=0
+for file in "$TASK_DIR"/*.json; do
+    [[ -e "$file" ]] || break
+    id=$(basename "$file" .json)
+    if (( id > LAST_ID )); then
+        LAST_ID=$id
+    fi
+done
 
-echo "$ID;todo;[$DATE];$DESCRIPTION" >> "$TASK_FILE"
-echo "Task added: $DESCRIPTION"
+NEW_ID=$((LAST_ID + 1))
+TASK_FILE="$TASK_DIR/$NEW_ID.json"
 
+jq -n --arg id "$NEW_ID" --arg status "todo" --arg date "$DATE" --arg desc "$DESCRIPTION" \
+    '{id: ($id|tonumber), status: $status, date: $date, description: $desc}' > "$TASK_FILE"
+
+echo "Task added with ID $NEW_ID."

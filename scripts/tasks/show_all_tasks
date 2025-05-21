@@ -1,13 +1,8 @@
 #!/bin/bash
 
-TASK_FILE="$HOME/.dotfiles/scripts/tasks/tasks.txt"
+TASK_DIR="$HOME/.dotfiles/scripts/tasks/tasks_json"
 
-# Couleurs ANSI
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-NC='\033[0m'  # No Color
-
-if [ ! -f "$TASK_FILE" ]; then
+if [ ! -d "$TASK_DIR" ] || [ -z "$(ls -A $TASK_DIR)" ]; then
     echo "No tasks found."
     exit 0
 fi
@@ -15,14 +10,20 @@ fi
 echo -e "ID\tStatus\t\tDate\t\t\tDescription"
 echo "-----------------------------------------------------------------"
 
-while IFS=';' read -r id status date desc; do
+for file in "$TASK_DIR"/*.json; do
+    id=$(jq '.id' "$file")
+    status=$(jq -r '.status' "$file")
+    date=$(jq -r '.date' "$file")
+    desc=$(jq -r '.description' "$file")
+
+    # Colore status
     if [ "$status" = "todo" ]; then
-        status_colored="${RED}${status}${NC}"
+        status_colored="\033[0;31m$status\033[0m"
     elif [ "$status" = "done" ]; then
-        status_colored="${GREEN}${status}${NC}"
+        status_colored="\033[0;32m$status\033[0m"
     else
         status_colored="$status"
     fi
-    printf "%-3s\t%-8b\t%-19s\t%s\n" "$id" "$status_colored" "$date" "$desc"
-done < "$TASK_FILE"
 
+    printf "%-3s\t%-8b\t%-19s\t%s\n" "$id" "$status_colored" "$date" "$desc"
+done

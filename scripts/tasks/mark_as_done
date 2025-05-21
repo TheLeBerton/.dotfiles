@@ -1,27 +1,20 @@
 #!/bin/bash
 
-TASK_FILE="$HOME/.dotfiles/scripts/tasks/tasks.txt"
-TEMP_FILE="/tmp/tasks.tmp"
+TASK_DIR="$HOME/.dotfiles/scripts/tasks/tasks_json"
 
 if [ -z "$1" ]; then
-    echo "Usage: $0 <task_id>"
+    echo "Please provide a task ID."
     exit 1
 fi
 
 ID="$1"
+TASK_FILE="$TASK_DIR/$ID.json"
 
-if ! grep -q "^$ID;" "$TASK_FILE"; then
-    echo "Task with ID $ID not found."
+if [ ! -f "$TASK_FILE" ]; then
+    echo "Task $ID not found."
     exit 1
 fi
 
-awk -v id="$ID" 'BEGIN{FS=OFS=";"} 
-    {
-        if ($1 == id && $2 == "todo") $2="done"
-        print
-    }' "$TASK_FILE" > "$TEMP_FILE"
-
-mv "$TEMP_FILE" "$TASK_FILE"
+jq '.status = "done"' "$TASK_FILE" > "$TASK_FILE.tmp" && mv "$TASK_FILE.tmp" "$TASK_FILE"
 
 echo "Task $ID marked as done."
-
