@@ -15,6 +15,7 @@ alias zshconf="nvim $HOME/.zshrc"
 alias src="source $HOME/.zshrc"
 alias addlib="$HOME/.dotfiles/scripts/addlib"
 alias pushvog="$HOME/.local/scripts/push_vog $1 $2"
+alias checkpush="$HOME/.local/scripts/is_pushed"
 alias tk="$HOME/.local/scripts/tasks/task $@"
 
 function cd() {
