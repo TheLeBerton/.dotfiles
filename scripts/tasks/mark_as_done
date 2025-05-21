@@ -1,6 +1,7 @@
 #!/bin/bash
 
 TASK_DIR="$HOME/.dotfiles/scripts/tasks/tasks_json"
+GIT_REPO="$HOME/.dotfiles"
 
 if [ -z "$1" ]; then
     echo "Please provide a task ID."
@@ -18,3 +19,9 @@ fi
 jq '.status = "done"' "$TASK_FILE" > "$TASK_FILE.tmp" && mv "$TASK_FILE.tmp" "$TASK_FILE"
 
 echo "Task $ID marked as done."
+
+git -C "$GIT_REPO" add "$TASK_FILE"
+MSG="Automatic tasks: Marked $ID: $DESCRIPTION"
+git -C "$GIT_REPO" commit -m "$MSG"
+git -C "$GIT_REPO" push origin main
+echo "Task pushed to git: $MSG"
