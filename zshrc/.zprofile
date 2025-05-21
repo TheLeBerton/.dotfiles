@@ -1,13 +1,9 @@
-if [ -z "$SSH_AUTH_SOCK" ] || ! pgrep -u "$USER" ssh-agent > /dev/null; then
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
     eval "$(ssh-agent -s)"
-    export SSH_AUTH_SOCK
-    sleep 1
 fi
 
-DOTFILES_DIR="$HOME/.dotfiles"
-if [ ! -d "$DOTFILES_DIR" ]; then
-    echo "Dotfiles directory not found. Please clone the repository."
-else
-    "$HOME/.dotfiles/scripts/pull_all"
+if [ -z "$SSH_AUTH_SOCK" ] && [ -S "$HOME/Library/Containers/com.openssh.ssh-agent/Data/ssh-agent.sock" ]; then
+    export SSH_AUTH_SOCK="$HOME/Library/Containers/com.openssh.ssh-agent/Data/ssh-agent.sock"
 fi
 
+ssh-add -l > /dev/null 2>&1 || ssh-add ~/.ssh/id_ed25519 2>/dev/null

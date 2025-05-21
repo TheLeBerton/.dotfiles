@@ -2,26 +2,52 @@
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 export ZSH="$HOME/.oh-my-zsh"
-export DEV="$HOME/.dotfiles/scripts/conf/dev"
-export SECHO="$HOME/.dotfiles/scripts/utils/slow_echo"
+
 export RED='\033[0;31m'
 export GREEN='\033[0;32m'
 export YELLOW='\033[0;33m'
 export RESET='\033[0m'
+
+export SCRIPTS="$HOME/.local/scripts"
+export DOTFILES="$HOME/.dotfiles"
+if [ ! -d $SCRIPTS ]; then
+	if [ -d $DOTFILES ]; then
+		echo -e "${YELLOW}→\t[Creating scripts directory...]${RESET}"
+		ln -s $DOTFILES/scripts $SCRIPTS
+		echo -e "${GREEN}✔\t[Scripts directory linked].${RESET}"
+	else
+		echo -e "${RED}✖\t[No scripts directory found]${RESET}"
+	fi
+fi
+
+export DEV="$SCRIPTS/conf/dev"
+export SECHO="$SCRIPTS/utils/slow_echo"
 # source $ZSH/oh-my-zsh.sh
 
 ZSH_THEME="robbyrussell"
 
 plugins=(git)
 
-bindkey -s ^f "$HOME/.local/scripts/tmux-sessionizer\n"
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    alias ls='ls -G'
+    alias ll='ls -lG'
+    alias la='ls -laG'
+	alias l='ls -G'
+else
+    alias ls='ls --color=auto'
+    alias ll='ls -l --color=auto'
+    alias la='ls -la --color=auto'
+	alias l='ls --color=auto'
+fi
+
+bindkey -s ^f "$SCRIPTS/tmux-sessionizer\n"
 
 alias zshconf="nvim $HOME/.zshrc"
 alias src="source $HOME/.zshrc"
-alias addlib="$HOME/.dotfiles/scripts/addlib"
-alias pushvog="$HOME/.local/scripts/push_vog $1 $2"
-alias checkpush="$HOME/.local/scripts/is_pushed"
-alias tk="$HOME/.local/scripts/tasks/task $@"
+alias addlib="$SCRIPTS/addlib"
+alias pushvog="$SCRIPTS/git/push_vog $1 $2"
+alias checkpush="$SCRIPTS/git/is_pushed"
+alias tk="$SCRIPTS/tasks/task $@"
 
 function cd() {
     builtin cd "$@" || return
@@ -40,3 +66,6 @@ function cd() {
         echo ""
     fi
 }
+
+"$HOME/.local/scripts/git/pull_all"
+
