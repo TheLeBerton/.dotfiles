@@ -19,8 +19,8 @@ fi
 rm "$TASK_FILE"
 echo "Task $ID removed."
 
-git -C "$GIT_REPO" add "$TASK_FILE" > /dev/null 2>$1
-MSG="Automatic tasks: Removed $ID: $DESCRIPTION"
-git -C "$GIT_REPO" commit -m "$MSG" > /dev/null 2>$1
-git -C "$GIT_REPO" push origin main > /dev/null 2>$1
+git -C "$GIT_REPO" add "$TASK_FILE" > /dev/null 2>&1
+MSG="Automatic tasks: Removed $ID"
+git -C "$GIT_REPO" commit -m "$MSG" > /dev/null 2>&1
+git -C "$GIT_REPO" push origin main > /dev/null 2>&1
 echo "Task pushed to git: $MSG"

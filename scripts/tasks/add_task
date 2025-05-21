@@ -31,8 +31,8 @@ jq -n --arg id "$NEW_ID" --arg status "todo" --arg date "$DATE" --arg desc "$DES
 
 echo "Task added with ID $NEW_ID."
 
-git -C "$GIT_REPO" add "$TASK_FILE" > /dev/null 2>$1
+git -C "$GIT_REPO" add "$TASK_FILE" > /dev/null 2>&1
 MSG="Automatic tasks: Added $NEW_ID: $DESCRIPTION"
-git -C "$GIT_REPO" commit -m "$MSG" > /dev/null 2>$1
-git -C "$GIT_REPO" push origin main > /dev/null 2>$1
+git -C "$GIT_REPO" commit -m "$MSG" > /dev/null 2>&1
+git -C "$GIT_REPO" push origin main > /dev/null 2>&1
 echo "Task pushed to git: $MSG"
