@@ -1,9 +1,19 @@
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    eval "$(ssh-agent -s)"
+SSH_ENV="$HOME/.ssh/agent_env"
+
+start_agent() {
+    echo "Starting ssh-agent..."
+	ssh-agent -s | grep -v '^echo' > "$SSH_ENV"
+    chmod 600 "$SSH_ENV"
+    . "$SSH_ENV" > /dev/null
+    ssh-add "$HOME/.ssh/id_ed25519" 2>/dev/null && echo "SSH key added."
+}
+
+if [ -f "$SSH_ENV" ]; then
+    . "$SSH_ENV" > /dev/null
+    ssh-add -l > /dev/null 2>&1 || start_agent
+else
+    start_agent
 fi
 
-if [ -z "$SSH_AUTH_SOCK" ] && [ -S "$HOME/Library/Containers/com.openssh.ssh-agent/Data/ssh-agent.sock" ]; then
-    export SSH_AUTH_SOCK="$HOME/Library/Containers/com.openssh.ssh-agent/Data/ssh-agent.sock"
-fi
+echo "Exiting zprofile"
 
-ssh-add -l > /dev/null 2>&1 || ssh-add ~/.ssh/id_ed25519 2>/dev/null
