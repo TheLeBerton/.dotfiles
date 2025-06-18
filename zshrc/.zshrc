@@ -26,6 +26,9 @@
 ####################################################################################################
 					# If you come from bash you might have to change your $PATH.
 					# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+
+
+							# PATH
 							if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 						export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
 							elif [[ "$OSTYPE" == "darwin"* ]]; then
@@ -33,11 +36,13 @@
 							fi
 								export ZSH="$HOME/.oh-my-zsh"                                      
                                                                                                    
+								# Colors
 								export RED='\033[0;31m'                                             
 								export GREEN='\033[0;32m'                                          
 								export YELLOW='\033[0;33m'                                         
 								export RESET='\033[0m'                                             
                                                                                                    
+							# scripts and dotfiles
 							export SCRIPTS="$HOME/.local/scripts"                                  
 							export DOTFILES="$HOME/.dotfiles"                                      
 							if [ ! -d $SCRIPTS ]; then                                             
@@ -49,15 +54,23 @@
 									echo -e "${RED}✖\t[No scripts directory found]${RESET}"        
 								fi                                                                 
 							fi                                                                    
-								export DEV="$SCRIPTS/conf/dev"									   
+								
+							# Slow echo
 							export SECHO="$SCRIPTS/utils/slow_echo"							   
 
+								# dev
+								export DEV="$SCRIPTS/conf/dev"									   
+
+								# git config
+								export XDG_CONFIG_HOME="$HOME/.config"
+
+								# terminal prompt
 								autoload -Uz vcs_info
 								precmd() { vcs_info }
 								zstyle ':vcs_info:git:*' formats '(%b)'
-								export PS1="[%~] ${vcs_info_msg_0_} $ "
-
-								export XDG_CONFIG_HOME="$HOME/.config"
+		function virtualenv_info() { [[ -n "$VIRTUAL_ENV" ]] && echo "($(basename $VIRTUAL_ENV))" }
+								setopt PROMPT_SUBST
+					export PS1='[%~] $(virtualenv_info) ${vcs_info_msg_0_} $ '
 
 
 ####################################################################################################
