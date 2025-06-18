@@ -1,17 +1,13 @@
-return { 
-	"rebelot/kanagawa.nvim",
-	config=function()
-		require("kanagawa").setup({
-			compile=true,
-			background={
-				dark="dragon",
-				light="lotus"
-			},
-			transparent=true
-		});
-		vim.cmd("colorscheme kanagawa");
-	end,
-	build=function()
-		vim.cmd("KanagawaCompile");
-	end
+return {
+  "neanias/everforest-nvim",
+  version = false,
+  lazy = false,
+  priority = 1000,
+  config = function()
+    require("everforest").setup({
+      background = "soft", -- or: medium, hard
+      transparent_background_level = 1,
+    })
+    vim.cmd("colorscheme everforest")
+  end,
 }
