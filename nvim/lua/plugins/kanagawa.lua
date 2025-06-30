@@ -5,7 +5,7 @@ return {
   priority = 1000,
   config = function()
     require("vscode").setup({
-      transparent = true, -- fond transparent
+      transparent = false, -- fond transparent
       italic_comments = true,
     })
     vim.cmd("colorscheme vscode")
