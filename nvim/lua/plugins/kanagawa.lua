@@ -1,13 +1,13 @@
 return {
-  "neanias/everforest-nvim",
+  "Mofiqul/vscode.nvim",
   version = false,
   lazy = false,
   priority = 1000,
   config = function()
-    require("everforest").setup({
-      background = "soft", -- or: medium, hard
-      transparent_background_level = 1,
+    require("vscode").setup({
+      transparent = true, -- fond transparent
+      italic_comments = true,
     })
-    vim.cmd("colorscheme everforest")
+    vim.cmd("colorscheme vscode")
   end,
 }
