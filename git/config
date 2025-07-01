@@ -1,0 +1,75 @@
+[user]
+	name = Leo Mac
+	email = leomac@gmail.com
+
+[core]
+	compression = 9
+	whitespace = error
+	preloadindex = true
+
+[advice]
+	addEmptyPathspec = false
+	pushNonFastForward = false
+	statusHints = false
+
+[url "git@github.com:LeoTrain/"]
+	insteadOf = "cj:"
+
+[url "git@github.com"]
+	insteadOf = "gh:"
+
+[init]
+	defaultBranch = master
+
+[status]
+	branch = true
+	showStash = true
+	showUntrackedFiles = all
+
+[diff]
+	context = 3
+	renames = copies
+	interHunkContext = 10
+
+[color "diff"]
+	meta = black bold
+	frag = magenta
+	context = white
+	whitespace = yellow reverse
+	old = red
+
+[pager]
+	diff = diff-so-fancy | $PAGER
+
+[diff-so-fancy]
+	markEmptyLines = false
+
+[interactive]
+	diffFilter = diff-so-fancy --patch
+	singlekey = true
+
+[log]
+	abbrevCommit = true
+	graphColors = blue,yellow,cyan,magenta,green,red
+
+[color "decorate"]
+	HEAD = red
+	branch = blue
+	tag = yellow
+	remoteBranch = magenta
+
+[color "branch"]
+	current = magenta
+	local = default
+	remote = yellow
+	upstream = green
+	plain = blue
+
+[branch]
+	sort = -committerdate
+
+[tag]
+	sort = -taggerdate
+
+[commit]
+	template = ~/.dotfiles/templates/.gitmessage.txt

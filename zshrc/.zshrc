@@ -26,6 +26,9 @@
 ####################################################################################################
 					# If you come from bash you might have to change your $PATH.
 					# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+
+
+							# PATH
 							if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 						export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
 							elif [[ "$OSTYPE" == "darwin"* ]]; then
@@ -33,11 +36,13 @@
 							fi
 								export ZSH="$HOME/.oh-my-zsh"                                      
                                                                                                    
+								# Colors
 								export RED='\033[0;31m'                                             
 								export GREEN='\033[0;32m'                                          
 								export YELLOW='\033[0;33m'                                         
 								export RESET='\033[0m'                                             
                                                                                                    
+							# scripts and dotfiles
 							export SCRIPTS="$HOME/.local/scripts"                                  
 							export DOTFILES="$HOME/.dotfiles"                                      
 							if [ ! -d $SCRIPTS ]; then                                             
@@ -49,9 +54,25 @@
 									echo -e "${RED}✖\t[No scripts directory found]${RESET}"        
 								fi                                                                 
 							fi                                                                    
-                                                                                                   
-								export DEV="$SCRIPTS/conf/dev"									   
+								
+							# Slow echo
 							export SECHO="$SCRIPTS/utils/slow_echo"							   
+
+								# dev
+								export DEV="$SCRIPTS/conf/dev"									   
+
+								# git config
+								export XDG_CONFIG_HOME="$HOME/.config"
+
+								# terminal prompt
+								autoload -Uz vcs_info
+								precmd() { vcs_info }
+								zstyle ':vcs_info:git:*' formats '(%b)'
+		function virtualenv_info() { [[ -n "$VIRTUAL_ENV" ]] && echo "($(basename $VIRTUAL_ENV))" }
+								setopt PROMPT_SUBST
+					export PS1='[%~] $(virtualenv_info) ${vcs_info_msg_0_} $ '
+
+
 ####################################################################################################
 
 								# source $ZSH/oh-my-zsh.sh
@@ -88,23 +109,18 @@ alias addlib="$SCRIPTS/addlib"
 alias pushvog="$SCRIPTS/git/push_vog $1 $2"														   
 alias checkpush="$SCRIPTS/git/is_pushed" 													      
 alias tk="$SCRIPTS/tasks/task $@"																   
-function cd() {																					   
-    builtin cd "$@" || return																   
-																							       	
-    if [ -d ".git" ]; then																		   
-        repo_name=$(basename "$(git rev-parse --show-toplevel)") 								   
-        branch=$(git rev-parse --abbrev-ref HEAD) 											       
-        last_commit=$(git log -1 --pretty=format:"%h - %s (%cr) by %an") 					       
-																								   
-        echo -e "\033[1;32m📁 Repo:\033[0m $repo_name" 											   
-        echo -e "\033[1;34m🌿 Branch:\033[0m $branch" 											   
-        echo -e "\033[1;33m🕒 Last commit:\033[0m $last_commit"a 								   
-        echo -e "\033[1;36m🧵 Local branches (Sorted by date):\033[0m" 							   
-        git for-each-ref --sort=-committerdate refs/heads/ \									   
-            --format='  - %(refname:short)  ⏱  %(committerdate:relative)  👤  %(authorname)'       
-        echo ""																				       
-    fi                   																           
-}																				                   
+
+alias gs="git status --short"
+alias gd="git --no-pager diff --output-indicator-new=' ' --output-indicator-old=' '"
+alias ga="git add"
+alias gap="git add --patch"
+alias gc="git commit"
+alias gp="git push"
+alias gu="git pull"
+alias gl="git log --all --graph --pretty=format:'%C(magenta)%h %C(white) %an %ar%C(auto) %D%n%s%n'"
+alias gb="git branch"
+
+
 ####################################################################################################
 
 
@@ -124,5 +140,4 @@ function cd() {
 bindkey -s ^f "$SCRIPTS/tmux-sessionizer\n"                                                        
 ####################################################################################################
 
-"$HOME/.local/scripts/git/pull_all"
 

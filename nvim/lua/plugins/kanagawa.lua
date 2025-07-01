@@ -1,17 +1,13 @@
-return { 
-	"rebelot/kanagawa.nvim",
-	config=function()
-		require("kanagawa").setup({
-			compile=true,
-			background={
-				dark="dragon",
-				light="lotus"
-			},
-			transparent=true
-		});
-		vim.cmd("colorscheme kanagawa");
-	end,
-	build=function()
-		vim.cmd("KanagawaCompile");
-	end
+return {
+  "Mofiqul/vscode.nvim",
+  version = false,
+  lazy = false,
+  priority = 1000,
+  config = function()
+    require("vscode").setup({
+      transparent = false, -- fond transparent
+      italic_comments = true,
+    })
+    vim.cmd("colorscheme vscode")
+  end,
 }

@@ -1,3 +1,13 @@
-alacritty.toml
-*.log
-lazy-lock.json
+# macOS
+.DS_Store
+
+# Fichiers de sauvegarde Vim/Neovim
+*~
+*.swp
+*.swo
+
+# Fichiers de backup génériques
+*.bak
+*.old
+*.save
+
