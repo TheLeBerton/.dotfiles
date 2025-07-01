@@ -120,6 +120,8 @@ alias gu="git pull"
 alias gl="git log --all --graph --pretty=format:'%C(magenta)%h %C(white) %an %ar%C(auto) %D%n%s%n'"
 alias gb="git branch"
 
+alias pm="python3 $HOME/.dotfiles/scripts/pm/pm.py"
+
 
 ####################################################################################################
 
