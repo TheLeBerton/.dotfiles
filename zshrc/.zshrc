@@ -121,6 +121,7 @@ alias gl="git log --all --graph --pretty=format:'%C(magenta)%h %C(white) %an %ar
 alias gb="git branch"
 
 alias pm="python3 $HOME/.dotfiles/scripts/pm/pm.py"
+alias add_lib="$SCRIPTS/git/add_libft.sh"
 
 
 ####################################################################################################
