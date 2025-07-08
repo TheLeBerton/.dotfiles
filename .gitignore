@@ -11,3 +11,4 @@
 *.old
 *.save
 
+nvim/lazy-lock.json
