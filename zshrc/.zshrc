@@ -22,12 +22,10 @@ zstyle ':vcs_info:git:*' formats '(%b)'
 export PS1="[%~] ${vcs_info_msg_0} $ "
 
 ZSH_THEME="robbyrussell"
-
 plugins=(git)
 
 source $HOME/.brewconfig.zsh
 source <(fzf --zsh)
-
 
 bindkey -s ^f "$SCRIPTS/tmux-sessionizer\n"                                                        
 export PATH=/home/leberton/.local/funcheck/host:$PATH
