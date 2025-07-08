@@ -1,40 +1,23 @@
-opt = vim.opt
-
-opt.expandtab = false -- Convert tabs to spaces
-opt.shiftwidth = 4 -- Amount to indent when >> or <<
-opt.tabstop = 4 -- How many spaces are shown per Tab
-opt.softtabstop = 4 -- How many spaces are applied when pressing Tab
-
-opt.smarttab = true
-opt.smartindent = true
-opt.autoindent = true -- Keep indentation from previous line
-
--- Enable break indent
-opt.breakindent = true
-
--- Always show relative numbers
-opt.number = true
-opt.relativenumber = true
-
--- Show line under cursor
-opt.cursorline = true
-
--- Stores undos between sessions
-opt.undofile = true
-
-opt.mouse = "a"
-opt.showmode = false
-
--- Case sensitive searching UNLESS \C or one or more capital letters in the search term
-opt.ignorecase = true
-opt.smartcase = true
-
--- Keep signcolumn on by defaut
-opt.signcolumn = "yes"
-
--- Configure how new splits should be opened
-opt.splitright = true
-opt.splitbelow = true
-
--- Minimal number of screen lines to keep above and below the cursor
-opt.scrolloff = 20
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+vim.g.have_nerd_font = false
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.mouse = 'a'
+vim.opt.showmode = false
+vim.schedule(function() vim.opt.clipboard = 'unnamedplus' end)
+vim.opt.breakindent = true
+vim.opt.undofile = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.signcolumn = 'yes'
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+vim.opt.list = false
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.inccommand = 'split'
+vim.opt.cursorline = true
+vim.opt.scrolloff = 10
+vim.opt.winborder = "solid" -- https://neovim.io/doc/user/options.html#'winborder'
