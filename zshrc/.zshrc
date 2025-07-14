@@ -24,7 +24,9 @@ export PS1="[%~] ${vcs_info_msg_0} $ "
 ZSH_THEME="robbyrussell"
 plugins=(git)
 
-source $HOME/.brewconfig.zsh
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+	source $HOME/.brewconfig.zsh
+fi
 source <(fzf --zsh)
 
 bindkey -s ^f "$SCRIPTS/tmux-sessionizer\n"                                                        
