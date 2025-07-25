@@ -58,10 +58,14 @@ precmd() {
 		venv="($(basename $VIRTUAL_ENV)) "
 	fi
 
-	if [[ -n $branch ]]; then
+	if [[ -n $branch && -n $venv ]]; then
 		PS1="${venv}[%~] $branch $ "
-	else
+	elif [[ -n $branch ]]; then
+		PS1="[%~] $branch $ "
+	elif [[ -n $venv ]]; then
 		PS1="${venv}[%~] $ "
+	else
+		PS1="[%~] $ "
 	fi
 }
 
