@@ -17,18 +17,19 @@ export DEV="$SCRIPTS/conf/dev"
 export SECHO="$SCRIPTS/utils/slow_echo"							   
 
 autoload -Uz vcs_info
-precmd() { vcs_info }
+setopt prompt_subst
+zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git:*' formats '(%b)'
 zstyle ':vcs_info:git:*' check-for-changes true
 precmd() {
     vcs_info
+
     local staged=0 unstaged=0 untracked=0 ahead=0 behind=0
     if [[ -n $(git diff --cached --name-only 2>/dev/null) ]]; then staged=1; fi
     if [[ -n $(git diff --name-only 2>/dev/null) ]]; then unstaged=1; fi
     if [[ -n $(git ls-files --others --exclude-standard 2>/dev/null) ]]; then untracked=1; fi
     ahead=$(git rev-list --count @{u}..HEAD 2>/dev/null || echo 0)
     behind=$(git rev-list --count HEAD..@{u} 2>/dev/null || echo 0)
-
     local flags=""
     (( staged )) && flags+="●"
     (( unstaged )) && flags+="!"
@@ -39,13 +40,6 @@ precmd() {
 	local branch_name="${vcs_info_msg_0_:-}"
 	branch_name=${branch_name//\(/}
 	branch_name=${branch_name//\)/}
-
-	local flags=""
-	(( staged )) && flags+="●"
-	(( unstaged )) && flags+="!"
-	(( untracked )) && flags+="+"
-	(( ahead > 0 )) && flags+="↑$ahead"
-	(( behind > 0 )) && flags+="↓$behind"
 
 	local color="green"
 	if (( staged + unstaged + untracked > 0 )); then
@@ -59,10 +53,15 @@ precmd() {
 		branch="%F{$color}($branch_name)%f"
 	fi
 
+	local venv=""
+	if [[ -n "$VIRTUAL_ENV" ]]; then
+		venv="($(basename $VIRTUAL_ENV)) "
+	fi
+
 	if [[ -n $branch ]]; then
-		PS1="[%~] $branch $ "
+		PS1="${venv}[%~] $branch $ "
 	else
-		PS1="[%~] $ "
+		PS1="${venv}[%~] $ "
 	fi
 }
 
