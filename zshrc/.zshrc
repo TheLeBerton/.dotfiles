@@ -31,9 +31,9 @@ precmd() {
     ahead=$(git rev-list --count @{u}..HEAD 2>/dev/null || echo 0)
     behind=$(git rev-list --count HEAD..@{u} 2>/dev/null || echo 0)
     local flags=""
-    (( staged )) && flags+="●"
-    (( unstaged )) && flags+="!"
-    (( untracked )) && flags+="+"
+    (( staged )) && flags+=" s"
+    (( unstaged )) && flags+=" us"
+    (( untracked )) && flags+=" ut"
     (( ahead > 0 )) && flags+="↑$ahead"
     (( behind > 0 )) && flags+="↓$behind"
 
