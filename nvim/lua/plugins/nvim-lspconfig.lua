@@ -17,6 +17,7 @@ return {
 		require('lspconfig').clangd.setup({
 		  cmd = { "/usr/bin/clangd" },
 		})
+		require('lspconfig').pyright.setup{}
 	end
 }
 }
