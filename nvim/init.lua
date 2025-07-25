@@ -33,11 +33,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+vim.opt.termguicolors = true
 require("config.lazy")
 require("config.keymaps")
-require("config.colorscheme")
-
-vim.opt.termguicolors = true
+require("config.colorscheme").toggle()
 
 vim.api.nvim_create_autocmd('LspAttach', {
 	desc = 'LSP actions',

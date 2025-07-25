@@ -1,6 +1,8 @@
-local current = "rose-pine"
+local M = {}
 
-local function toggle_theme()
+local current = "tokyonight"
+
+function M.toggle()
   if current == "rose-pine" then
     vim.cmd("colorscheme tokyonight")
 	vim.cmd("set background=dark")
@@ -12,4 +14,6 @@ local function toggle_theme()
   end
 end
 
-vim.api.nvim_create_user_command("ToggleTheme", toggle_theme, {})
+vim.api.nvim_create_user_command("ToggleTheme", M.toggle, {})
+
+return M
