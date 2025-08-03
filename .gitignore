@@ -12,3 +12,4 @@
 *.save
 
 ./nvim/lazy-lock.json
+./logs/

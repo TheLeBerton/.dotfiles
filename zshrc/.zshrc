@@ -59,13 +59,13 @@ precmd() {
 	fi
 
 	if [[ -n $branch && -n $venv ]]; then
-		PS1="${venv}[%~] $branch $ "
+		PS1=$'\n'"${venv}[%~] $branch"$'\n'"> "
 	elif [[ -n $branch ]]; then
-		PS1="[%~] $branch $ "
+		PS1=$'\n'"[%~] $branch"$'\n'"> "
 	elif [[ -n $venv ]]; then
-		PS1="${venv}[%~] $ "
+		PS1=$'\n'"${venv}[%~]"$'\n'"> "
 	else
-		PS1="[%~] $ "
+		PS1=$'\n'"[%~]"$'\n'"> "
 	fi
 }
 
