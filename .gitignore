@@ -11,5 +11,5 @@
 *.old
 *.save
 
-./nvim/lazy-lock.json
-./logs/
+nvim/lazy-lock.json
+logs/
