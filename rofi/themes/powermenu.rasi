@@ -1,0 +1,37 @@
+* {
+  font: "JetBrainsMono Nerd Font 14";
+  background: rgba(30, 30, 46, 0.6); // fond semi-transparent
+  foreground: rgba(205, 214, 244, 1.0);
+  selected-normal-background: rgba(137, 180, 250, 0.3);
+  selected-normal-foreground: rgba(205, 214, 244, 1.0);
+  border: 2px;
+  border-color: #89b4fa;
+  padding: 6px;
+}
+
+window {
+  location: northeast;
+  anchor: northeast;
+  width: 12%;
+  x-offset: -20px;
+  y-offset: 40px;
+  fullscreen: false;
+  transparency: "real"; // utile uniquement si supporté par ton compositor
+}
+
+mainbox {
+  children: [ listview ];
+  spacing: 1px;
+  padding: 2px;
+}
+
+listview {
+  lines: 5;
+  spacing: 5px;
+  dynamic: false;
+  fixed-height: true;
+}
+
+inputbar {
+  enabled: false;
+}
