@@ -9,3 +9,6 @@ vim.keymap.set('n', '<leader>fw', "<cmd>Telescope grep_string<CR>", {})
 vim.keymap.set('n', '<leader>tc', require("config.colorscheme").toggle, { desc = "Toggle theme light/dark" })
 vim.keymap.set('n', '<leader>tt', '<cmd>Twilight<CR>', { desc = "Toggle twilight"})
 vim.keymap.set('n', '<leader>tz', '<cmd>ZenMode<CR>', { desc = "Toggle twilight"})
+
+vim.api.nvim_set_keymap('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true, noremap = true})
+vim.api.nvim_set_keymap('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<S-Tab>"', {expr = true, noremap = true})
