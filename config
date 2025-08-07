@@ -1,0 +1,21 @@
+#!/bin/bash
+
+DOTFILES_DIR="$HOME/.dotfiles"
+CONFIG_DIR="$HOME/.config"
+
+for dir in "$DOTFILES_DIR"/*; do
+  [ -d "$dir" ] || continue
+  base="$(basename "$dir")"
+  [[ "$base" == "." || "$base" == ".." ]] && continue
+  target="$CONFIG_DIR/$base"
+  read -p "Do you want a symbolic link for $base ? [y/N] " answer
+  if [[ "$answer" =~ ^[Yy]$ ]]; then
+    if [ -e "$target" ] || [ -L "$target" ]; then
+      rm -rf "$target"
+    fi
+    ln -s "$dir" "$target"
+    echo "Link created: $target -> $dir"
+  else
+    echo "Skipped $base"
+  fi
+done
