@@ -1,26 +1,31 @@
 local M = {}
 
-local current = "tokyonight"
+local themes = {
+	{ name = "tokyonight", background = "dark" },
+	{ name = "rose-pine", background = "light" },
+	{ name = "falcon", background = "dark" },
+	{ name = "catppuccin", background = "light" },
+	{ name = "onedark", background = "dark" },
+	{ name = "kanagawa", background = "dark" },
+	{ name = "nightfox", background = "dark" },
+	{ name = "melange", background = "dark" },
+}
+
+local current_idx = 1
+
+local function apply_theme(idx)
+	local theme = themes[idx]
+	vim.cmd("colorscheme " .. theme.name)
+	vim.o.background = theme.background
+	vim.notify("Switched to " .. theme.name, vim.log.levels.INFO)
+end
 
 function M.toggle()
-	if current == "rose-pine" then
-    	vim.cmd("colorscheme tokyonight")
-		vim.cmd("set background=dark")
-    	current = "tokyonight"
-		vim.notify("Switched to TokyoNight", vim.log.levels.INFO)
-	elseif current == "falcon" then
-    	vim.cmd("colorscheme rose-pine")
-		vim.cmd("set background=light")
-    	current = "rose-pine"
-		vim.notify("Switched to Rose-Pine", vim.log.levels.INFO)
-	else
-    	vim.cmd("colorscheme falcon")
-		vim.cmd("set background=dark")
-    	current = "falcon"
-		vim.notify("Switched to Falcon", vim.log.levels.INFO)
-
-  end
+	current_idx = (current_idx % #themes) + 1
+	apply_theme(current_idx)
 end
+
+apply_theme(current_idx)
 
 vim.api.nvim_create_user_command("ToggleTheme", M.toggle, {})
 
