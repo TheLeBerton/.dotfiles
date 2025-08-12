@@ -16,11 +16,16 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-	{ "catppuccin/nvim",                 name = "catppuccin", priority = 1000 },
-	{ 'nvim-telescope/telescope.nvim',   tag = '0.1.8',       dependencies = { 'nvim-lua/plenary.nvim' } },
-	{ 'akinsho/bufferline.nvim',         version = "*",       dependencies = 'nvim-tree/nvim-web-devicons' },
+	{ "catppuccin/nvim",               name = "catppuccin", priority = 1000 },
+	{ 'nvim-telescope/telescope.nvim', tag = '0.1.8',       dependencies = { 'nvim-lua/plenary.nvim' } },
+	{ 'akinsho/bufferline.nvim',       version = "*",       dependencies = 'nvim-tree/nvim-web-devicons' },
 	{ 'm4xshen/autoclose.nvim' },
-	{ "nvim-treesitter/nvim-treesitter", branch = 'master',   lazy = false,                                build = ":TSUpdate" },
+	{
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		dependencies = "nvim-treesitter/nvim-treesitter",
+		lazy = false,
+	},
+	{ 'nvim-treesitter/nvim-treesitter-textobjects' },
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
@@ -44,7 +49,7 @@ require('lazy').setup({
 			"rcarriga/nvim-notify",
 		}
 	},
-	{ 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },
+	{ 'nvim-lualine/lualine.nvim',                  dependencies = { 'nvim-tree/nvim-web-devicons' } },
 	{
 		'stevearc/oil.nvim',
 		---@module 'oil'
