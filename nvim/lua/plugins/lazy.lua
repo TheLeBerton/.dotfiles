@@ -156,7 +156,7 @@ require('lazy').setup({
 			})
 
 			require('mason-lspconfig').setup({
-				ensure_installed = { 'pyright', 'lua_ls' },
+				ensure_installed = { 'pyright', 'lua_ls', 'bashls' },
 				handlers = {
 					function(server_name)
 						require('lspconfig')[server_name].setup({})
