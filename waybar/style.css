@@ -51,7 +51,7 @@ window#waybar.hidden {
 }
 
 #memory,
-#custom-power,
+#custom-brightness,
 #battery,
 #backlight,
 #wireplumber,
@@ -65,8 +65,12 @@ window#waybar.hidden {
   color: #181825;
 }
 
-#custom-power {
+#custom-brightness {
   margin-right: 6px;
+  background-color: #1C1C1C;
+  color: #FF7F7F;
+  border-radius: 10px;
+  padding: 0 8px;
 }
 
 #custom-logo {
@@ -115,11 +119,6 @@ window#waybar.hidden {
   font-family: JetBrainsMono Nerd Font;
   background-color: #cba6f7;
 }
-
-#custom-power {
-  background-color: #f2cdcd;
-}
-
 
 tooltip {
   border-radius: 8px;
