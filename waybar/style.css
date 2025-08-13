@@ -66,7 +66,7 @@ window#waybar.hidden {
 #custom-brightness {
   margin-right: 6px;
   background-color: #1c1c1c;
-  color: #FF7F7F;
+  color: #C3FDB8;
   border-radius: 10px;
   padding: 0 8px;
 }
@@ -78,10 +78,11 @@ window#waybar.hidden {
 }
 
 #battery.warning,
-#battery.critical,
+#battery.critical {
+  color: #FFDAB9;
+}
 #battery.urgent {
-  background-color: #ff0000;
-  color: #FFFF00;
+  color: #FF7F7F;
 }
 
 #battery.charging {
