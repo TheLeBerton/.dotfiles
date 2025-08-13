@@ -30,7 +30,7 @@ window#waybar.hidden {
   padding: 6px 18px;
   margin: 6px 3px;
   border-radius: 4px;
-  background-color: #1e1e2e;
+  background-color: #1C1C1C;
   color: #cdd6f4;
 }
 
@@ -50,10 +50,8 @@ window#waybar.hidden {
   background-color: #f38ba8;
 }
 
-#memory,
 #custom-brightness,
 #battery,
-#backlight,
 #wireplumber,
 #network,
 #clock,
@@ -61,33 +59,22 @@ window#waybar.hidden {
   border-radius: 4px;
   margin: 6px 3px;
   padding: 6px 12px;
-  background-color: #1e1e2e;
+  background-color: #1c1c1c;
   color: #181825;
 }
 
 #custom-brightness {
   margin-right: 6px;
-  background-color: #1C1C1C;
+  background-color: #1c1c1c;
   color: #FF7F7F;
   border-radius: 10px;
   padding: 0 8px;
 }
 
-#custom-logo {
-  padding-right: 7px;
-  padding-left: 7px;
-  margin-left: 5px;
-  font-size: 15px;
-  border-radius: 8px 0px 0px 8px;
-  color: #1793d1;
-}
-
-#memory {
-  background-color: #fab387;
-}
-
 #battery {
-  background-color: #f38ba8;
+  background-color: #1C1C1C;
+  color: #B3E5FC;
+  border-radius: 10px;
 }
 
 #battery.warning,
@@ -107,17 +94,21 @@ window#waybar.hidden {
 }
 
 #wireplumber {
-  background-color: #f9e2af;
+  background-color: #1C1C1C;
+  color: #FFFACD;
+  border-radius: 50%;
 }
 
 #network {
-  background-color: #94e2d5;
-  padding-right: 17px;
+  background-color: #1C1C1C;
+  color: #D8BFD8;
+  border-radius: 10px;
 }
 
 #clock {
   font-family: JetBrainsMono Nerd Font;
-  background-color: #cba6f7;
+  background-color: #1C1C1C;
+  color: #FFDAB9;
 }
 
 tooltip {

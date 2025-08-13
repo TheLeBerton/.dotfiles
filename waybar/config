@@ -4,10 +4,10 @@
 		"spacing": 0,
 		"height": 15,
 		"modules-left": [
-				"hyprland/workspaces"
+				"clock",
+				"hyprland/workspaces",
 		],
 		"modules-center": [
-				"clock"
 		],
 		"modules-right": [
 				"wireplumber",
@@ -51,10 +51,10 @@
 		"clock": {
 				"tooltip-format": "{calendar}",
 				"format-alt": "  {:%a, %d %Y}",
-				"format": "{:%d %H:%M}"
+				"format": "{:%d | %H:%M}"
 		},
 		"network": {
-				"format-wifi" : "{icon}",
+				"format-wifi" : "{icon} {essid}",
 				"format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
 				"format-ethernet": "󰀂",
 				"format-alt" : "󱛇",
@@ -85,7 +85,7 @@
 				"scroll-step": 1
 		},
 		"battery": {
-				"format": "{capacity}% {icon}",
+				"format": "{icon} {capacity}%",
 				"format-icons": {
 						"charging": [
 								"󰢜",
