@@ -13,6 +13,7 @@
 				"wireplumber",
 				"battery",
 				"network",
+				"custom/nordvpn",
 				"custom/brightness",
 		],
 		"wlr/taskbar": {
@@ -66,6 +67,13 @@
 				"on-click-right": "~/.config/rofi/wifi/wifinew.sh &",
 				"interval": 5,
 				"nospacing": 1,
+		},
+		"custom/nordvpn": {
+				"interval": 3,
+				"exec": "nordvpn status | grep -q Disconnected && echo '{\"text\":\"\uf127\", \"class\":\"disconnected\"}' || echo '{\"text\":\"\uf0c1\", \"class\":\"connected\"}'",
+				"return-type": "json",
+				"format": "{}",
+				"max-length": "100",
 		},
 		"custom/brightness": {
 				"exec": "$HOME/.local/scripts/brightness.sh",

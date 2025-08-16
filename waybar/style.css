@@ -51,6 +51,7 @@ window#waybar.hidden {
 }
 
 #custom-brightness,
+#custom-nordvpn,
 #battery,
 #wireplumber,
 #network,
@@ -61,6 +62,19 @@ window#waybar.hidden {
   padding: 6px 12px;
   background-color: #1c1c1c;
   color: #181825;
+}
+
+#custom-nordvpn {
+		background-color: #1C1C1C;
+		border-radius: 10px;
+}
+
+#custom-nordvpn.connected {
+		color: #C3FDB8;
+}
+
+#custom-nordvpn.disconnected {
+		color: #EE6969;
 }
 
 #custom-brightness {
