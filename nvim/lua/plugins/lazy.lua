@@ -169,18 +169,22 @@ require('lazy').setup({
 			})
 		end,
 	},
+	{
+		"github/copilot.vim",
+		lazy = false,
+	},
 })
 
 vim.api.nvim_create_autocmd("BufReadPost", {
-    pattern = "*.c",
-    callback = function()
-        require("function_length").show_function_lengths()
-    end,
+	pattern = "*.c",
+	callback = function()
+		require("function_length").show_function_lengths()
+	end,
 })
 
 vim.api.nvim_create_autocmd({ "TextChanged", "TextChangedI" }, {
-    pattern = "*.c",
-    callback = function()
-        require("function_length").show_function_lengths()
-    end,
+	pattern = "*.c",
+	callback = function()
+		require("function_length").show_function_lengths()
+	end,
 })

@@ -28,9 +28,14 @@ function M.show_function_lengths()
 			end
 			local func_name = line:match("([%w_]+)%s*%b()%s*$") or "?"
 			local length = end_line - start_line - 2
-			local virt_text = { { func_name .. " : " .. length .. " lignes", "Comment" } }
+			local virt_text = {
+				{
+					(length > 25 and "!! " or "") .. func_name .. " : " .. length .. " lignes",
+					(length > 25 and "Error" or "Comment")
+				}
+			}
 			vim.api.nvim_buf_set_extmark(bufnr, ns_id, start_line, 0, {
-				virt_lines = { { { func_name .. " : " .. length .. " lignes", "Comment" } } },
+				virt_lines = { virt_text },
 				virt_lines_above = true,
 			})
 		end
