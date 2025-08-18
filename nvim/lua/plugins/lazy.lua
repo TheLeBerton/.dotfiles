@@ -170,3 +170,17 @@ require('lazy').setup({
 		end,
 	},
 })
+
+vim.api.nvim_create_autocmd("BufReadPost", {
+    pattern = "*.c",
+    callback = function()
+        require("function_length").show_function_lengths()
+    end,
+})
+
+vim.api.nvim_create_autocmd({ "TextChanged", "TextChangedI" }, {
+    pattern = "*.c",
+    callback = function()
+        require("function_length").show_function_lengths()
+    end,
+})
