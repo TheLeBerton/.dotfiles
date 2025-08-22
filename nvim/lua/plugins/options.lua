@@ -56,3 +56,6 @@ require('nvim-treesitter.configs').setup {
         },
     },
 }
+require("render-markdown").setup({
+		completions = { lsp = { enabled = true } },
+})
