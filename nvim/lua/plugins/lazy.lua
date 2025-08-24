@@ -17,16 +17,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup("plugins.plugins")
 
-vim.api.nvim_create_autocmd("BufReadPost", {
-	pattern = "*.c",
-	callback = function()
-		require("function_length").show_function_lengths()
-	end,
-})
-
-vim.api.nvim_create_autocmd({ "TextChanged", "TextChangedI" }, {
-	pattern = "*.c",
-	callback = function()
-		require("function_length").show_function_lengths()
-	end,
+require("function_length").setup({
+    enable_on_start = true,  -- active directement à l'ouverture
+    keybinding = "<leader>Fc" -- raccourci pour toggle
 })
