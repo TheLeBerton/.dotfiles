@@ -1,0 +1,32 @@
+[global]
+		monitor = 0
+		follow = mouse
+		origin = top-right
+		offset = (20, 20)
+		width = 300
+		font = Monospace 10
+		frame_color = "#55808B"
+		separator_height = 2
+		padding = 10
+		transparency = 0
+		timeout = 5
+		corner_radius = 10
+		frame_width = 1
+		progress_bar_height = 5
+		progress_bar_corner_radius = 2
+
+[urgency_low]
+		background = "#27292B"
+		foreground = "#bbbbbb"
+		timeout = 3
+
+[urgency_normal]
+		background = "#27292B"
+		foreground = "#ffffff"
+		timeout = 5
+
+[urgency_critical]
+		background = "#900000"
+		foreground = "#ffffff"
+		frame_color = "#ff0000"
+		timeout = 0
