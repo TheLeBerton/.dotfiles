@@ -77,5 +77,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 fi
 source <(fzf --zsh)
 
+
+bindkey -s ^b "$SCRIPTS/calculator/run.sh\n"                                                        
 bindkey -s ^f "$SCRIPTS/tmux-sessionizer\n"                                                        
 export PATH=/home/leberton/.local/funcheck/host:$PATH
