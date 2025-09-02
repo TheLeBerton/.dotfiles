@@ -1,9 +1,17 @@
 #!/bin/bash
 
-EXEC=$HOME/lab/calc_lexr/calc
+DIR=$HOME/lab/calc_lexr
+EXEC=$DIR/calc
 
 if [ ! -f $EXEC ]; then
-    echo "Calc not found"
+    echo "Error: ${EXEC} not found."
+    if [ ! -d $DIR ]; then
+	echo "Error ${DIR} not found."
+    else
+	make -C $DIR
+	$EXEC
+    fi
+else
+    $EXEC
 fi
 
-$EXEC
