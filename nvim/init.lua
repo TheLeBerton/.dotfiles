@@ -7,6 +7,7 @@ vim.opt.clipboard = "unnamedplus"
 
 vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>")
 vim.keymap.set("n", "<space>x", "<cmd>:.lua<CR>")
+vim.keymap.set("n", "<Esc><Esc>", "<cmd>nohl<CR>")
 
 vim.api.nvim_create_autocmd("TextYankPost", {
     desc = "Highlight when yanking text",
