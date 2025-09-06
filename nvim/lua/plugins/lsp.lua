@@ -38,15 +38,6 @@ return {
 					vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
 					vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
 					vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, opts)
-
-					-- if client.supports_method('textDocument/formatting', 0) then
-					-- 	vim.api.nvim_create_autocmd('BufWritePre', {
-						-- 		buffer = args.buf,
-						-- 		callback = function()
-							-- 			vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
-							-- 		end,
-							-- 	})
-							-- end
 						end,
 					})
 				end
