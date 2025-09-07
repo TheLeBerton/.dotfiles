@@ -27,3 +27,6 @@ vim.opt.softtabstop = 4
 
 -- Clipboard
 vim.opt.clipboard = "unnamedplus"
+
+vim.opt.cursorline = true
+vim.opt.completeopt = "menu,menuone,noselect"
