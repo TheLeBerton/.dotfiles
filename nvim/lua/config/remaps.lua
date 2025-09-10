@@ -1,3 +1,8 @@
+vim.keymap.set({ "n", "i", "v", "x" }, "<Left>", ":echo 'Do not use arrow keys..'<cr>")
+vim.keymap.set({ "n", "i", "v", "x" }, "<Right>", ":echo 'Do not use arrow keys..'<cr>")
+vim.keymap.set({ "n", "i", "v", "x" }, "<Up>", ":echo 'Do not use arrow keys..'<cr>")
+vim.keymap.set({ "n", "i", "v", "x" }, "<Down>", ":echo 'Do not use arrow keys..'<cr>")
+
 vim.keymap.set("n", "<Esc><Esc>", "<cmd>nohl<CR>")
 
 vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", { desc = "Increase window height" })
