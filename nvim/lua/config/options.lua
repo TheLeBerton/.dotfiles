@@ -30,3 +30,5 @@ vim.opt.clipboard = "unnamedplus"
 
 vim.opt.cursorline = true
 vim.opt.completeopt = "menu,menuone,noselect"
+
+vim.opt.mouse = ""
