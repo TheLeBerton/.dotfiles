@@ -1,0 +1,147 @@
+/*
+ * WiFi Menu Theme - Notification Style
+ * Matches dunst notification appearance
+ */
+
+* {
+    background-color:      transparent;
+    text-color:           #ffffff;
+    font:                 "Monospace 12";
+}
+
+window {
+    background-color:     #27292B;
+    border:              1px;
+    border-color:        #55808B;
+    border-radius:       10px;
+    padding:             20px;
+    location:            center;
+    anchor:              center;
+    width:               600px;
+    height:              400px;
+    transparency:        "real";
+}
+
+mainbox {
+    background-color:     transparent;
+    children:            [ "inputbar", "listview" ];
+    spacing:             10px;
+}
+
+inputbar {
+    background-color:     transparent;
+    border:              0px;
+    border-radius:       5px;
+    padding:             8px;
+    children:            [ "prompt", "entry" ];
+}
+
+prompt {
+    background-color:     transparent;
+    text-color:          #bbbbbb;
+    padding:             0px 5px 0px 0px;
+}
+
+entry {
+    background-color:     transparent;
+    text-color:          #ffffff;
+    placeholder-color:   #888888;
+    cursor:              text;
+}
+
+listview {
+    background-color:     transparent;
+    columns:             1;
+    lines:               10;
+    cycle:               true;
+    dynamic:             true;
+    scrollbar:           true;
+    layout:              vertical;
+    reverse:             false;
+    fixed-height:        false;
+    fixed-columns:       true;
+    spacing:             4px;
+}
+
+element {
+    background-color:     transparent;
+    text-color:          #ffffff;
+    orientation:         horizontal;
+    border-radius:       5px;
+    padding:             12px;
+    cursor:              pointer;
+}
+
+element normal.normal {
+    background-color:     transparent;
+    text-color:          #ffffff;
+}
+
+element normal.urgent {
+    background-color:     #900000;
+    text-color:          #ffffff;
+}
+
+element normal.active {
+    background-color:     #55808B;
+    text-color:          #ffffff;
+}
+
+element selected.normal {
+    background-color:     #55808B;
+    text-color:          #ffffff;
+    border:              1px;
+    border-color:        #7BA0AB;
+}
+
+element selected.urgent {
+    background-color:     #AA0000;
+    text-color:          #ffffff;
+}
+
+element selected.active {
+    background-color:     #7BA0AB;
+    text-color:          #ffffff;
+}
+
+element-text {
+    background-color:     transparent;
+    text-color:          inherit;
+    cursor:              inherit;
+    vertical-align:      0.5;
+    horizontal-align:    0.0;
+}
+
+element-icon {
+    background-color:     transparent;
+    size:                20px;
+    cursor:              inherit;
+    border:              0px;
+}
+
+scrollbar {
+    width:               4px;
+    border:              0px;
+    handle-color:        #55808B;
+    handle-width:        4px;
+    padding:             0px;
+}
+
+message {
+    background-color:     #27292B;
+    border:              1px;
+    border-color:        #55808B;
+    border-radius:       5px;
+    padding:             10px;
+    margin:              0px 0px 10px 0px;
+}
+
+textbox {
+    background-color:     transparent;
+    text-color:          #bbbbbb;
+    vertical-align:      0.5;
+    horizontal-align:    0.0;
+    highlight:           none;
+    blink:               true;
+    markup:              true;
+}
