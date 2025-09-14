@@ -16,7 +16,12 @@ return {
 			"saadparwaiz1/cmp_luasnip",
 			-- Optional: friendly snippets collection
 			"rafamadriz/friendly-snippets",
+			{
+				"zbirenbaum/copilot-cmp",
+				dependencies = "zbirenbaum/copilot.lua",
+			},
 		},
+
 		config = function()
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
@@ -64,8 +69,9 @@ return {
 					end, { "i", "s" }),
 				}),
 				sources = cmp.config.sources({
-					{ name = "nvim_lsp" }, -- LSP completions
-					{ name = "luasnip" },  -- Snippet completions
+					{ name = "copilot", group_index = 2 },
+					{ name = "nvim_lsp", group_index = 2 }, -- LSP completions
+					{ name = "luasnip", group_index = 2 },  -- Snippet completions
 				}, {
 					{ name = "buffer" },   -- Buffer completions
 					{ name = "path" },     -- File path completions
@@ -100,9 +106,15 @@ return {
 							Event = "",
 							Operator = "󰆕",
 							TypeParameter = "󰅲",
+							Copilot = "",
 						}
-						vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
+						if entry.source.name == "copilot" then
+							vim_item.kind = string.format('%s %s', kind_icons["Copilot"], "Copilot")
+						else
+							vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
+						end
 						vim_item.menu = ({
+							copilot = "[Copilot]",
 							nvim_lsp = "[LSP]",
 							luasnip = "[Snippet]",
 							buffer = "[Buffer]",
@@ -114,6 +126,21 @@ return {
 				-- Enable auto-trigger (like VSCode)
 				completion = {
 					autocomplete = { require('cmp.types').cmp.TriggerEvent.TextChanged },
+				},
+				sorting = {
+					priority_weight = 2,
+					comparators = {
+						require("copilot_cmp.comparators").prioritize,
+						cmp.config.compare.offset,
+						cmp.config.compare.exact,
+						cmp.config.compare.score,
+						cmp.config.compare.recently_used,
+						cmp.config.compare.locality,
+						cmp.config.compare.kind,
+						cmp.config.compare.sort_text,
+						cmp.config.compare.length,
+						cmp.config.compare.order,
+					}
 				},
 			})
 
