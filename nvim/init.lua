@@ -1,8 +1,12 @@
+-- Leader key must be set before lazy
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
+-- Core configuration
 require("config.options")
-require("config.remaps")
+require("config.keymaps")
+require("config.autocmds")
+require("config.commands")
 
+-- Plugin management
 require("config.lazy")
-
-vim.g.netrw_browse_split = 0
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 25

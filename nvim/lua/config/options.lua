@@ -1,34 +1,52 @@
--- Better search
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.incsearch = true
-vim.opt.hlsearch = true
+-- Set options (ThePrimeagen/TJ inspired)
+local opt = vim.opt
 
--- Better ui
-vim.opt.scrolloff = 8
-vim.opt.sidescrolloff = 8
-vim.opt.signcolumn = "yes"
-vim.opt.colorcolumn = "80"
+-- Line numbers
+opt.number = true
+opt.relativenumber = true
 
--- Better editing
-vim.opt.undofile = true
-vim.opt.updatetime = 250
-vim.opt.timeoutlen = 300
+-- Tabs & indentation
+opt.tabstop = 4
+opt.shiftwidth = 4
+opt.expandtab = false
+opt.autoindent = true
 
--- Split behavior
-vim.opt.splitright = true
-vim.opt.splitbelow = true
+-- Search settings
+opt.ignorecase = true
+opt.smartcase = true
+opt.hlsearch = false
+opt.incsearch = true
 
--- Tab behavior
-vim.opt.expandtab = false
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.softtabstop = 4
+-- Appearance
+opt.termguicolors = true
+opt.signcolumn = "yes"
+opt.colorcolumn = "80"
+opt.cursorline = true
+
+-- Behavior
+opt.errorbells = false
+opt.swapfile = false
+opt.backup = false
+opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+opt.undofile = true
+opt.scrolloff = 8
+opt.updatetime = 50
+opt.timeoutlen = 300
+
+-- Splits
+opt.splitright = true
+opt.splitbelow = true
 
 -- Clipboard
-vim.opt.clipboard = "unnamedplus"
+opt.clipboard = "unnamedplus"
 
-vim.opt.cursorline = true
-vim.opt.completeopt = "menu,menuone,noselect"
+-- Mouse
+opt.mouse = ""
 
-vim.opt.mouse = ""
+-- Completion
+opt.completeopt = "menu,menuone,noselect"
+
+-- Netrw settings
+vim.g.netrw_browse_split = 0
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 25

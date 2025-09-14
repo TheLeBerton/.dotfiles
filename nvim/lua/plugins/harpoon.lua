@@ -1,30 +1,44 @@
 return {
-  {
-    "ThePrimeagen/harpoon",
-    branch = "harpoon2",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      local harpoon = require("harpoon")
-	  harpoon:setup({
-		  settings = {
-			  save_on_toggle = true,
-			  sync_on_ui_close = true,
-			  key = function()
-				  return vim.loop.cwd()
-			  end,
-		  },
-	  })
-	  local keymap = vim.keymap.set
-	  keymap("n", "<leader>ha", function() harpoon:list():add() end, { desc = "Harpoon: Add file" })
-	  keymap("n", "<leader>hm", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Harpoon: Menu" })
-	  keymap("n", "<leader>1", function() harpoon:list():select(1) end, { desc = "Harpoon: File 1" })
-	  keymap("n", "<leader>2", function() harpoon:list():select(2) end, { desc = "Harpoon: File 2" })
-	  keymap("n", "<leader>3", function() harpoon:list():select(3) end, { desc = "Harpoon: File 3" })
-	  keymap("n", "<leader>4", function() harpoon:list():select(4) end, { desc = "Harpoon: File 4" })
-	  keymap("n", "<leader>hn", function() harpoon:list():next() end, { desc = "Harpoon: Next" })
-	  keymap("n", "<leader>hp", function() harpoon:list():prev() end, { desc = "Harpoon: Previous" })
-	  keymap("n", "<leader>hd", function() harpoon:list():remove() end, { desc = "Harpoon: Delete file" })
-	  keymap("n", "<leader>hc", function() harpoon:list():clear() end, { desc = "Harpoon: Empty list" })
-  end,
-  },
+	{
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			local harpoon = require("harpoon")
+			harpoon:setup()
+
+			vim.keymap.set("n", "<leader>a", function()
+				harpoon:list():add()
+			end, { desc = "Harpoon add file" })
+
+			vim.keymap.set("n", "<C-e>", function()
+				harpoon.ui:toggle_quick_menu(harpoon:list())
+			end, { desc = "Harpoon toggle menu" })
+
+			vim.keymap.set("n", "<C-h>", function()
+				harpoon:list():select(1)
+			end, { desc = "Harpoon to file 1" })
+
+			vim.keymap.set("n", "<C-t>", function()
+				harpoon:list():select(2)
+			end, { desc = "Harpoon to file 2" })
+
+			vim.keymap.set("n", "<C-n>", function()
+				harpoon:list():select(3)
+			end, { desc = "Harpoon to file 3" })
+
+			vim.keymap.set("n", "<C-s>", function()
+				harpoon:list():select(4)
+			end, { desc = "Harpoon to file 4" })
+
+			-- Toggle previous & next buffers stored within Harpoon list
+			vim.keymap.set("n", "<C-S-P>", function()
+				harpoon:list():prev()
+			end, { desc = "Harpoon prev" })
+
+			vim.keymap.set("n", "<C-S-N>", function()
+				harpoon:list():next()
+			end, { desc = "Harpoon next" })
+		end,
+	},
 }
