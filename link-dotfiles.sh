@@ -23,6 +23,7 @@ declare -A config_links=(
     ["dunst"]="$CONFIG_DIR/dunst"
     ["mako"]="$CONFIG_DIR/mako"
     ["rmpc"]="$CONFIG_DIR/rmpc"
+    ["swaylock"]="$CONFIG_DIR/swaylock"
 )
 
 # Local symlinks

@@ -1,0 +1,78 @@
+# ------------------------------
+#  Swaylock - Catppuccin Mocha+
+# ------------------------------
+
+# Background
+image=/home/leberton/bg.jpg
+scaling=fill
+effect-blur=30x8
+effect-vignette=0.25:0.75
+# removed pixelate for cleaner look
+
+# Transparent overlay
+color=1e1e2ecc   # softer transparency (80%)
+
+# Clock
+clock
+timestr=%I:%M %p
+datestr=%A, %d %B %Y
+font=JetBrainsMono Nerd Font
+font-size=38
+time-color=cdd6f4
+date-color=a6adc8
+layout-text-color=cdd6f4
+
+# Ring - elegant and centered
+ring-color=313244
+inside-color=1e1e2e00
+line-color=313244
+separator-color=00000000
+
+ring-width=14
+inside-ring-width=0
+line-uses-inside
+
+# Indicator
+indicator
+indicator-radius=130
+indicator-thickness=18
+indicator-caps-lock
+
+# Key highlights
+key-hl-color=89b4fa
+bs-hl-color=f38ba8
+
+# Caps lock
+caps-lock-text-color=f38ba8
+caps-lock-key-hl-color=f38ba8
+caps-lock-bs-hl-color=f38ba8
+
+# Verification (typing password)
+ring-ver-color=89b4fa
+inside-ver-color=1e1e2e40
+text-ver-color=89b4fa
+
+# Wrong password
+ring-wrong-color=f38ba8
+inside-wrong-color=1e1e2e40
+text-wrong-color=f38ba8
+
+# Clear state
+ring-clear-color=f9e2af
+inside-clear-color=1e1e2e40
+text-clear-color=f9e2af
+
+# Grace period
+grace=3
+grace-no-mouse
+grace-no-touch
+
+# Animations
+fade-in=0.4
+fade-out=0.25
+
+# Extra
+show-failed-attempts
+show-keyboard-layout
+ignore-empty-password
+daemonize
