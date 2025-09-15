@@ -1,5 +1,0 @@
-git@github.com:LeoTrain/libft.git
-git@github.com:LeoTrain/ft_printf.git
-git@github.com:LeoTrain/get_next_line.git
-git@github.com:LeoTrain/MiniTalk.git
-
