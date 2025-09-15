@@ -1,17 +1,49 @@
 #!/bin/bash
 
-# Unified volume control script
-# Usage: volume_control.sh [up|down|mute]
+# Simple volume control for Asahi Linux
+# Directly modify system volume files
 
 case "$1" in
-    up)
-        wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
-        ;;
-    down)
-        wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
-        ;;
-    mute)
-        wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+    up|down|mute)
+        # Use system volume keys directly
+        if command -v osascript >/dev/null 2>&1; then
+            # If macOS commands available
+            case "$1" in
+                up) osascript -e "set volume output volume (output volume of (get volume settings) + 5)" ;;
+                down) osascript -e "set volume output volume (output volume of (get volume settings) - 5)" ;;
+                mute) osascript -e "set volume output muted not (output muted of (get volume settings))" ;;
+            esac
+        else
+            # Try Asahi Linux specific approach
+            case "$1" in
+                up)
+                    # Try multiple approaches
+                    amixer -c 1 set Headphone on 2>/dev/null
+                    amixer -c 1 set Speaker on 2>/dev/null
+                    amixer set Master 5%+ 2>/dev/null
+                    wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ 2>/dev/null
+                    ;;
+                down)
+                    # Try multiple approaches
+                    amixer -c 1 set Headphone on 2>/dev/null
+                    amixer -c 1 set Speaker on 2>/dev/null
+                    amixer set Master 5%- 2>/dev/null
+                    wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- 2>/dev/null
+                    ;;
+                mute)
+                    # Check current mute status and toggle properly
+                    if amixer get Master 2>/dev/null | grep -q '\[off\]'; then
+                        # Currently muted, unmute
+                        amixer set Master on 2>/dev/null
+                        wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 2>/dev/null
+                    else
+                        # Currently unmuted, mute
+                        amixer set Master off 2>/dev/null
+                        wpctl set-mute @DEFAULT_AUDIO_SINK@ 1 2>/dev/null
+                    fi
+                    ;;
+            esac
+        fi
         ;;
     *)
         echo "Usage: $0 {up|down|mute}"
@@ -19,5 +51,5 @@ case "$1" in
         ;;
 esac
 
-# Show volume popup if available
-[ -f ~/.local/scripts/volume-popup.sh ] && ~/.local/scripts/volume-popup.sh
+# Show notification
+~/.local/scripts/volume-popup.sh
