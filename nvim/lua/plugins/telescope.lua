@@ -13,6 +13,7 @@ return {
 			keymap("n", "<leader>ps", function()
 				builtin.grep_string({ search = vim.fn.input("Grep > ") })
 			end, { desc = "Grep string" })
+			keymap("n", "<leader>pw", builtin.grep_string, { desc = "Find word under cursor" })
 			keymap("n", "<leader>vh", builtin.help_tags, { desc = "Help tags" })
 		end,
 	},
