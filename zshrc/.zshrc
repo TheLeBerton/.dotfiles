@@ -8,8 +8,20 @@ fi
 export SCRIPTS="$HOME/.local/scripts"
 export DOTFILES="$HOME/.dotfiles"
 
-# Minimal prompt: ~ ❯
-PS1='%~ ❯ '
+# Minimal prompt with git branch: ~ (branch) ❯
+git_branch() {
+    local branch=$(git symbolic-ref --short HEAD 2>/dev/null)
+    if [[ -n "$branch" ]]; then
+        if git diff --quiet 2>/dev/null; then
+            echo "(%F{green}$branch%f)"
+        else
+            echo "(%F{red}$branch%f)"
+        fi
+    fi
+}
+
+setopt PROMPT_SUBST
+PROMPT='%~ $(git_branch)❯ '
 
 # Oh My Zsh
 export ZSH="$HOME/.oh-my-zsh"
