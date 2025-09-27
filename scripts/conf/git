@@ -1,4 +1,0 @@
-#!/bin/bash
-
-ln -s ~/.dotfiles/git ~/.config/git
-echo "Linked git to config."

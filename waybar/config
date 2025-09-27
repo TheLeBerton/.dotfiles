@@ -93,19 +93,22 @@
 				"scroll-step": 1
 		},
 		"battery": {
+				"bat": "macsmc-battery",
 				"format": "{icon} {capacity}%",
+				"format-charging": "󰂄 {capacity}%",
+				"format-plugged": "🔌 {capacity}%",
 				"format-icons": {
 						"charging": [
-								"󰢜",
-								"󰂆",
-								"󰂇",
-								"󰂈",
-								"󰢝",
-								"󰂉",
-								"󰢞",
-								"󰂊",
-								"󰂋",
-								"󰂅"
+								"🔌",
+								"⚡",
+								"⚡",
+								"⚡",
+								"⚡",
+								"⚡",
+								"⚡",
+								"⚡",
+								"⚡",
+								"⚡"
 					],
 						"default": [
 								"󰁺",
