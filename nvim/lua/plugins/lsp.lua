@@ -22,7 +22,13 @@ return {
 				ensure_installed = {
 					"lua_ls",
 					"pyright",
+					"ruff",
 					"bashls",
+					"html",
+					"cssls",
+					"ts_ls",
+					"emmet_ls",
+					"jsonls",
 				},
 				handlers = {
 					function(server_name)
@@ -40,6 +46,81 @@ return {
 									runtime = { version = "Lua 5.1" },
 									diagnostics = {
 										globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
+									},
+								},
+							},
+						})
+					end,
+
+					["html"] = function()
+						local lspconfig = require("lspconfig")
+						lspconfig.html.setup({
+							capabilities = capabilities,
+							filetypes = { "html", "htm" },
+						})
+					end,
+
+					["cssls"] = function()
+						local lspconfig = require("lspconfig")
+						lspconfig.cssls.setup({
+							capabilities = capabilities,
+							filetypes = { "css", "scss", "less" },
+						})
+					end,
+
+					["ts_ls"] = function()
+						local lspconfig = require("lspconfig")
+						lspconfig.ts_ls.setup({
+							capabilities = capabilities,
+							filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+						})
+					end,
+
+					["emmet_ls"] = function()
+						local lspconfig = require("lspconfig")
+						lspconfig.emmet_ls.setup({
+							capabilities = capabilities,
+							filetypes = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact" },
+						})
+					end,
+
+					["jsonls"] = function()
+						local lspconfig = require("lspconfig")
+						lspconfig.jsonls.setup({
+							capabilities = capabilities,
+							filetypes = { "json", "jsonc" },
+						})
+					end,
+
+					["pyright"] = function()
+						local lspconfig = require("lspconfig")
+						lspconfig.pyright.setup({
+							capabilities = capabilities,
+							settings = {
+								python = {
+									analysis = {
+										typeCheckingMode = "basic", -- "off", "basic", "strict"
+										autoSearchPaths = true,
+										useLibraryCodeForTypes = true,
+										diagnosticMode = "workspace",
+										-- Ignore common virtual environment directories
+										ignore = { "**/node_modules", "**/__pycache__", ".venv", "venv" },
+									},
+								},
+							},
+						})
+					end,
+
+					["ruff"] = function()
+						local lspconfig = require("lspconfig")
+						lspconfig.ruff.setup({
+							capabilities = capabilities,
+							init_options = {
+								settings = {
+									-- Ruff settings (linting, formatting)
+									lint = {
+										-- Enable all rules by default, or specify which ones
+										select = { "E", "F", "I", "N", "W" },
 									},
 								},
 							},
