@@ -17,6 +17,15 @@ return {
 				cmp_lsp.default_capabilities()
 			)
 
+			-- Helper function for LSP setup with compatibility
+			local function setup_lsp(server_name, config)
+				if vim.lsp.config then
+					vim.lsp.config(server_name, config)
+				else
+					require("lspconfig")[server_name].setup(config)
+				end
+			end
+
 			require("mason").setup()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
@@ -32,14 +41,11 @@ return {
 				},
 				handlers = {
 					function(server_name)
-						require("lspconfig")[server_name].setup({
-							capabilities = capabilities,
-						})
+						setup_lsp(server_name, { capabilities = capabilities })
 					end,
 
 					["lua_ls"] = function()
-						local lspconfig = require("lspconfig")
-						lspconfig.lua_ls.setup({
+						setup_lsp("lua_ls", {
 							capabilities = capabilities,
 							settings = {
 								Lua = {
@@ -53,48 +59,42 @@ return {
 					end,
 
 					["html"] = function()
-						local lspconfig = require("lspconfig")
-						lspconfig.html.setup({
+						setup_lsp("html", {
 							capabilities = capabilities,
 							filetypes = { "html", "htm" },
 						})
 					end,
 
 					["cssls"] = function()
-						local lspconfig = require("lspconfig")
-						lspconfig.cssls.setup({
+						setup_lsp("cssls", {
 							capabilities = capabilities,
 							filetypes = { "css", "scss", "less" },
 						})
 					end,
 
 					["ts_ls"] = function()
-						local lspconfig = require("lspconfig")
-						lspconfig.ts_ls.setup({
+						setup_lsp("ts_ls", {
 							capabilities = capabilities,
 							filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
 						})
 					end,
 
 					["emmet_ls"] = function()
-						local lspconfig = require("lspconfig")
-						lspconfig.emmet_ls.setup({
+						setup_lsp("emmet_ls", {
 							capabilities = capabilities,
 							filetypes = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact" },
 						})
 					end,
 
 					["jsonls"] = function()
-						local lspconfig = require("lspconfig")
-						lspconfig.jsonls.setup({
+						setup_lsp("jsonls", {
 							capabilities = capabilities,
 							filetypes = { "json", "jsonc" },
 						})
 					end,
 
 					["pyright"] = function()
-						local lspconfig = require("lspconfig")
-						lspconfig.pyright.setup({
+						setup_lsp("pyright", {
 							capabilities = capabilities,
 							settings = {
 								python = {
@@ -112,8 +112,7 @@ return {
 					end,
 
 					["ruff"] = function()
-						local lspconfig = require("lspconfig")
-						lspconfig.ruff.setup({
+						setup_lsp("ruff", {
 							capabilities = capabilities,
 							init_options = {
 								settings = {
@@ -130,8 +129,7 @@ return {
 			})
 
 			-- Setup clangd manually (using your local installation)
-			local lspconfig = require("lspconfig")
-			lspconfig.clangd.setup({
+			setup_lsp("clangd", {
 				capabilities = capabilities,
 				cmd = { "clangd" }, -- Uses system clangd
 				filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },

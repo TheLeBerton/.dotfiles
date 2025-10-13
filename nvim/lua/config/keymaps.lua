@@ -26,6 +26,13 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase window wi
 keymap("n", "<S-l>", ":bnext<CR>", { desc = "Next buffer" })
 keymap("n", "<S-h>", ":bprevious<CR>", { desc = "Previous buffer" })
 
+-- Bufferline keymaps
+keymap("n", "<leader>bp", ":BufferLinePick<CR>", { desc = "Pick buffer" })
+keymap("n", "<leader>bc", ":BufferLinePickClose<CR>", { desc = "Pick buffer to close" })
+keymap("n", "<leader>bo", ":BufferLineCloseOthers<CR>", { desc = "Close other buffers" })
+keymap("n", "<leader>br", ":BufferLineCloseRight<CR>", { desc = "Close buffers to the right" })
+keymap("n", "<leader>bl", ":BufferLineCloseLeft<CR>", { desc = "Close buffers to the left" })
+
 -- Move text up and down
 keymap("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move text down" })
 keymap("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move text up" })
@@ -77,3 +84,10 @@ keymap("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic 
 keymap("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
 keymap("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 keymap("n", "<leader>dl", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+
+-- Notification keymaps
+keymap("n", "<leader>nd", ":lua require('notify').dismiss()<CR>", { desc = "Dismiss notifications" })
+keymap("n", "<leader>nh", ":Telescope notify<CR>", { desc = "Show notification history" })
+
+-- Colorizer toggle
+keymap("n", "<leader>ct", ":ColorizerToggle<CR>", { desc = "Toggle colorizer" })

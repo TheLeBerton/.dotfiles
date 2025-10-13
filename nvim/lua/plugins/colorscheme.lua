@@ -40,7 +40,7 @@ return {
 					gitsigns = true,
 					nvimtree = true,
 					treesitter = true,
-					notify = false,
+					notify = true,
 					mini = {
 						enabled = true,
 						indentscope_color = "",
@@ -49,6 +49,29 @@ return {
 						enabled = true,
 					},
 					harpoon = true,
+					-- New integrations for visual plugins
+					lsp_trouble = true,
+					which_key = true,
+					indent_blankline = {
+						enabled = true,
+						scope_color = "sapphire", -- catppuccin color (also works with hex codes)
+						colored_indent_levels = false,
+					},
+					native_lsp = {
+						enabled = true,
+						virtual_text = {
+							errors = { "italic" },
+							hints = { "italic" },
+							warnings = { "italic" },
+							information = { "italic" },
+						},
+						underlines = {
+							errors = { "underline" },
+							hints = { "underline" },
+							warnings = { "underline" },
+							information = { "underline" },
+						},
+					},
 				},
 			})
 			vim.cmd.colorscheme("catppuccin")
