@@ -37,6 +37,7 @@ return {
 					"ts_ls",
 					"emmet_ls",
 					"jsonls",
+					"clangd",
 				},
 				handlers = {
 					function(server_name)
@@ -127,28 +128,18 @@ return {
 				},
 			})
 
-			-- Setup clangd manually with enhanced C/C++ support
-			setup_lsp("clangd", {
-				capabilities = capabilities,
-				cmd = {
-					"clangd",
-					"--background-index",
-					"--clang-tidy",
-					"--header-insertion=iwyu",
-					"--completion-style=detailed",
-					"--function-arg-placeholders",
-					"--fallback-style=llvm",
-				},
-				init_options = {
-					usePlaceholders = true,
-					completeUnimported = true,
-					clangdFileStatus = true,
-				},
-				filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
-			})
 
 
 			vim.diagnostic.config({
+				virtual_text = {
+					enabled = true,
+					source = "if_many",
+					prefix = "●", -- Could be '■', '▎', 'x'
+				},
+				signs = true,
+				underline = true,
+				update_in_insert = true, -- Show diagnostics while typing
+				severity_sort = true,
 				float = {
 					focusable = false,
 					style = "minimal",
