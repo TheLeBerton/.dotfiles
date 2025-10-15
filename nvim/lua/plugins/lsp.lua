@@ -8,7 +8,6 @@ return {
 			"hrsh7th/nvim-cmp",
 		},
 		config = function()
-			local cmp = require("cmp")
 			local cmp_lsp = require("cmp_nvim_lsp")
 			local capabilities = vim.tbl_deep_extend(
 				"force",
@@ -128,34 +127,26 @@ return {
 				},
 			})
 
-			-- Setup clangd manually (using your local installation)
+			-- Setup clangd manually with enhanced C/C++ support
 			setup_lsp("clangd", {
 				capabilities = capabilities,
-				cmd = { "clangd" }, -- Uses system clangd
+				cmd = {
+					"clangd",
+					"--background-index",
+					"--clang-tidy",
+					"--header-insertion=iwyu",
+					"--completion-style=detailed",
+					"--function-arg-placeholders",
+					"--fallback-style=llvm",
+				},
+				init_options = {
+					usePlaceholders = true,
+					completeUnimported = true,
+					clangdFileStatus = true,
+				},
 				filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
 			})
 
-			local cmp_select = { behavior = cmp.SelectBehavior.Select }
-
-			cmp.setup({
-				snippet = {
-					expand = function(args)
-						require("luasnip").lsp_expand(args.body)
-					end,
-				},
-				mapping = cmp.mapping.preset.insert({
-					["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-					["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-					["<C-y>"] = cmp.mapping.confirm({ select = true }),
-					["<C-Space>"] = cmp.mapping.complete(),
-				}),
-				sources = cmp.config.sources({
-					{ name = "nvim_lsp" },
-					{ name = "luasnip" },
-				}, {
-					{ name = "buffer" },
-				}),
-			})
 
 			vim.diagnostic.config({
 				float = {

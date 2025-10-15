@@ -1,0 +1,68 @@
+{
+	"Main Function": {
+		"prefix": "main",
+		"body": [
+			"int main(${1:int argc, char *argv[]}) {",
+			"\t${2:// code}",
+			"\treturn 0;",
+			"}"
+		],
+		"description": "Basic main function template"
+	},
+	"Include stdio": {
+		"prefix": "inc",
+		"body": "#include <${1:stdio.h}>",
+		"description": "Include header file"
+	},
+	"Printf": {
+		"prefix": "printf",
+		"body": "printf(\"${1:%s}\\n\", ${2:value});",
+		"description": "Printf statement"
+	},
+	"For Loop": {
+		"prefix": "for",
+		"body": [
+			"for (${1:int i = 0}; ${2:i < length}; ${3:i++}) {",
+			"\t${4:// code}",
+			"}"
+		],
+		"description": "For loop"
+	},
+	"While Loop": {
+		"prefix": "while",
+		"body": [
+			"while (${1:condition}) {",
+			"\t${2:// code}",
+			"}"
+		],
+		"description": "While loop"
+	},
+	"If Statement": {
+		"prefix": "if",
+		"body": [
+			"if (${1:condition}) {",
+			"\t${2:// code}",
+			"}"
+		],
+		"description": "If statement"
+	},
+	"Function": {
+		"prefix": "func",
+		"body": [
+			"${1:int} ${2:function_name}(${3:parameters}) {",
+			"\t${4:// code}",
+			"\treturn ${5:value};",
+			"}"
+		],
+		"description": "Function template"
+	},
+	"Struct": {
+		"prefix": "struct",
+		"body": [
+			"typedef struct {",
+			"\t${1:// members}",
+			"} ${2:struct_name}_t;"
+		],
+		"description": "Struct definition"
+	}
+}

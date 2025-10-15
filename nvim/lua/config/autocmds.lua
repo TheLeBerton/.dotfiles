@@ -77,3 +77,60 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
 	end,
 })
+
+-- VSCode-like completion highlights
+vim.api.nvim_create_autocmd("ColorScheme", {
+	desc = "Set VSCode-like completion highlights",
+	group = vim.api.nvim_create_augroup("completion-highlights", { clear = true }),
+	callback = function()
+		local highlights = {
+			-- Completion menu
+			CmpPmenu = { bg = "#1e1e1e", fg = "#cccccc" },
+			CmpSel = { bg = "#094771", fg = "#ffffff" },
+			CmpDoc = { bg = "#1e1e1e" },
+			CmpDocBorder = { bg = "#1e1e1e", fg = "#454545" },
+
+			-- Completion item kinds (VSCode-like colors)
+			CmpItemKindText = { fg = "#cccccc" },
+			CmpItemKindMethod = { fg = "#b180d7" },
+			CmpItemKindFunction = { fg = "#b180d7" },
+			CmpItemKindConstructor = { fg = "#d7ba7d" },
+			CmpItemKindField = { fg = "#9cdcfe" },
+			CmpItemKindVariable = { fg = "#9cdcfe" },
+			CmpItemKindClass = { fg = "#4ec9b0" },
+			CmpItemKindInterface = { fg = "#4ec9b0" },
+			CmpItemKindModule = { fg = "#4ec9b0" },
+			CmpItemKindProperty = { fg = "#9cdcfe" },
+			CmpItemKindUnit = { fg = "#d7ba7d" },
+			CmpItemKindValue = { fg = "#d7ba7d" },
+			CmpItemKindEnum = { fg = "#4ec9b0" },
+			CmpItemKindKeyword = { fg = "#569cd6" },
+			CmpItemKindSnippet = { fg = "#ce9178" },
+			CmpItemKindColor = { fg = "#ce9178" },
+			CmpItemKindFile = { fg = "#cccccc" },
+			CmpItemKindReference = { fg = "#cccccc" },
+			CmpItemKindFolder = { fg = "#cccccc" },
+			CmpItemKindEnumMember = { fg = "#4ec9b0" },
+			CmpItemKindConstant = { fg = "#4ec9b0" },
+			CmpItemKindStruct = { fg = "#4ec9b0" },
+			CmpItemKindEvent = { fg = "#d7ba7d" },
+			CmpItemKindOperator = { fg = "#cccccc" },
+			CmpItemKindTypeParameter = { fg = "#4ec9b0" },
+
+			-- Ghost text
+			CmpGhostText = { fg = "#6a6a6a", italic = true },
+
+			-- Menu borders
+			FloatBorder = { fg = "#454545" },
+		}
+
+		for group, opts in pairs(highlights) do
+			vim.api.nvim_set_hl(0, group, opts)
+		end
+	end,
+})
+
+-- Apply highlights immediately
+vim.schedule(function()
+	vim.cmd("doautocmd ColorScheme")
+end)
