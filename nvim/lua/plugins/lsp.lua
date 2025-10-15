@@ -37,7 +37,6 @@ return {
 					"ts_ls",
 					"emmet_ls",
 					"jsonls",
-					"clangd",
 				},
 				handlers = {
 					function(server_name)
@@ -128,7 +127,12 @@ return {
 				},
 			})
 
-
+			-- Setup system clangd manually
+			setup_lsp("clangd", {
+				capabilities = capabilities,
+				cmd = { "clangd", "--background-index" },
+				filetypes = { "c", "cpp", "objc", "objcpp" },
+			})
 
 			vim.diagnostic.config({
 				virtual_text = {
