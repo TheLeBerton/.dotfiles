@@ -5,15 +5,31 @@ return {
 		local lualine = require("lualine")
 		local lazy_status = require("lazy.status") -- to configure lazy pending updates count
 
-		-- configure lualine with catppuccin theme
+		-- configure lualine with auto theme detection
+		local function get_theme()
+			local colorscheme = vim.g.colors_name
+			if colorscheme == "tokyonight" then
+				return "tokyonight"
+			elseif colorscheme == "catppuccin" then
+				return "catppuccin"
+			else
+				return "auto"
+			end
+		end
+
 		lualine.setup({
 			options = {
-				theme = "catppuccin",
+				theme = get_theme(),
 				component_separators = { left = "", right = "" },
 				section_separators = { left = "", right = "" },
-				disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
+				disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline", "neo-tree", "trouble" },
 				always_divide_middle = true,
 				globalstatus = true,
+				refresh = {
+					statusline = 1000,
+					tabline = 1000,
+					winbar = 1000,
+				},
 			},
 			sections = {
 				lualine_a = {

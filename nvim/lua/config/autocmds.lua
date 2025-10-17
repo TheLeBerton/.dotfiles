@@ -134,3 +134,46 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 vim.schedule(function()
 	vim.cmd("doautocmd ColorScheme")
 end)
+
+-- Modern diagnostic icons
+vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
+
+-- Better diagnostic configuration
+vim.diagnostic.config({
+	virtual_text = {
+		enabled = true,
+		source = "if_many",
+		prefix = "●",
+		format = function(diagnostic)
+			local icon = ""
+			if diagnostic.severity == vim.diagnostic.severity.ERROR then
+				icon = ""
+			elseif diagnostic.severity == vim.diagnostic.severity.WARN then
+				icon = ""
+			elseif diagnostic.severity == vim.diagnostic.severity.INFO then
+				icon = ""
+			elseif diagnostic.severity == vim.diagnostic.severity.HINT then
+				icon = "󰌵"
+			end
+			return string.format(" %s %s", icon, diagnostic.message)
+		end,
+	},
+	signs = true,
+	underline = true,
+	update_in_insert = true,
+	severity_sort = true,
+	float = {
+		focusable = false,
+		style = "minimal",
+		border = "rounded",
+		source = "always",
+		header = "",
+		prefix = "",
+		format = function(diagnostic)
+			return string.format("%s (%s)", diagnostic.message, diagnostic.source)
+		end,
+	},
+})
