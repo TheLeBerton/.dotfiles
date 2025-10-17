@@ -1,52 +1,31 @@
--- Set options (ThePrimeagen/TJ inspired)
 local opt = vim.opt
 
--- Line numbers
 opt.number = true
 opt.relativenumber = true
 
--- Tabs & indentation
+opt.cursorline = true
+opt.scrolloff = 8
+
+opt.colorcolumn = "80"
+
 opt.tabstop = 4
 opt.shiftwidth = 4
 opt.expandtab = false
-opt.autoindent = true
+opt.smartindent = true
 
--- Search settings
-opt.ignorecase = true
-opt.smartcase = true
-opt.hlsearch = false
-opt.incsearch = true
-
--- Appearance
-opt.termguicolors = true
-opt.signcolumn = "yes"
-opt.colorcolumn = "80"
-opt.cursorline = true
-
--- Behavior
-opt.errorbells = false
-opt.swapfile = false
-opt.backup = false
-opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-opt.undofile = true
-opt.scrolloff = 8
 opt.updatetime = 50
 opt.timeoutlen = 300
 
--- Splits
-opt.splitright = true
-opt.splitbelow = true
+opt.swapfile = false
+opt.backup = false
+opt.undofile = true
 
--- Clipboard
+opt.wildmenu = true
+opt.wildmode = "longest:full,full"
+
 opt.clipboard = "unnamedplus"
 
--- Mouse
-opt.mouse = ""
-
--- Completion
-opt.completeopt = "menu,menuone,noselect"
-
--- Netrw settings
-vim.g.netrw_browse_split = 0
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 25
+opt.winborder = "rounded"
+opt.pumblend = 10
+opt.winblend = 10
+opt.wildmode = "longest:full,full"
