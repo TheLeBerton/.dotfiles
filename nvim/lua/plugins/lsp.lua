@@ -81,6 +81,6 @@ vim.diagnostic.config({
 
 -- vim.lsp.config.bashls {
 -- 	cmd = { "bash-language-server", "start" },
--- 	filetypes = { "sh", "bash" },	
+-- 	filetypes = { "sh", "bash" },
 -- 	on_attach = on_attach,
 -- }

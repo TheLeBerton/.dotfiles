@@ -1,5 +1,6 @@
 return {
-	cmd = { "pyright-langserver" },
+	name = "pyright",
+	cmd = { "pyright-langserver", "--stdio" },
 	filetypes = { "python" },
 	settings = {
 		python = {
