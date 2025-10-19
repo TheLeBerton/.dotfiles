@@ -45,6 +45,7 @@ require("oil").setup({
     ["gx"] = "actions.open_external",
     ["g."] = { "actions.toggle_hidden", mode = "n" },
     ["g\\"] = { "actions.toggle_trash", mode = "n" },
+	["q"] = { "actions.close", mode="n" },
   },
   use_default_keymaps = true,
   view_options = {
@@ -82,25 +83,30 @@ require("oil").setup({
     end,
   },
   -- Configuration for the floating window in oil.open_float
-  float = {
-    -- Padding around the floating window
-    padding = 2,
-    -- max_width and max_height can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
-    max_width = 50,
-    max_height = 200,
-    border = nil,
-    win_options = {
-      winblend = 0,
-    },
-    -- optionally override the oil buffers window title with custom function: fun(winid: integer): string
-    get_win_title = nil,
-    -- preview_split: Split direction: "auto", "left", "right", "above", "below".
-    preview_split = "right",
-    -- This is the config that will be passed to nvim_open_win.
-    -- Change values here to customize the layout
-    override = function(conf)
-      return conf
-    end,
+	float = {
+		padding = 2,
+		max_width = 0.4,
+		max_height = 200,
+		border = 'rounded',
+		win_options = {
+		  winblend = 50,
+		},
+		get_win_title = nil,
+		preview_split = "right",
+		override = function(conf)
+			local width = math.floor(vim.o.columns * 0.4)
+			local height = math.min(25, vim.o.lines - 6)
+			return {
+				relative = "editor",
+				anchor = "NE",
+				row = 2,
+				col = vim.o.columns - 2,
+				width = width,
+				height = height,
+				border = conf.border,
+				style = "minimal",
+			}
+		end,
   },
   -- Configuration for the file preview window
   preview_win = {
@@ -133,7 +139,7 @@ require("oil").setup({
     min_height = { 5, 0.1 },
     -- optionally define an integer/float for the exact height of the preview window
     height = nil,
-    border = nil,
+    border = 'rounded',
     win_options = {
       winblend = 0,
     },
@@ -146,7 +152,7 @@ require("oil").setup({
     max_height = { 10, 0.9 },
     min_height = { 5, 0.1 },
     height = nil,
-    border = nil,
+    border = 'rounded',
     minimized_border = "none",
     win_options = {
       winblend = 0,

@@ -65,6 +65,23 @@ require("lazy").setup({
 			require("plugins.oil")
 		end,
 	},
+	{
+		"nvim-tree/nvim-web-devicons",
+		config = function()
+			require("nvim-web-devicons").setup({
+				default = true,
+				strict = true,
+				variant = "light",  -- ou "dark"
+				override_by_filename = {
+					[".gitignore"] = {
+					icon = "",
+					color = "#f1502f",
+					name = "Gitignore"
+					}
+				},
+			})
+		end,
+	},
 	-- {
 	-- 	"nvim-lualine/lualine.nvim",
 	-- 	dependencies = { "nvim-tree/nvim-web-devicons" },
