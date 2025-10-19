@@ -1,3 +1,4 @@
+-- Display yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
 		vim.highlight.on_yank({
@@ -7,6 +8,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+-- Delete Trailing whitespaces when saving
 vim.api.nvim_create_autocmd("BufWritePre", {
 	callback = function()
 		local save_cursor = vim.fn.getpos(".")
