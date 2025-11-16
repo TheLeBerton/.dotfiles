@@ -1,61 +1,52 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+### Environment variables
+## OS Specific
+case "$OSTYPE" in
+	linux-gnu*)
+		export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
+		if [[ -f "$HOME/.brewconfig.zsh" ]]; then
+			source $HOME/.brewconfig.zsh
+		fi
+		;;
+	darwin*)
+		export PATH="/opt/homebrew/bin:$PATH"
+		;;
+	*)
+		export PATH="$HOME/.local/bin:$PATH"
+		;;
+esac
+## Extra
+export LD_LIBRARY_PATH="$HOME/.local/lib:/usr/local/lib64:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="$HOME/.local/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PATH=/home/leberton/.local/funcheck/host:$PATH
 
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-	export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
-	export PATH=$HOME/neovim/bin:$PATH
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-	export PATH="/opt/homebrew/bin:$PATH"
-fi
-
-export SCRIPTS="$HOME/.local/scripts"
-export DOTFILES="$HOME/.dotfiles"
-
-# Minimal prompt with git branch: ~ (branch) ❯
+### PROMPT
 git_branch() {
-    local branch=$(git symbolic-ref --short HEAD 2>/dev/null)
-    if [[ -n "$branch" ]]; then
-        if git diff --quiet 2>/dev/null; then
-            echo "(%F{green}$branch%f)"
-        else
-            echo "(%F{red}$branch%f)"
-        fi
-    fi
+    local branch
+	branch=$(git symbolic-ref --short HEAD 2>/dev/null) || return
+	if git diff --quiet 2>/dev/null; then
+		echo "(%F{green}$branch%f)"
+	else
+		echo "(%F{red}$branch%f)"
+	fi
 }
-
 setopt PROMPT_SUBST
 PROMPT='%~ $(git_branch)❯ '
 
-# Oh My Zsh
-export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="robbyrussell"  # Not used due to custom PS1
-plugins=(git)
-source $ZSH/oh-my-zsh.sh
-
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-	source $HOME/.brewconfig.zsh
+### FZF integration
+if command -v fzf &>/dev/null; then
+	source <(fzf --zsh)
 fi
 
-# FZF integration
-source <(fzf --zsh)
+### Syntax highlighting
+if command -v brew &>/dev/null; then
+	HIGHLIGHT="$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+	[[ -f "$HIGHLIGHT" ]] && source "$HIGHLIGHT"
+fi
 
-# Key bindings
+### Keybindings
+bindkey -v
 bindkey -s ^f "$SCRIPTS/tmux-sessionizer\n"
 
-export PATH=/home/leberton/.local/funcheck/host:$PATH
-source ~/powerlevel10k/powerlevel10k.zsh-theme
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-export PATH="$HOME/.local/bin:$PATH"
-export LD_LIBRARY_PATH="$HOME/.local/lib:/usr/local/lib64:$LD_LIBRARY_PATH"
-export PKG_CONFIG_PATH="$HOME/.local/lib/pkgconfig:$PKG_CONFIG_PATH"
-
-alias mstest="bash /home/leberton/42_minishell_tester/tester.sh"
-
-
+### Aliases
 alias luamake="/home/leberton/lua-language-server/3rd/luamake/luamake"
+alias mstest="bash /home/leberton/42_minishell_tester/tester.sh"
