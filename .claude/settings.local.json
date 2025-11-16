@@ -3,7 +3,14 @@
     "allow": [
       "Bash(git -C /Users/leonardobertonasco/.dotfiles log --oneline -10)",
       "Bash(tree:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(tmux:*)",
+      "Bash(/dev/null)",
+      "Bash(ln:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(nvim:*)",
+      "Bash(exec zsh -c \"echo ''✅ Shell fonctionne'' && which fzf >/dev/null && echo ''✅ FZF OK'' && nvim --version >/dev/null && echo ''✅ Neovim OK'' && tmux -V >/dev/null && echo ''✅ Tmux OK'' && git config --global user.name >/dev/null && echo ''✅ Git OK''\")"
     ],
     "deny": [],
     "ask": []
