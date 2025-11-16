@@ -9,6 +9,6 @@ for module in "$DOTFILES_DIR"/zsh/modules/*.zsh; do
 done
 
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
-[[ -f "$DOTFILE_DIR/local/.zshrc.$OS" ]] && source "$DOTFILE_DIR/local/.zshrc.$OS"
+[[ -f "$DOTFILES_DIR/local/.zshrc.$OS" ]] && source "$DOTFILES_DIR/local/.zshrc.$OS"
 
 unset DOTFILES_DIR
