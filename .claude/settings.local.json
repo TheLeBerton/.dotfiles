@@ -10,7 +10,10 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(nvim:*)",
-      "Bash(exec zsh -c \"echo ''✅ Shell fonctionne'' && which fzf >/dev/null && echo ''✅ FZF OK'' && nvim --version >/dev/null && echo ''✅ Neovim OK'' && tmux -V >/dev/null && echo ''✅ Tmux OK'' && git config --global user.name >/dev/null && echo ''✅ Git OK''\")"
+      "Bash(exec zsh -c \"echo ''✅ Shell fonctionne'' && which fzf >/dev/null && echo ''✅ FZF OK'' && nvim --version >/dev/null && echo ''✅ Neovim OK'' && tmux -V >/dev/null && echo ''✅ Tmux OK'' && git config --global user.name >/dev/null && echo ''✅ Git OK''\")",
+      "Bash(find:*)",
+      "Bash(for dir in /Users/leonardobertonasco/.dotfiles/*/)",
+      "Bash(done)"
     ],
     "deny": [],
     "ask": []

@@ -1,57 +1,121 @@
-Welcome to my personal dotfiles! This repository contains the configuration files I use for my development and daily computing environment, primarily focused on **macOS** and soon to be adapted more for **Linux** (especially Wayland and Ubuntu environments).
+Welcome to my personal dotfiles! This repository contains my development environment configurations, designed for **multi-platform use** across macOS, Linux (Ubuntu, Fedora), and specialized environments like 42 school.
 
 ## ✨ Overview
 
-These dotfiles are designed to be **simple**, **efficient**, and tailored to my personal workflow. I don't use any dotfile manager yet — just raw control via symlinks or future scripts.
+These dotfiles feature a **modular, category-based structure** with intelligent platform detection and automated installation. Everything is organized by function rather than tool, making it easy to install only what you need.
 
-### Configured Tools
+### 🛠 Configured Tools
 
-- **Hyprland** – Wayland compositor
-- **Neovim** – My main code editor
-- **tmux** – Terminal multiplexer
+**Shell & Terminal:**
+- **Zsh** – Modular shell configuration with platform detection
+- **Tmux** – Terminal multiplexer with theme and plugins
+- **Kitty** – GPU-accelerated terminal emulator
+
+**Development:**
+- **Neovim** – Modern Lua-based editor with LSP, completion, and plugins
+- **Git** – Global configuration with aliases and commit templates
+
+**Desktop (Linux/Wayland):**
+- **Hyprland** – Wayland compositor with modular config
 - **Waybar** – Status bar for Wayland
-- **zsh** – Shell configuration
-- **Custom scripts** – Utilities I often use
+- **Rofi** – Application launcher with multiple themes
+- **Dunst/Mako** – Notification daemons
+- **Swaylock** – Screen locker
+
+**Utilities:**
+- **Custom scripts** – Brightness, volume, wifi, session management
+- **RMPC** – Remote MPD client
 
 ## 📁 Repository Structure
 
 ```
-.
-├── hypr/          # Hyprland configuration
-├── nvim/          # Neovim config (Lua-based)
-├── scripts/       # Custom shell scripts
-├── tmux/          # Tmux config
-├── waybar/        # Waybar config
-└── zshrc          # Zsh configuration file
-````
+.dotfiles/
+├── shell/zsh/          # Shell configurations
+│   ├── modules/        # Modular zsh components
+│   └── .zshrc          # Main shell entry point
+├── terminal/           # Terminal emulators & multiplexer
+│   ├── tmux/          # Tmux configuration
+│   └── kitty/         # Kitty terminal config
+├── editors/nvim/       # Neovim configuration
+│   ├── lua/           # Lua-based config
+│   └── lsp/           # Language server configs
+├── dev/git/           # Development tools
+├── desktop/           # Desktop environment (Linux/Wayland)
+│   ├── hyprland/      # Wayland compositor
+│   ├── rofi/          # Application launcher
+│   ├── waybar/        # Status bar
+│   └── audio/rmpc/    # Audio player client
+├── scripts/           # Utility scripts
+│   ├── setup/         # Installation automation
+│   └── utils/         # System utilities
+└── templates/         # Git templates
+```
 
-> 🛠 This structure may evolve as I polish my system and create installation scripts.
+## 🚀 Installation
 
-## 🚀 Setup (Manual for now)
-
-I currently don't use a dotfile manager. To use these configs, you can manually symlink them or copy the files to your config directories:
-
+**Automated Installation:**
 ```bash
-git clone https://github.com/LeoTrain/dotfiles.git
-cd dotfiles
-# Example:
-ln -s ~/.dotfiles/nvim ~/.config/nvim
-````
+git clone https://github.com/TheLeberton/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+./scripts/setup/install.sh
+```
 
-Scripts and setup automation are coming soon!
+**Installation Options:**
+```bash
+./scripts/setup/install.sh           # Install everything
+./scripts/setup/install.sh --dev     # Development tools only
+./scripts/setup/install.sh --desktop # Desktop environment only
+./scripts/setup/install.sh --zsh     # Shell configuration only
+```
+
+**Manual Setup:**
+```bash
+# Core shell config
+ln -sf ~/.dotfiles/shell/zsh/.zshrc ~/.zshrc
+
+# Development environment
+ln -sf ~/.dotfiles/editors/nvim ~/.config/nvim
+ln -sf ~/.dotfiles/dev/git/config ~/.gitconfig
+```
+
+## 🌍 Platform Support
+
+**Fully Supported:**
+- **macOS** (M1/Intel) – Complete shell, development, and terminal setup
+- **Linux Ubuntu** – Full desktop environment + development tools
+- **42 School Ubuntu** – Special homebrew detection and paths
+- **Asahi Linux (Fedora)** – ARM Linux support
+
+**Auto-Detection Features:**
+- Platform-specific PATH management
+- Conditional plugin loading
+- Environment-aware configurations
 
 ## 📌 Goals
 
-* Keep my environment consistent across machines
-* Prioritize speed, clarity, and usability
-* Create simple installation scripts for Linux in the future
+* **Cross-platform consistency** – Same workflow across all machines
+* **Modular design** – Install only what you need
+* **Smart automation** – Intelligent platform detection
+* **Performance focus** – Optimized configurations for speed
+* **Easy maintenance** – Clear structure and documentation
 
-## 🧠 Notes
+## 🧠 Philosophy
 
-* These dotfiles are a work in progress.
-* macOS support is partial; Linux will be the main focus moving forward.
-* Dependencies will be documented later.
+* **Simple over complex** – Readable configs over clever tricks
+* **Modular over monolithic** – Small, focused files
+* **Portable over platform-specific** – Works everywhere with adaptations
+* **Documented over mysterious** – Clear comments and structure
+
+## 📋 Dependencies
+
+Dependencies are automatically installed by the setup script. Key requirements:
+- **Git** (for repository operations)
+- **Zsh** (shell)
+- **Curl/Wget** (downloads)
+- **Platform-specific**: Homebrew (macOS), apt/dnf (Linux)
 
 ---
 
-Feel free to fork or explore. Feedback and suggestions are welcome!
+🚀 **Ready to use:** Clone, run install script, enjoy!
+🔧 **Easy to modify:** Clear structure, documented configs
+🌟 **Feedback welcome:** Issues and suggestions appreciated!
