@@ -1,5 +1,6 @@
 # macOS
 .DS_Store
+*.DS_Store
 
 # Fichiers de sauvegarde Vim/Neovim
 *~
@@ -11,5 +12,19 @@
 *.old
 *.save
 
-nvim/lazy-lock.json
+# Logs (prevent any log files)
+*.log
+**/*.log
 logs/
+
+# Plugin lock files
+editors/nvim/lazy-lock.json
+
+# Cache directories
+**/cache/
+**/.cache/
+**/tmp/
+
+# Runtime files
+*.pid
+*.sock
