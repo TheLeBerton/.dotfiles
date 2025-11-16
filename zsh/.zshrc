@@ -2,7 +2,7 @@
 
 DOTFILES_DIR="$HOME/.dotfiles"
 
-for module in "$DOTFILES_DIR"/zshrc/modules/*.zsh; do
+for module in "$DOTFILES_DIR"/zsh/modules/*.zsh; do
 	if [[ -r "$module" ]]; then
 		source "$module"
 	fi
