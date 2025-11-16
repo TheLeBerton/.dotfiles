@@ -1,0 +1,20 @@
+categories:
+    core:
+	- shell
+	- dev/git
+
+    development:
+	- editors
+	- terminal
+	- dev
+
+    desktop:
+	- desktop
+	- system/fonts
+	- system/themes
+
+    full:
+	- core
+	- development
+	- desktop
+	- scripts

@@ -178,24 +178,25 @@ setup_dotfiles_links() {
 		fi
 	done
 
-	ln -sf "$DOTFILES/zsh/.zshrc" "$HOME/.zshrc"
-	ln -sf "$DOTFILES/zsh/.zprofile" "$HOME/.zprofile"
+	ln -sf "$DOTFILES/shell/zsh/.zshrc" "$HOME/.zshrc"
+	ln -sf "$DOTFILES/shell/zsh/.zprofile" "$HOME/.zprofile"
 
 	if [[ "$INSTALL_ALL" == true || "$INSTALL_DEV" == true ]]; then
-		ln -sf "$DOTFILES/tmux/.tmux.conf" "$HOME/.tmux.conf"
-		ln -sf "$DOTFILES/git/config" "$HOME/.gitconfig"
-		ln -sf "$DOTFILES/git/ignore" "$HOME/.gitignore_global"
+		ln -sf "$DOTFILES/terminal/tmux/.tmux.conf" "$HOME/.tmux.conf"
+		ln -sf "$DOTFILES/dev/git/config" "$HOME/.gitconfig"
+		ln -sf "$DOTFILES/dev/git/ignore" "$HOME/.gitignore_global"
 
 		[[ -d "$HOME/.config" ]] || mkdir -p "$HOME/.config"
-		ln -sf "$DOTFILES/nvim" "$HOME/.config/nvim"
+		ln -sf "$DOTFILES/editors/nvim" "$HOME/.config/nvim"
+		ln -sf "$DOTFILES/terminal/kitty" "$HOME/.config/kitty"
 	fi
 
 	if [[ "$OS" == "linux" && ("$INSTALL_ALL" == true || "$INSTALL_DESKTOP" == true) ]]; then
 		[[ -d "$HOME/.config" ]] || mkdir -p "$HOME/.config"
 
-		local desktop_configs=("hypr" "waybar" "rofi" "kitty" "mako" "swaylock")
+		local desktop_configs=("hyprland" "waybar" "rofi" "mako" "swaylock")
 		for config in "${desktop_configs[@]}"; do
-			ln -sf "$DOTFILES/$config" "$HOME/.config/$config"
+			ln -sf "$DOTFILES/desktop/$config" "$HOME/.config/$(basename $config)"
 		done
 	fi
 
