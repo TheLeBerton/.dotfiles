@@ -1,0 +1,154 @@
+/**
+ * Premium Floating Rofi Theme
+ * Modern glassmorphism design
+ */
+
+* {
+    bg-col: #1e1e2e;
+    bg-col-light: #313244;
+    bg-col-focus: #45475a;
+    border-col: #89b4fa;
+    selected-col: #89b4fa;
+    blue: #89b4fa;
+    fg-col: #cdd6f4;
+    fg-col2: #f38ba8;
+    grey: #6c7086;
+    width: 520;
+    font: "SF Pro Display Medium 13";
+}
+
+element-text, element-icon, mode-switcher {
+    background-color: inherit;
+    text-color: inherit;
+}
+
+window {
+    height: 420px;
+    border: 1px;
+    border-color: @border-col;
+    background-color: @bg-col;
+    border-radius: 24px;
+    location: center;
+    anchor: center;
+}
+
+mainbox {
+    background-color: transparent;
+    margin: 20px;
+}
+
+inputbar {
+    children: [prompt, entry];
+    background-color: @bg-col-light;
+    border-radius: 16px;
+    padding: 16px;
+    margin: 0px 0px 24px 0px;
+    border: 1px;
+    border-color: @border-col;
+}
+
+prompt {
+    background-color: @blue;
+    color: @bg-col;
+    padding: 10px 16px;
+    border-radius: 12px;
+    margin: 0px 12px 0px 0px;
+}
+
+entry {
+    padding: 12px 8px;
+    text-color: @fg-col;
+    background-color: transparent;
+    placeholder-color: @grey;
+    placeholder: "Type to search...";
+    font-size: 14px;
+}
+
+message {
+    background-color: @bg-col-light;
+    border: 1px;
+    border-radius: 16px;
+    padding: 16px;
+    margin: 0px 0px 16px 0px;
+}
+
+listview {
+    background-color: transparent;
+    columns: 1;
+    lines: 8;
+    spacing: 8px;
+    cycle: true;
+    dynamic: true;
+    layout: vertical;
+}
+
+element {
+    padding: 16px;
+    background-color: @bg-col-light;
+    text-color: @fg-col;
+    border-radius: 16px;
+    spacing: 16px;
+    border: 1px;
+    border-color: transparent;
+}
+
+element normal.normal {
+    background-color: @bg-col-light;
+    text-color: @fg-col;
+}
+
+element alternate.normal {
+    background-color: @bg-col-light;
+    text-color: @fg-col;
+}
+
+element selected.normal {
+    background-color: @selected-col;
+    text-color: @bg-col;
+    border: 1px;
+    border-color: @border-col;
+}
+
+element-icon {
+    size: 40px;
+    background-color: transparent;
+    cursor: inherit;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    cursor: inherit;
+    vertical-align: 0.5;
+    horizontal-align: 0.0;
+    font-weight: 500;
+}
+
+element selected element-text {
+    font-weight: 600;
+}
+
+mode-switcher {
+    spacing: 8px;
+    margin: 16px 0px 0px 0px;
+}
+
+button {
+    padding: 12px 20px;
+    background-color: @bg-col-light;
+    text-color: @grey;
+    border-radius: 12px;
+    border: 1px;
+    border-color: transparent;
+    vertical-align: 0.5;
+    horizontal-align: 0.5;
+    font-weight: 500;
+}
+
+button selected {
+    background-color: @bg-col-focus;
+    text-color: @blue;
+    border: 1px;
+    border-color: @border-col;
+    font-weight: 600;
+}

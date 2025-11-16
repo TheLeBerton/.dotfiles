@@ -1,0 +1,112 @@
+# Premium Modern Notification Theme
+
+[global]
+		monitor = 0
+		follow = mouse
+		origin = top-right
+		offset = (24, 60)
+		width = (300, 450)
+		height = 120
+		font = "SF Pro Display Medium 12"
+		frame_color = "#89b4fa30"
+		separator_height = 0
+		padding = 24
+		horizontal_padding = 20
+		transparency = 20
+		timeout = 7
+		corner_radius = 18
+		corners = all
+		frame_width = 1
+		gap_size = 12
+		progress_bar_height = 6
+		progress_bar_frame_width = 0
+		progress_bar_min_width = 260
+		progress_bar_max_width = 400
+		progress_bar_corner_radius = 3
+		highlight = "#89b4fa"
+		word_wrap = yes
+		ellipsize = end
+		alignment = left
+		vertical_alignment = center
+		show_age_threshold = 60
+		ignore_newline = no
+		stack_duplicates = false
+		hide_duplicate_count = false
+		show_indicators = yes
+		sticky_history = yes
+		history_length = 25
+		dmenu = rofi -p "Notification:" -theme ~/.config/rofi/catppuccin-mocha.rasi
+		browser = firefox
+		always_run_script = true
+		title = Dunst
+		class = Dunst
+		startup_notification = false
+		verbosity = mesg
+		mouse_left_click = do_action, close_current
+		mouse_middle_click = do_action, close_current
+		mouse_right_click = close_all
+		icon_theme = "Papirus-Dark"
+		enable_recursive_icon_lookup = true
+		icon_position = left
+		min_icon_size = 32
+		max_icon_size = 64
+
+[urgency_low]
+		background = "#1e1e2ee8"
+		foreground = "#a6adc8"
+		highlight = "#74c7ec"
+		timeout = 4
+		frame_color = "#74c7ec25"
+
+[urgency_normal]
+		background = "#1e1e2ef0"
+		foreground = "#cdd6f4"
+		highlight = "#89b4fa"
+		timeout = 7
+		frame_color = "#89b4fa30"
+
+[urgency_critical]
+		background = "#1e1e2ef5"
+		foreground = "#f38ba8"
+		highlight = "#f38ba8"
+		timeout = 0
+		frame_color = "#f38ba860"
+
+[shortcuts]
+		close = ctrl+space
+		close_all = ctrl+shift+space
+		history = ctrl+grave
+		context = ctrl+shift+period
+
+# Application-specific rules for better theming
+[category=device]
+		background = "#1e1e2ef0"
+		foreground = "#f9e2af"
+		highlight = "#f9e2af"
+		frame_color = "#f9e2af30"
+
+[category=network]
+		background = "#1e1e2ef0"
+		foreground = "#74c7ec"
+		highlight = "#74c7ec"
+		frame_color = "#74c7ec30"
+
+[category=volume]
+		background = "#1e1e2e80"
+		foreground = "#89b4fa"
+		highlight = "#89b4fa"
+		frame_color = "#89b4fa60"
+		timeout = 1
+
+[category=brightness]
+		background = "#1e1e2e80"
+		foreground = "#f9e2af"
+		highlight = "#f9e2af"
+		frame_color = "#f9e2af60"
+		timeout = 1
+
+[category=battery]
+		background = "#1e1e2ef0"
+		foreground = "#a6e3a1"
+		highlight = "#a6e3a1"
+		frame_color = "#a6e3a130"
