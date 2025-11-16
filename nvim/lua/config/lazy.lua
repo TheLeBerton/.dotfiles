@@ -64,6 +64,7 @@ require("lazy").setup({
 				"hrsh7th/cmp-path",
 				"L3MON4D3/LuaSnip",
 				"saadparwaiz1/cmp_luasnip",
+				"zbirenbaum/copilot-cmp",
 			},
 			config = function()
 				require("plugins.cmp")
@@ -123,6 +124,7 @@ require("lazy").setup({
 				require("mini.indentscope").setup()
 			end
 		},
+		require("plugins.copilot")
 	},
 	{
 		ui = {

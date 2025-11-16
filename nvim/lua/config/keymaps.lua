@@ -38,3 +38,9 @@ keymap("n", "<C-h>", t_builtin.help_tags, { desc = "[H]elp Tags" })
 -- Oil
 local oil = require("oil")
 keymap("n", "-", oil.toggle_float, { desc = "Oil Toggle float" })
+
+-- Copilot
+keymap("n", "<leader>cp", function() require("copilot.panel").open({}) end, { desc = "Copilot panel" })
+keymap("n", "<leader>cs", "<cmd>Copilot status<CR>", { desc = "Copilot status" })
+keymap("n", "<leader>ce", "<cmd>Copilot enable<CR>", { desc = "Copilot enable" })
+keymap("n", "<leader>cd", "<cmd>Copilot disable<CR>", { desc = "Copilot disable" })
