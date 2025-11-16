@@ -2,8 +2,8 @@
 
 bindkey -v
 
-if [[ -n "$SCRIPTS" && -f "$SCRIPTS/tmux-sessionizer" ]]; then
-	bindkey -s '^f' "$SCRIPTS/tmux-sessionizer\n"
+if [[ -n "$SCRIPTS" && -f "$SCRIPTS/utils/tmux-sessionizer" ]]; then
+	bindkey -s '^f' "$SCRIPTS/utils/tmux-sessionizer\n"
 fi
 
 if command -v history-substring-search-up &>/dev/null; then

@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+export SCRIPTS="$HOME/.dotfiles/scripts"
+
 export IS_42=0
 export IS_MAC=0
 export IS_ASAHI=0
