@@ -14,7 +14,7 @@ for luamake_path in \
 	fi
 done
 
-if [[ $OS = "linux" ]]; then
+if [[ $OS = "darwin" ]]; then
 	for test_path in "$HOME/42_minishell_tester/tester.sh"; do
 		if [[ -f "$test_path" ]]; then
 			alias mstest="bash $test_path"
@@ -25,8 +25,6 @@ fi
 
 alias ll="ls -la"
 alias la="ls -la"
-alias ..="cd .."
-alias ...="cd ../.."
 alias grep="grep --color=auto"
 
 if [[ $IS_MAC -eq 1 ]]; then
