@@ -15,12 +15,9 @@ for luamake_path in \
 done
 
 if [[ $OS = "darwin" ]]; then
-	for test_path in "$HOME/42_minishell_tester/tester.sh"; do
-		if [[ -f "$test_path" ]]; then
-			alias mstest="bash $test_path"
-			break
-		fi
-	done
+	if [[ -f "$HOME/42_minishell_tester/tester.sh" ]]; then
+		alias mstest="bash $HOME/42_minishell_tester/tester.sh"
+	fi
 fi
 
 alias ll="ls -la"
