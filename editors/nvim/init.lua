@@ -1,7 +1,7 @@
 require("config.options")
 require("config.lazy")
 require("plugins.lsp")
-require("config.colors")
 require("config.keymaps")
 require("config.autocmds")
 require("plugins.mytodo")
+require("config.colors")
