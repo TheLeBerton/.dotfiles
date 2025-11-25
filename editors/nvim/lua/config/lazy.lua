@@ -14,6 +14,9 @@ vim.opt.runtimepath:prepend(lazypath)
 
 require("lazy").setup({
 		{
+			"nyoom-engineering/oxocarbon.nvim"
+		},
+		{
 			"nvim-treesitter/nvim-treesitter",
 			build = ":TSUpdate",
 			config = function()
