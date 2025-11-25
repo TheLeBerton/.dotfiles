@@ -1,5 +1,12 @@
-local servers = { "lua_ls", "clangd", "pyright" }
+-- Charger la configuration personnalisée de clangd
+vim.lsp.config.clangd = require('lsp.clangd')
+
+-- Activer les autres serveurs avec config par défaut
+local servers = { "lua_ls", "pyright" }
 vim.lsp.enable(servers)
+
+-- Activer clangd avec la config personnalisée
+vim.lsp.enable('clangd')
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(ev)

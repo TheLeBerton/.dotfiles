@@ -14,16 +14,6 @@ vim.opt.runtimepath:prepend(lazypath)
 
 require("lazy").setup({
 		{
-			"folke/tokyonight.nvim",
-			lazy = false,
-			priority = 1000,
-			opts = {},
-			config = function()
-				require('tokyonight').setup()
-				vim.cmd('colorscheme tokyonight')
-			end
-		},
-		{
 			"nvim-treesitter/nvim-treesitter",
 			build = ":TSUpdate",
 			config = function()
