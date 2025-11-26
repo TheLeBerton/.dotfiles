@@ -3,9 +3,9 @@
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:git*' formats " %F{blue}%b%f %m%u%c %a"
-zstyle ':vcs_info:*' stagedstr ' %F{green}●%f'
-zstyle ':vcs_info:*' unstagedstr ' %F{red}●%f'
+zstyle ':vcs_info:git*' formats "%F{3}%f %F{2}%b%f %m%u%c %F{14}%a%f"
+zstyle ':vcs_info:*' stagedstr '%F{2}✓%f'
+zstyle ':vcs_info:*' unstagedstr '%F{1}✖%f'
 setopt PROMPT_SUBST
 precmd()
 {
@@ -16,5 +16,5 @@ precmd()
 	fi
 	print -P
 }
-PROMPT='%F{cyan}%~%f ${vcs_info_msg_0_}
-%F{green}❯%f '
+PROMPT='%F{7}%~%f  ${vcs_info_msg_0_}
+%F{3}❯%f '

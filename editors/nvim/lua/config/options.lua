@@ -29,3 +29,5 @@ opt.winborder = "rounded"
 opt.pumblend = 10
 opt.winblend = 10
 opt.wildmode = "longest:full,full"
+
+opt.termguicolors = true
