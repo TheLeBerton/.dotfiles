@@ -1,9 +1,5 @@
 #!/usr/bin/env zsh
 
-alias vim="nvim"
-alias vi="nvim"
-alias v="nvim"
-
 for luamake_path in \
 	"$HOME/lua-language-server/3rd/luamake/luamake" \
 	"$HOME/.local/bin/luamake" \
@@ -14,36 +10,24 @@ for luamake_path in \
 	fi
 done
 
-if [[ $OS = "linux" ]]; then
-	for test_path in "$HOME/42_minishell_tester/tester.sh"; do
-		if [[ -f "$test_path" ]]; then
-			alias mstest="bash $test_path"
-			break
-		fi
-	done
+if [[ $OS = "darwin" ]]; then
+	if [[ -f "$HOME/42_minishell_tester/tester.sh" ]]; then
+		alias mstest="bash $HOME/42_minishell_tester/tester.sh"
+	fi
 fi
+
+alias vim="nvim"
+alias vi="nvim"
+alias v="nvim"
 
 # Navigation
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias ~="cd ~"
-
-# Modern alternatives (with fallbacks)
-if command -v eza &>/dev/null; then
-	alias ls="eza --icons"
-	alias ll="eza -la --icons"
-	alias la="eza -la --icons"
-	alias tree="eza --tree"
-else
-	if [[ $OS == "darwin" ]]; then
-		alias ls="ls -G"
-	else
-		alias ls="ls --color=auto"
-	fi
-	alias ll="ls -la"
-	alias la="ls -la"
-fi
+alias ll="ls -la"
+alias la="ls -la"
+alias grep="grep --color=auto"
 
 if command -v bat &>/dev/null; then
 	alias cat="bat"
@@ -62,14 +46,6 @@ alias egrep="egrep --color=auto"
 alias h="history"
 alias c="clear"
 alias reload="source ~/.zshrc"
-alias doctor="$HOME/.dotfiles/scripts/utils/doctor.sh"
-
-# Git shortcuts (in addition to existing git config)
-alias gs="git status"
-alias ga="git add"
-alias gc="git commit"
-alias gp="git push"
-alias gl="git log --oneline"
 
 # System info
 alias myip="curl ifconfig.me"

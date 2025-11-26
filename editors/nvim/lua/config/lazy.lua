@@ -13,25 +13,8 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 
 require("lazy").setup({
-		-- {
-		-- 	'projekt0n/github-nvim-theme',
-		-- 	name = 'github-theme',
-		-- 	lazy = false,
-		-- 	priority = 1000,
-		-- 	config = function()
-		-- 	require('github-theme').setup({ })
-		-- 		vim.cmd('colorscheme github_dark_default')
-		-- 	end,
-		-- },
 		{
-			"folke/tokyonight.nvim",
-			lazy = false,
-			priority = 1000,
-			opts = {},
-			config = function()
-				require('tokyonight').setup()
-				vim.cmd('colorscheme tokyonight')
-			end
+			"nyoom-engineering/oxocarbon.nvim"
 		},
 		{
 			"nvim-treesitter/nvim-treesitter",
@@ -50,12 +33,6 @@ require("lazy").setup({
 				require("plugins.telescope")
 			end,
 		},
-		-- {
-		-- 	"neovim/nvim-lspconfig",
-		-- 	config = function()
-		-- 		require("plugins.lsp")
-		-- 	end,
-		-- },
 		{
 			"hrsh7th/nvim-cmp",
 			dependencies = {
@@ -99,13 +76,6 @@ require("lazy").setup({
 				require("plugins.gitsigns")
 			end,
 		},
-		-- {
-		-- 	"nvim-lualine/lualine.nvim",
-		-- 	dependencies = { "nvim-tree/nvim-web-devicons" },
-		-- 	config = function()
-		-- 		require("plugins.lualine")
-		-- 	end,
-		-- },
 		{
 			"sphamba/smear-cursor.nvim",
 			opts = {},
@@ -124,7 +94,25 @@ require("lazy").setup({
 				require("mini.indentscope").setup()
 			end
 		},
-		require("plugins.copilot")
+		require("plugins.copilot"),
+		{
+		   "m4xshen/hardtime.nvim",
+		   lazy = false,
+		   dependencies = { "MunifTanjim/nui.nvim" },
+		   opts = {},
+		config = function()
+			require("hardtime").setup()
+		end
+		},
+		{
+			"rcarriga/nvim-notify",
+			config = function()
+				vim.notify = require("notify")
+				require("notify").setup({
+					background_colour = "#000000",
+				})
+			end,
+		},
 	},
 	{
 		ui = {
