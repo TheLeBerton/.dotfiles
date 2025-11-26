@@ -2,6 +2,9 @@ require("oil").setup({
   default_file_explorer = true,
   columns = {
     "icon",
+    "permissions",
+    "size",
+    "mtime",
   },
   buf_options = {
     buflisted = false,
@@ -45,6 +48,8 @@ require("oil").setup({
     ["gx"] = "actions.open_external",
     ["g."] = { "actions.toggle_hidden", mode = "n" },
     ["g\\"] = { "actions.toggle_trash", mode = "n" },
+    ["<leader>ga"] = { function() vim.cmd("!git add " .. vim.api.nvim_buf_get_name(0)) end, desc = "Git add current file", mode = "n" },
+    ["<leader>gs"] = { function() vim.cmd("Git") end, desc = "Git status", mode = "n" },
 	["q"] = { "actions.close", mode="n" },
   },
   use_default_keymaps = true,
@@ -73,13 +78,13 @@ require("oil").setup({
   git = {
     -- Return true to automatically git add/mv/rm files
     add = function(path)
-      return false
+      return true
     end,
     mv = function(src_path, dest_path)
-      return false
+      return true
     end,
     rm = function(path)
-      return false
+      return true
     end,
   },
   -- Configuration for the floating window in oil.open_float
