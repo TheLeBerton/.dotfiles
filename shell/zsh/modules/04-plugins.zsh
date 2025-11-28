@@ -29,9 +29,9 @@ load_plugin() {
 		source "$homebrew_path"
 		return 0
 	fi
-	for path in /usr/share/$plugin_name/$plugin_file" "usr/local/share/$plugin_name/$plugin_file; do
-		if [[ -f "$path" ]]; then
-			source "$path"
+	for plugin_path in "/usr/share/$plugin_name/$plugin_file" "/usr/local/share/$plugin_name/$plugin_file"; do
+		if [[ -f "$plugin_path" ]]; then
+			source "$plugin_path"
 			return 0
 		fi
 	done

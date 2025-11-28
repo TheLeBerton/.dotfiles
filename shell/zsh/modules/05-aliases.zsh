@@ -33,8 +33,9 @@ if command -v bat &>/dev/null; then
 	alias cat="bat"
 fi
 
+# Zoxide - smarter cd
 if command -v zoxide &>/dev/null; then
-	alias cd="z"
+	eval "$(zoxide init zsh --cmd cd)"
 fi
 
 # Enhanced grep
