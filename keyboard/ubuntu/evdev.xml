@@ -1,0 +1,15 @@
+<layoutList>
+  <layout>
+    <configItem>
+      <name>realpdv</name>
+      <description>English (Real Programmers Dvorak)</description>
+    </configItem>
+    <variantList>
+      <variant>
+        <configItem>
+          <name>realpdv</name>
+        </configItem>
+      </variant>
+    </variantList>
+  </layout>
+</layoutList>
