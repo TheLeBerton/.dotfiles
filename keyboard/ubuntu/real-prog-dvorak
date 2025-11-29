@@ -1,4 +1,4 @@
-xkb_symbols "real-prog-dvorak" {
+xkb_symbols "basic" {
 
     name[Group1]= "English (Real Programmers Dvorak)";
 
