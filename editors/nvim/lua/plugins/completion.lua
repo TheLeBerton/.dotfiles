@@ -7,8 +7,10 @@ return
 		"hrsh7th/cmp-path",    -- Path source
 		"L3MON4D3/LuaSnip",    -- Snippet engine
 		"saadparwaiz1/cmp_luasnip", -- Snippet source
+		"zbirenbaum/copilot-cmp"
 	},
 	config = function()
+		require("copilot_cmp").setup()
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
 
@@ -35,10 +37,11 @@ return
 				end, { "i", "s" }),
 			}),
 			sources = cmp.config.sources({
-				{ name = "nvim_lsp" },
-				{ name = "luasnip" },
-				{ name = "buffer" },
-				{ name = "path" },
+				{ name = "copilot", priority = 100 },
+				{ name = "nvim_lsp", priority = 90 },
+				{ name = "luasnip", priority = 80 },
+				{ name = "buffer", priority = 50 },
+				{ name = "path", priority = 40 }
 			}),
 			window = {
 				completion = cmp.config.window.bordered(),

@@ -21,6 +21,8 @@ require("lazy").setup({
 	require("plugins.file_explorer"),
 	require("plugins.icons"),
 	require("plugins.treesitter");
+	require("plugins.gitsigns");
+	require("plugins.copilot");
 }, {
 	ui = {
 		border = "rounded",
