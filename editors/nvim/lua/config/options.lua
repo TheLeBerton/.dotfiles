@@ -45,3 +45,6 @@ opt.clipboard = "unnamedplus"
 
 -- Borders
 opt.winborder = "rounded"
+
+-- Background
+opt.background = "dark"
