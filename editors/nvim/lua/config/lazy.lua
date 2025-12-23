@@ -20,9 +20,11 @@ require("lazy").setup({
 	require("plugins.completion"),
 	require("plugins.file_explorer"),
 	require("plugins.icons"),
-	require("plugins.treesitter");
-	require("plugins.gitsigns");
-	require("plugins.copilot");
+	require("plugins.treesitter"),
+	require("plugins.gitsigns"),
+	require("plugins.copilot"),
+	require("plugins.notify"),
+	require("plugins.tmux_statusline"),
 }, {
 	ui = {
 		border = "rounded",
