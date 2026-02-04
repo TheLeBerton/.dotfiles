@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup(capabilities)
-	vim.lsp.config.clangd = {
+	vim.lsp.config("clangd", {
 		cmd = {
 			"clangd",
 			"--background-index",
@@ -16,7 +16,7 @@ function M.setup(capabilities)
 			".git"
 		},
 		capabilities = capabilities
-	}
+	})
 end
 
 return M
