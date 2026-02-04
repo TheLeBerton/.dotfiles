@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup(capabilities)
-	vim.lsp.config.pyright = {
+	vim.lsp.config("pyright", {
 		cmd = { "pyright-langserver", "--stdio" },
 		filetypes = { "python" },
 		root_markers = {
@@ -18,7 +18,7 @@ function M.setup(capabilities)
 				},
 			},
 		},
-	}
+	})
 end
 
 return M

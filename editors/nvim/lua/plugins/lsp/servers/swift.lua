@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup(capabilities)
-	vim.lsp.config.sourcekit = {
+	vim.lsp.config("sourcekit", {
 		cmd = { "sourcekit-lsp" },
 		filetypes = { "swift", "objective-c", "objective-cpp" },
 		root_markers = {
@@ -12,7 +12,7 @@ function M.setup(capabilities)
 			".git"
 		},
 		capabilities = capabilities
-	}
+	})
 end
 
 return M

@@ -25,6 +25,10 @@ require("lazy").setup({
 	require("plugins.copilot"),
 	require("plugins.notify"),
 	require("plugins.tmux_statusline"),
+	require("plugins.diffview"),
+	require("plugins.undotree"),
+	require("plugins.colorizer"),
+	require("plugins.illuminate"),
 }, {
 	ui = {
 		border = "rounded",

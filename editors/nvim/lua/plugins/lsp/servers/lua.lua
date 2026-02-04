@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup(capabilities)
-	vim.lsp.config.lua_ls = {
+	vim.lsp.config("lua_ls", {
 		cmd = { "lua-language-server" },
 		filetypes = { "lua" },
 		root_markers = {
@@ -23,7 +23,7 @@ function M.setup(capabilities)
 				telemetry = { enable = false }
 			}
 		}
-	}
+	})
 end
 
 return M
