@@ -1,5 +1,5 @@
 [global]
-    font = Sans 10
+    font = SF Pro Display 11
     markup = full
     format = "<b>%s</b>\n%b"
     sort = yes
@@ -13,30 +13,32 @@
     follow = mouse
     sticky_history = yes
     history_length = 20
-    show_indicators = yes
-    line_height = 0
-    separator_height = 2
-    padding = 15
-    horizontal_padding = 20
-    separator_color = "#ffffff30"
-    frame_width = 0
-    corner_radius = 14
-    background = "#00000088"
-    foreground = "#ffffff"
-    offset = 20x20
+    show_indicators = no
+    line_height = 2
+    separator_height = 1
+    padding = 12
+    horizontal_padding = 16
+    separator_color = "#25283640"
+    frame_width = 1
+    frame_color = "#252836"
+    corner_radius = 8
+    background = "#0a0b0e"
+    foreground = "#c2cae0"
+    offset = 12x12
     origin = top-right
 
 [urgency_low]
-    background = "#00000066"
-    foreground = "#aaaaaa"
-    timeout = 10
+    background = "#0a0b0e"
+    foreground = "#565e78"
+    timeout = 5
 
 [urgency_normal]
-    background = "#00000088"
-    foreground = "#ffffff"
-    timeout = 10
+    background = "#0a0b0e"
+    foreground = "#c2cae0"
+    timeout = 8
 
 [urgency_critical]
-    background = "#ff000099"
-    foreground = "#ffffff"
+    background = "#0a0b0e"
+    foreground = "#c2cae0"
+    frame_color = "#3d4566"
     timeout = 0
