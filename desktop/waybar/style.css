@@ -1,170 +1,136 @@
-/* Modern Premium Waybar Theme */
-
 * {
   border: none;
   border-radius: 0;
   min-height: 0;
   font-family: "SF Pro Display", "Inter", "JetBrainsMono Nerd Font", sans-serif;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 window#waybar {
-  background: rgba(30, 30, 46, 0.90);
-  border: 1px solid rgba(137, 180, 250, 0.12);
-  border-radius: 12px;
-  margin: 4px;
-  padding: 0 4px;
+  background: rgba(10, 11, 14, 0.92);
+  border-bottom: 1px solid rgba(37, 40, 54, 0.8);
+  margin: 0;
+  padding: 0 6px;
 }
 
 window#waybar.hidden {
-  opacity: 0.3;
+  opacity: 0;
 }
 
 /* Workspaces */
 #workspaces {
-  background: rgba(49, 50, 68, 0.4);
-  border-radius: 8px;
-  margin: 2px 4px;
-  padding: 2px 4px;
-  border: 1px solid rgba(137, 180, 250, 0.08);
+  margin: 0 4px;
+  padding: 0 2px;
 }
 
 #workspaces button {
-  min-width: 24px;
-  padding: 4px 8px;
-  margin: 1px;
-  border-radius: 6px;
-  color: rgba(205, 214, 244, 0.6);
+  min-width: 16px;
+  padding: 0 6px;
+  color: rgba(130, 138, 170, 0.5);
   background: transparent;
   border: none;
+  font-size: 10px;
 }
 
 #workspaces button:hover {
-  color: rgba(205, 214, 244, 0.9);
-  background: rgba(137, 180, 250, 0.1);
+  color: rgba(194, 202, 224, 0.8);
+  background: transparent;
 }
 
 #workspaces button.active {
-  color: #1e1e2e;
-  background: #89b4fa;
-  font-weight: 600;
+  color: #c2cae0;
+  font-size: 10px;
 }
 
 #workspaces button.urgent {
-  color: #1e1e2e;
-  background: #f38ba8;
+  color: #8090b0;
 }
 
-
-/* Module containers */
+/* Modules */
 #custom-brightness,
 #custom-nordvpn,
 #battery,
 #wireplumber,
 #network,
 #clock {
-  background: rgba(49, 50, 68, 0.3);
-  border: 1px solid rgba(137, 180, 250, 0.08);
-  border-radius: 8px;
-  margin: 2px 2px;
-  padding: 4px 8px;
-  color: #cdd6f4;
+  background: transparent;
+  margin: 0 2px;
+  padding: 0 8px;
+  color: rgba(130, 138, 170, 0.7);
 }
 
-#custom-brightness:hover,
-#custom-nordvpn:hover,
-#battery:hover,
-#wireplumber:hover,
-#network:hover,
-#clock:hover {
-  border-color: rgba(137, 180, 250, 0.2);
-}
-
-/* Clock - Premium styling */
+/* Clock */
 #clock {
-  font-weight: 600;
-  font-size: 12px;
-  background: rgba(137, 180, 250, 0.15);
-  color: #89b4fa;
-  border: 1px solid rgba(137, 180, 250, 0.2);
+  color: #c2cae0;
+  font-weight: 500;
+  letter-spacing: 0.05em;
 }
 
-/* Battery with status colors */
+/* Battery */
 #battery {
-  color: #a6e3a1;
+  color: rgba(130, 138, 170, 0.7);
 }
 
 #battery.warning {
-  color: #f9e2af;
-  background: rgba(249, 226, 175, 0.1);
+  color: rgba(160, 145, 110, 0.9);
 }
 
 #battery.critical {
-  color: #f38ba8;
-  background: rgba(243, 139, 168, 0.15);
+  color: rgba(160, 100, 100, 0.9);
 }
 
-
 #battery.charging {
-  color: #a6e3a1;
-  background: rgba(166, 227, 161, 0.12);
+  color: rgba(130, 138, 170, 0.9);
+}
+
+#battery.full {
+  color: rgba(130, 138, 170, 0.4);
 }
 
 /* Audio */
 #wireplumber {
-  color: #89b4fa;
+  color: rgba(130, 138, 170, 0.7);
 }
 
 #wireplumber.muted {
-  color: #f38ba8;
-  background: rgba(243, 139, 168, 0.1);
+  color: rgba(130, 138, 170, 0.3);
 }
 
 /* Network */
 #network {
-  color: #74c7ec;
+  color: rgba(130, 138, 170, 0.7);
 }
 
 #network.disconnected {
-  color: #f38ba8;
+  color: rgba(130, 138, 170, 0.3);
 }
 
-#network.wifi {
-  color: #89b4fa;
-}
-
-#network.ethernet {
-  color: #a6e3a1;
-}
-
-/* Custom modules */
+/* VPN */
 #custom-nordvpn.connected {
-  color: #a6e3a1;
-  background: rgba(166, 227, 161, 0.1);
+  color: rgba(130, 138, 170, 0.9);
 }
 
 #custom-nordvpn.disconnected {
-  color: #f38ba8;
-  background: rgba(243, 139, 168, 0.1);
+  color: rgba(130, 138, 170, 0.3);
 }
 
+/* Brightness */
 #custom-brightness {
-  color: #f9e2af;
+  color: rgba(130, 138, 170, 0.7);
 }
 
 /* Tooltips */
 tooltip {
-  background: rgba(30, 30, 46, 0.95);
-  border: 1px solid rgba(137, 180, 250, 0.15);
-  border-radius: 16px;
-  padding: 16px 20px;
-  color: #cdd6f4;
-  font-weight: 500;
+  background: rgba(10, 11, 14, 0.96);
+  border: 1px solid rgba(37, 40, 54, 0.9);
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: #c2cae0;
 }
 
 tooltip label {
-  color: #cdd6f4;
+  color: #c2cae0;
   background-color: transparent;
-  font-size: 13px;
+  font-size: 12px;
 }
