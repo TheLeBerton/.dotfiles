@@ -20,7 +20,7 @@
     horizontal_padding = 20
     separator_color = "#ffffff30"
     frame_width = 0
-    corner_radius = 8
+    corner_radius = 14
     background = "#00000088"
     foreground = "#ffffff"
     offset = 20x20
