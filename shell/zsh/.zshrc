@@ -12,3 +12,6 @@ done
 [[ -f "$DOTFILES_DIR/local/.zshrc.$OS" ]] && source "$DOTFILES_DIR/local/.zshrc.$OS"
 
 unset DOTFILES_DIR
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
