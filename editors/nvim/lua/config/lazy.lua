@@ -32,6 +32,8 @@ require("lazy").setup({
 	require("plugins.undotree"),
 	require("plugins.colorizer"),
 	require("plugins.illuminate"),
+	require("plugins.pdfview"),
+
 }, {
 	ui = {
 		border = "rounded",
