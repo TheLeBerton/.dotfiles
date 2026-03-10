@@ -10,6 +10,7 @@
 				"clock"
 		],
 		"modules-right": [
+				"custom/pomodoro",
 				"wireplumber",
 				"network",
 				"battery",
@@ -48,7 +49,14 @@
 				"on-click": "~/.config/rofi/wifi/wifi.sh &",
 				"interval": 5
 		},
-		"custom/nordvpn": {
+		"custom/pomodoro": {
+			"exec": "$HOME/.local/scripts/pomodoro.sh status",
+			"return-type": "json",
+			"interval": 1,
+			"on-click": "$HOME/.local/scripts/pomodoro.sh toggle",
+			"on-click-right": "$HOME/.local/scripts/pomodoro.sh skip"
+	},
+	"custom/nordvpn": {
 				"interval": 3,
 				"exec": "nordvpn status | grep -q Disconnected && echo '{\"text\":\"\uf127\", \"class\":\"disconnected\"}' || echo '{\"text\":\"\uf0c1\", \"class\":\"connected\"}'",
 				"return-type": "json",

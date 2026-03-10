@@ -48,6 +48,7 @@ window#waybar.hidden {
 }
 
 /* Modules */
+#custom-pomodoro,
 #custom-brightness,
 #custom-nordvpn,
 #battery,
@@ -113,6 +114,20 @@ window#waybar.hidden {
 
 #custom-nordvpn.disconnected {
   color: rgba(130, 138, 170, 0.3);
+}
+
+/* Pomodoro */
+#custom-pomodoro.work {
+  color: rgba(160, 100, 100, 0.9);
+}
+
+#custom-pomodoro.short_break,
+#custom-pomodoro.long_break {
+  color: rgba(100, 160, 120, 0.9);
+}
+
+#custom-pomodoro.idle {
+  color: rgba(130, 138, 170, 0.4);
 }
 
 /* Brightness */
