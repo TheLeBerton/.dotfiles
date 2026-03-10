@@ -48,3 +48,6 @@ opt.winborder = "rounded"
 
 -- Background
 opt.background = "dark"
+
+--Mouse
+opt.mouse = "a"
