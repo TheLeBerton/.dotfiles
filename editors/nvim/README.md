@@ -31,6 +31,7 @@ Welcome, this is just my little personal neovim setup.
 │       ├── mason.lua
 │       ├── noice.lua
 │       ├── oil_git_status.lua
+│       ├── pdfview.lua
 │       ├── telescope.lua
 │       ├── tmux_statusline.lua
 │       ├── treesitter.lua
@@ -68,6 +69,7 @@ Welcome, this is just my little personal neovim setup.
 | mason.nvim | Load LSPs | [link](https://github.com/mason-org/mason.nvim) |
 | noice.nvim | nicer ui | [link](https://github.com/folke/noice.nvim) |
 | oil-git-status.nvim | add gitsigns to oil | [link](https://github.com/refractalize/oil-git-status.nvim) |
+| PFDview | read PDFs in neovim | [link](https://github.com/basola21/PDFview) |
 | telescope.nvim | use fzf and ripgrep to find files with nice ui | [link](https://github.com/nvim-telescope/telescope.nvim) |
 | vim-tpipeline | merge tmux and neovim statusline | [link](https://github.com/vimpostor/vim-tpipeline) |
 | nvim-treesitter | parser for syntax highlighting | [link](https://github.com/nvim-treesitter/nvim-treesitter) |
