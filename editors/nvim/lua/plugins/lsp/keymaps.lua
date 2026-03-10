@@ -10,8 +10,10 @@ end
 local function setup_buffer_keymaps(bufnr)
 	map(bufnr, "K", vim.lsp.buf.hover, "Hover Documentation")
 	map(bufnr, "gd", vim.lsp.buf.definition, "Goto Definition")
+	map(bufnr, "<C-LeftMouse>", vim.lsp.buf.definition, "Goto Definition")
 	map(bufnr, "gD", vim.lsp.buf.declaration, "Goto Declaration")
 	map(bufnr, "gr", vim.lsp.buf.references, "Show References")
+	map(bufnr, "<M-LeftMouse>", vim.lsp.buf.references, "Goto References")
 	map(bufnr, "gi", vim.lsp.buf.implementation, "Goto Implementation")
 
 	map(bufnr, "<leader>ca", vim.lsp.buf.code_action, "Code Action")
