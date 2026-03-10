@@ -23,7 +23,7 @@ opt.smartindent = true
 opt.termguicolors = true
 opt.signcolumn = "yes"
 opt.cursorline = true
-opt.scrolloff = 8
+opt.scrolloff = 20
 opt.colorcolumn = "80"
 opt.showmode = false
 
