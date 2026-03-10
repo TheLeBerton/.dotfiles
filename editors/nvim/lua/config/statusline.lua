@@ -1,1 +1,0 @@
--- Statusline is now handled by lualine.nvim (see plugins/lualine.lua)
