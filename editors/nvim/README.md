@@ -97,7 +97,7 @@ Welcome, this is just my little personal neovim setup.
 
 
 ## Infos LSP
-[L]anguage [S]erver [P]rotocol is a commonly used protocol, that helps communication between code editors and language servers.
+*[L]anguage [S]erver [P]rotocol* is a commonly used protocol, that helps communication between code editors and *language servers*.
 Each setup for each server is in the `lua/plugins/lsp/servers/` folder. Which then is loaded by the `nvim-lsp` plugin if a server is connected.
 The servers are loaded by the `mason.nvim` plugin apart from clangd, which should always be installed on my systems.
 
