@@ -51,3 +51,8 @@ alias reload="source ~/.zshrc"
 # System info
 alias myip="curl ifconfig.me"
 alias ports="lsof -i -P | grep LISTEN"
+
+# Make
+if command -v bear &>/dev/null; then
+	alias make="bear -- make"
+fi
