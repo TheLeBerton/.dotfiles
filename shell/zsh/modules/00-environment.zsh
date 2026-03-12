@@ -24,3 +24,5 @@ if [[ $OS = "linux" ]]; then
 		export LINUX_DISTRO
 	fi
 fi
+
+export MONEY_JOURNAL="$HOME/2026.journal"
