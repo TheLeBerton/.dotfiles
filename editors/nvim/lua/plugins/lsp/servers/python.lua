@@ -1,8 +1,8 @@
 local M = {}
 
 function M.setup(capabilities)
-	vim.lsp.config("pyright", {
-		cmd = { "pyright-langserver", "--stdio" },
+	vim.lsp.config("basedpyright", {
+		cmd = { "basedpyright-langserver", "--stdio" },
 		filetypes = { "python" },
 		root_markers = {
 			"pyproject.toml",
@@ -12,7 +12,7 @@ function M.setup(capabilities)
 		},
 		capabilities = capabilities,
 		settings = {
-			python = {
+			basedpyright = {
 				analysis = {
 					typeCheckingMode = "basic",
 					extraPaths = { "." },
