@@ -15,6 +15,7 @@ function M.setup(capabilities)
 			python = {
 				analysis = {
 					typeCheckingMode = "basic",
+					extraPaths = { "." },
 				},
 			},
 		},
