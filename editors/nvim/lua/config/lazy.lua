@@ -33,6 +33,7 @@ require("lazy").setup({
 	require("plugins.colorizer"),
 	require("plugins.illuminate"),
 	require("plugins.pdfview"),
+	require("plugins.trouble"),
 
 }, {
 	ui = {
