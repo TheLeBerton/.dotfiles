@@ -20,7 +20,12 @@ local function setup_buffer_keymaps(bufnr)
 	map(bufnr, "<leader>ca", vim.lsp.buf.code_action, "Code Action")
 	map(bufnr, "<leader>rn", vim.lsp.buf.rename, "Rename")
 	map(bufnr, "<leader>f", function()
-		vim.lsp.buf.format({ async = true })
+		local ok, conform = pcall(require, "conform")
+		if ok then
+			conform.format({ bufnr = bufnr, async = true, lsp_fallback = true })
+		else
+			vim.lsp.buf.format({ async = true })
+		end
 	end, "Format")
 
 	map(bufnr, "]d", vim.diagnostic.goto_next, "Next Diagnostic")

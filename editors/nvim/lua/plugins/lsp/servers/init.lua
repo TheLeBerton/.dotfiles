@@ -11,7 +11,8 @@ function M.setup()
 	vim.lsp.enable({
 		"lua_ls",
 		"clangd",
-		"pyright",
+		"basedpyright",
+		"ruff",
 		"bashls",
 		"sourcekit",
 	})

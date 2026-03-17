@@ -34,6 +34,7 @@ require("lazy").setup({
 	require("plugins.illuminate"),
 	require("plugins.pdfview"),
 	require("plugins.trouble"),
+	require("plugins.conform"),
 
 }, {
 	ui = {
