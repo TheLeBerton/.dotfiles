@@ -58,3 +58,5 @@ if command -v bear &>/dev/null; then
 fi
 
 alias money="python3 $HOME/dev/playground/money/main.py"
+
+eval "$(starship init zsh)"

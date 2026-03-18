@@ -17,3 +17,5 @@ elif [[ $OS = "linux" ]]; then
 		export PATH="/snap/bin:$PATH"
 	fi
 fi
+
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
