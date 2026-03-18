@@ -37,6 +37,7 @@ require("lazy").setup({
 	require("plugins.conform"),
 	require("plugins.smear_cursor"),
 	require("plugins.tiny-inline-diagnostics"),
+	require("plugins.snacks"),
 
 }, {
 	ui = {

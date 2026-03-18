@@ -9,9 +9,9 @@ return {
 			overrides = function(colors)
 				local theme = colors.theme
 				return {
-					NormalFloat = { bg = "none" },
-					FloatBorder = { bg = "none", fg = theme.ui.nontext },
-					FloatTitle  = { bg = "none" },
+					NormalFloat = { bg = theme.ui.bg },
+					FloatBorder = { bg = theme.ui.bg, fg = theme.ui.nontext },
+					FloatTitle  = { bg = theme.ui.bg },
 					TelescopeBorder       = { fg = theme.ui.nontext, bg = "none" },
 					TelescopeNormal       = { bg = "none" },
 					TelescopePromptNormal = { bg = "none" },
@@ -20,6 +20,6 @@ return {
 				}
 			end,
 		})
-		vim.cmd.colorscheme("kanagawa-dragon")
+		vim.cmd.colorscheme("kanagawa-wave")
 	end,
 }
