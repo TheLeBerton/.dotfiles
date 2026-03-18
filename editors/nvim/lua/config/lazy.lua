@@ -38,6 +38,7 @@ require("lazy").setup({
 	require("plugins.smear_cursor"),
 	require("plugins.tiny-inline-diagnostics"),
 	require("plugins.snacks"),
+	require("plugins.scrollbar"),
 
 }, {
 	ui = {
