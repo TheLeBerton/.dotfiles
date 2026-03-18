@@ -6,13 +6,13 @@ sort=-time
 output=DP-2
 layer=overlay
 anchor=top-right
-background-color=#2e3440
+background-color={{mako_bg}}
 width=300
 height=110
 margin=5
 padding=0,5,10
 border-size=2
-border-color=#88c0d0
+border-color={{mako_border}}
 border-radius=15
 icons=0
 max-icon-size=64
@@ -20,23 +20,23 @@ default-timeout=5000
 ignore-timeout=1
 
 [urgency=low]
-border-color=#A3BE8C
-background-color=#A3BE8C
+border-color={{mako_low}}
+background-color={{mako_low}}
 
 [urgency=normal]
-border-color=#EBCB8B
-background-color=#EBCB8B
+border-color={{mako_normal}}
+background-color={{mako_normal}}
 
 [urgency=high]
-border-color=#BF616A
-background-color=#BF616A
+border-color={{mako_critical}}
+background-color={{mako_critical}}
 default-timeout=10000
 
 [app-name=lightcord]
-border-color=#88c0d0
+border-color={{mako_border}}
 
 [summary~="log-.*"]
-border-color=#A3BE8C
+border-color={{mako_low}}
 
 [app-name=lightcord summary~="(.*(^| )orz|ORZ|sto|STO|otl|OTL( |$).*)"]
 invisible=1

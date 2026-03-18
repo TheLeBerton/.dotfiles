@@ -22,7 +22,7 @@ general {
 label {
     monitor =
     text = cmd[update:1000] echo "<span>$(date +"%I:%M")</span>"
-    color = rgba(216, 222, 233, .7)
+    color = {{hl_text}}
     font_size = 160
     font_family = SF Pro Display Bold
     position = 0, 370
@@ -34,7 +34,7 @@ label {
 label {
     monitor =
     text = cmd[update:1000] echo -e "$(date +"%A, %B %d")"
-    color = rgba(216, 222, 233, .7)
+    color = {{hl_text}}
     font_size = 28
     font_family = SF Pro Display Bold
     position = 0, 490
@@ -61,7 +61,7 @@ image {
 label {
     monitor =
     text =     $USER
-    color = rgba(216, 222, 233, 0.80)
+    color = {{hl_text2}}
     font_size = 18
     font_family = SF Pro Display Bold
     position = 0, -180
@@ -77,9 +77,9 @@ input-field {
     dots_size = 0.2
     dots_spacing = 0.2
     dots_center = true
-    outer_color = rgba(255, 255, 255, 0)
-    inner_color = rgba(255, 255, 255, 0.1)
-    font_color = rgb(200, 200, 200)
+    outer_color = {{hl_outer}}
+    inner_color = {{hl_inner}}
+    font_color = {{hl_font}}
     fade_on_empty = false
     font_family = SF Pro Display Bold
     placeholder_text = <i><span foreground="##ffffff99">🔒 Enter Pass</span></i>
