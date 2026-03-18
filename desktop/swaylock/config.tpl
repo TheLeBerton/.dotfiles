@@ -10,7 +10,7 @@ effect-blur=30x8
 effect-vignette=0.25:0.75
 
 # Transparent overlay
-color=1e1e2ecc
+color={{sl_bg}}
 
 # Clock
 clock
@@ -18,14 +18,14 @@ timestr=%I:%M %p
 datestr=%A, %d %B %Y
 font=JetBrainsMono Nerd Font
 font-size=38
-time-color=cdd6f4
-date-color=a6adc8
-layout-text-color=cdd6f4
+time-color={{sl_text}}
+date-color={{sl_subtext}}
+layout-text-color={{sl_text}}
 
 # Ring
-ring-color=313244
-inside-color=1e1e2e00
-line-color=313244
+ring-color={{sl_surface}}
+inside-color={{sl_inner}}
+line-color={{sl_surface}}
 separator-color=00000000
 
 ring-width=14
@@ -39,28 +39,28 @@ indicator-thickness=18
 indicator-caps-lock
 
 # Key highlights
-key-hl-color=89b4fa
-bs-hl-color=f38ba8
+key-hl-color={{sl_blue}}
+bs-hl-color={{sl_red}}
 
 # Caps lock
-caps-lock-text-color=f38ba8
-caps-lock-key-hl-color=f38ba8
-caps-lock-bs-hl-color=f38ba8
+caps-lock-text-color={{sl_red}}
+caps-lock-key-hl-color={{sl_red}}
+caps-lock-bs-hl-color={{sl_red}}
 
 # Verification (typing password)
-ring-ver-color=89b4fa
-inside-ver-color=1e1e2e40
-text-ver-color=89b4fa
+ring-ver-color={{sl_blue}}
+inside-ver-color={{sl_inner_active}}
+text-ver-color={{sl_blue}}
 
 # Wrong password
-ring-wrong-color=f38ba8
-inside-wrong-color=1e1e2e40
-text-wrong-color=f38ba8
+ring-wrong-color={{sl_red}}
+inside-wrong-color={{sl_inner_active}}
+text-wrong-color={{sl_red}}
 
 # Clear state
-ring-clear-color=f9e2af
-inside-clear-color=1e1e2e40
-text-clear-color=f9e2af
+ring-clear-color={{sl_yellow}}
+inside-clear-color={{sl_inner_active}}
+text-clear-color={{sl_yellow}}
 
 # Grace period
 grace=3

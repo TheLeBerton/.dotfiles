@@ -12,11 +12,11 @@
 }
 
 .modules-center {
-	background: rgba(20, 22, 28, 0.9);
+	background: {{bg1_90}};
 	padding: 6px 12px;
 	margin: 0 0 15px 0;
 	border-radius: 28px;
-	box-shadow: 0 4px 12px rgba(69, 66, 57, 0.2);
+	box-shadow: 0 4px 12px {{shadow_20}};
 }
 
 window#waybar {
@@ -24,13 +24,13 @@ window#waybar {
 }
 
 tooltip {
-	background: rgba(10, 11, 14, 0.96);
-	border: 1px solid rgba(37, 40, 54, 0.9);
+	background: {{bg0_96}};
+	border: 1px solid {{bg3_90}};
 	border-radius: 12px;
 }
 
 tooltip label {
-	color: #c2cae0;
+	color: {{fg}};
 	padding: 6px;
 }
 
@@ -46,58 +46,58 @@ tooltip label {
 	padding: 0 6px;
 	margin: 0 2px;
 	border-radius: 16px;
-	color: rgba(130, 138, 170, 0.5);
+	color: {{fg1_50}};
 	background: transparent;
 	transition: color 0.3s ease-in-out;
 }
 
 #workspaces button.active {
-	background: linear-gradient(135deg, rgba(160, 195, 235, 0.9), rgba(180, 150, 220, 0.9), rgba(235, 170, 195, 0.9));
-	color: #c2cae0;
+	background: linear-gradient(135deg, {{blue_90}}, {{purple_90}}, {{pink_90}});
+	color: {{fg}};
 	min-width: 40px;
 	transition: all 0.3s ease-in-out;
 }
 
 #workspaces button:hover {
-	background-color: rgba(100, 120, 160, 0.2);
-	color: rgba(130, 138, 170, 0.9);
+	background-color: {{hover_20}};
+	color: {{fg1_90}};
 }
 
 #workspaces button.urgent {
-	background-color: #ff6e64;
-	color: #c2cae0;
+	background-color: {{red}};
+	color: {{fg}};
 }
 
 #clock {
-	color: #ffffff;
+	color: {{fg0}};
 	font-weight: 600;
 	padding: 0 10px;
 }
 
 
 #wireplumber {
-	color: rgba(230, 210, 140, 0.85);
+	color: {{yellow_85}};
 	padding: 0 10px;
 }
 
 #wireplumber.muted {
-	color: rgba(230, 210, 140, 0.3);
+	color: {{yellow_30}};
 }
 
 #network {
-	color: rgba(180, 150, 220, 0.85);
+	color: {{purple_85}};
 	padding: 0 10px;
 }
 
 #network.disconnected {
-	color: rgba(180, 150, 220, 0.3);
+	color: {{purple_30}};
 }
 
 #battery {
-	color: rgba(140, 210, 160, 0.85);
+	color: {{green_85}};
 	padding: 0 10px;
 }
 
-#battery.warning { color: rgba(230, 200, 120, 0.9); }
-#battery.critical { color: rgba(220, 140, 140, 0.9); }
-#battery.charging { color: rgba(140, 210, 160, 0.9); }
+#battery.warning { color: {{orange_90}}; }
+#battery.critical { color: {{rose_90}}; }
+#battery.charging { color: {{green_90}}; }

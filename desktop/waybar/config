@@ -1,97 +1,80 @@
 {
-		"layer": "top",
-		"position": "top",
-		"spacing": 0,
-		"height": 28,
-		"modules-left": [
-				"hyprland/workspaces"
-		],
-		"modules-center": [
-				"clock"
-		],
-		"modules-right": [
-				"custom/pomodoro",
-				"wireplumber",
-				"network",
-				"battery",
-				"custom/nordvpn",
-				"custom/brightness"
-		],
-		"hyprland/workspaces": {
-				"on-click": "activate",
-				"format": "{icon}",
-				"format-icons": {
-						"default": "○",
-						"active": "●",
-						"urgent": "!"
-				},
-				"persistent_workspaces": {
-						"1": [],
-						"2": [],
-						"3": [],
-						"4": [],
-						"5": []
-				}
-		},
-		"clock": {
-				"tooltip-format": "{calendar}",
-				"format": "{:%H:%M}"
-		},
-		"network": {
-				"format-wifi" : "{icon}",
-				"format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
-				"format-ethernet": "󰀂",
-				"format-alt" : "󱛇",
-				"format-disconnected" : "󰖪",
-				"tooltip-format-wifi": "{essid}  {signalStrength}%",
-				"tooltip-format-ethernet": "{ifname}",
-				"tooltip-format-disconnected": "Disconnected",
-				"on-click": "~/.config/rofi/wifi/wifi.sh &",
-				"interval": 5
-		},
-		"custom/pomodoro": {
-			"exec": "$HOME/.local/scripts/pomodoro.sh status",
-			"return-type": "json",
-			"interval": 1,
-			"on-click": "$HOME/.local/scripts/pomodoro.sh toggle",
-			"on-click-right": "$HOME/.local/scripts/pomodoro.sh skip"
+	"position": "top",
+	"margin-top": 18,
+
+	"modules-center": [
+		"tray",
+		"clock",
+		"custom/media",
+		"hyprland/workspaces",
+		"wireplumber",
+		"network",
+		"battery"
+	],
+
+	"hyprland/submap": {
+		"format": "{}",
+		"tooltip": false
 	},
-	"custom/nordvpn": {
-				"interval": 3,
-				"exec": "nordvpn status | grep -q Disconnected && echo '{\"text\":\"\uf127\", \"class\":\"disconnected\"}' || echo '{\"text\":\"\uf0c1\", \"class\":\"connected\"}'",
-				"return-type": "json",
-				"format": "{}"
+
+	"hyprland/workspaces": {
+		"format": "{icon}",
+		"format-icons": {
+			"1": "1",
+			"2": "2",
+			"3": "3",
+			"4": "4",
+			"5": "5",
+			"6": "6",
+			"7": "7",
+			"8": "8",
+			"9": "9",
+			"10": "10",
+			"default": "",
+			"urgent": ""
 		},
-		"custom/brightness": {
-				"exec": "$HOME/.local/scripts/brightness.sh",
-				"interval": 3
+		"persistent-workspaces": {
+			"*": 5
 		},
-		"wireplumber": {
-				"format": "{icon}",
-				"format-bluetooth": "󰂰",
-				"tooltip-format": "{volume}%",
-				"format-muted": "󰝟",
-				"format-icons": {
-						"headphone": "",
-						"default": ["󰖀","󰕾",""]
-				},
-				"on-click": "pamixer -t",
-				"scroll-step": 1
+		"on-click": "activate",
+		"on-scroll-up": "hyprctl dispatch workspace e+1",
+		"on-scroll-down": "hyprctl dispatch workspace e-1"
+	},
+
+
+	"clock": {
+		"format": "{:%H:%M}",
+		"interval": 1,
+		"tooltip-format": "<tt>{calendar}</tt>",
+		"calendar": {
+			"format": {
+				"today": "<span color='#ff0000'><b>{}</b></span>"
+			}
 		},
-		"battery": {
-				"bat": "macsmc-battery",
-				"format": "{icon} {capacity}%",
-				"format-charging": "󰂄 {capacity}%",
-				"format-plugged": " {capacity}%",
-				"format-icons": {
-						"default": ["󰁺","󰁻","󰁼","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂","󰁹"]
-				},
-				"format-full": "",
-				"interval": 5,
-				"states": {
-						"warning": 20,
-						"critical": 10
-				},
-				"tooltip": false
+	},
+
+	"wireplumber": {
+		"format": "{icon}",
+		"format-muted": "󰝟",
+		"format-icons": ["󰕿", "󰖀", "󰕾"],
+		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+	},
+
+	"network": {
+		"format-wifi": "󰤨",
+		"format-ethernet": "󰈀",
+		"format-disconnected": "󰤭",
+		"tooltip-format-wifi": "{essid} {signalStrength}%"
+	},
+
+	"battery": {
+		"format": "{icon}",
+		"format-charging": "󰂄",
+		"format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+		"states": {
+			"warning": 30,
+			"critical": 10
 		}
+	}
+
 }

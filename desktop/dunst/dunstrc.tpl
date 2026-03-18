@@ -20,27 +20,27 @@
     separator_height = 1
     padding = 12
     horizontal_padding = 16
-    separator_color = "#25283640"
+    separator_color = "{{bg3_hex40}}"
     frame_width = 1
-    frame_color = "#252836"
+    frame_color = "{{bg3}}"
     corner_radius = 8
-    background = "#0a0b0e"
-    foreground = "#c2cae0"
+    background = "{{bg0}}"
+    foreground = "{{fg}}"
     offset = 12x12
     origin = top-right
 
 [urgency_low]
-    background = "#0a0b0e"
-    foreground = "#565e78"
+    background = "{{bg0}}"
+    foreground = "{{fg2}}"
     timeout = 5
 
 [urgency_normal]
-    background = "#0a0b0e"
-    foreground = "#c2cae0"
+    background = "{{bg0}}"
+    foreground = "{{fg}}"
     timeout = 8
 
 [urgency_critical]
-    background = "#0a0b0e"
-    foreground = "#c2cae0"
-    frame_color = "#3d4566"
+    background = "{{bg0}}"
+    foreground = "{{fg}}"
+    frame_color = "{{bg4}}"
     timeout = 0
