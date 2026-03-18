@@ -35,6 +35,7 @@ require("lazy").setup({
 	require("plugins.pdfview"),
 	require("plugins.trouble"),
 	require("plugins.conform"),
+	require("plugins.smear_cursor"),
 
 }, {
 	ui = {
