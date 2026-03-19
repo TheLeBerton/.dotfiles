@@ -2,7 +2,15 @@ return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
-		local c = {
+		local wal = require("config.wal").colors()
+
+		local c = wal and {
+			bg      = wal.bg,
+			surface = wal.bg_alt,
+			accent  = wal.blue,
+			fg      = wal.fg,
+			fg_dim  = wal.fg_dim,
+		} or {
 			bg      = "#0a0b0e",
 			surface = "#161820",
 			accent  = "#3d4566",
@@ -12,27 +20,27 @@ return {
 
 		local theme = {
 			normal = {
-				a = { fg = c.fg,     bg = c.surface },
+				a = { fg = c.bg,     bg = c.accent },
 				b = { fg = c.fg_dim, bg = c.bg },
 				c = { fg = c.fg_dim, bg = c.bg },
 			},
 			insert = {
-				a = { fg = c.fg,     bg = c.accent },
+				a = { fg = c.bg,     bg = c.fg },
 				b = { fg = c.fg_dim, bg = c.bg },
 				c = { fg = c.fg_dim, bg = c.bg },
 			},
 			visual = {
-				a = { fg = c.fg,     bg = c.surface },
+				a = { fg = c.bg,     bg = c.surface },
 				b = { fg = c.fg_dim, bg = c.bg },
 				c = { fg = c.fg_dim, bg = c.bg },
 			},
 			replace = {
-				a = { fg = c.fg,     bg = c.surface },
+				a = { fg = c.bg,     bg = c.surface },
 				b = { fg = c.fg_dim, bg = c.bg },
 				c = { fg = c.fg_dim, bg = c.bg },
 			},
 			command = {
-				a = { fg = c.fg,     bg = c.surface },
+				a = { fg = c.bg,     bg = c.surface },
 				b = { fg = c.fg_dim, bg = c.bg },
 				c = { fg = c.fg_dim, bg = c.bg },
 			},
