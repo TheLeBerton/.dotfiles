@@ -1,17 +1,4 @@
-/* Gruvbox Dark — same palette as hyprland colors.conf */
-@define-color bg0  #1d2021;
-@define-color bg1  #282828;
-@define-color bg2  #3c3836;
-@define-color bg3  #504945;
-@define-color fg   #ebdbb2;
-@define-color red    #cc241d;
-@define-color orange #d65d0e;
-@define-color yellow #d79921;
-@define-color green  #98971a;
-@define-color aqua   #689d6a;
-@define-color blue   #458588;
-@define-color purple #b16286;
-@define-color gray0  #a89984;
+@import "/home/leberton/.cache/wal/colors-waybar.css";
 
 * {
 	all: unset;
@@ -28,11 +15,11 @@ window#waybar {
 #custom-logo {
 	font-size: 1.3rem;
 	padding: 6px 18px;
-	background-color: alpha(@bg1, 0.92);
-	border: 1px solid alpha(@fg, 0.08);
+	background-color: alpha(@background, 0.92);
+	border: 1px solid alpha(@foreground, 0.08);
 	border-radius: 99px;
 	color: @aqua;
-	box-shadow: 0 2px 16px alpha(@bg0, 0.6);
+	box-shadow: 0 2px 16px alpha(@background, 0.6);
 	transition: all 0.3s ease;
 }
 
@@ -45,23 +32,23 @@ window#waybar {
 /* ── Center ── */
 
 .modules-center {
-	background-color: alpha(@bg1, 0.92);
-	border: 1px solid alpha(@fg, 0.08);
+	background-color: alpha(@background, 0.92);
+	border: 1px solid alpha(@foreground, 0.08);
 	padding: 3px 14px;
 	border-radius: 99px;
-	box-shadow: 0 2px 16px alpha(@bg0, 0.6);
+	box-shadow: 0 2px 16px alpha(@background, 0.6);
 }
 
 #clock {
 	font-weight: 700;
 	font-size: 14px;
 	padding: 0 12px 0 4px;
-	color: @fg;
+	color: @foreground;
 	letter-spacing: 0.5px;
 }
 
 #workspaces {
-	background-color: alpha(@bg2, 0.7);
+	background-color: alpha(@background_alt, 0.65);
 	padding: 3px 4px;
 	margin: 3px 0;
 	border-radius: 99px;
@@ -71,31 +58,31 @@ window#waybar {
 	padding: 2px 10px;
 	border-radius: 99px;
 	margin: 0 2px;
-	color: alpha(@fg, 0.3);
+	color: alpha(@foreground, 0.3);
 	min-width: 1.2rem;
 	transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #workspaces button:hover {
-	background-color: alpha(@fg, 0.08);
-	color: alpha(@fg, 0.75);
+	background-color: alpha(@foreground, 0.08);
+	color: alpha(@foreground, 0.75);
 }
 
 #workspaces button.empty {
-	color: alpha(@fg, 0.18);
+	color: alpha(@foreground, 0.18);
 }
 
 #workspaces button.active {
-	background-color: @aqua;
-	color: @bg0;
+	background-color: @blue;
+	color: @background;
 	min-width: 2.4rem;
 	font-weight: 700;
-	box-shadow: 0 0 14px alpha(@aqua, 0.5);
+	box-shadow: 0 0 14px alpha(@blue, 0.5);
 }
 
 #workspaces button.urgent {
 	background-color: @yellow;
-	color: @bg0;
+	color: @background;
 }
 
 /* ── Right ── */
@@ -104,12 +91,12 @@ window#waybar {
 #network,
 #battery,
 #tray {
-	background-color: alpha(@bg1, 0.92);
-	border: 1px solid alpha(@fg, 0.08);
+	background-color: alpha(@background, 0.92);
+	border: 1px solid alpha(@foreground, 0.08);
 	border-radius: 99px;
 	padding: 5px 16px;
 	margin: 0 3px;
-	box-shadow: 0 2px 16px alpha(@bg0, 0.5);
+	box-shadow: 0 2px 16px alpha(@background, 0.5);
 	transition: all 0.25s ease;
 	font-size: 12px;
 }
@@ -126,7 +113,7 @@ window#waybar {
 }
 
 #pulseaudio.muted {
-	color: alpha(@fg, 0.3);
+	color: alpha(@foreground, 0.3);
 }
 
 /* Network */
@@ -167,9 +154,9 @@ window#waybar {
 }
 
 #battery.critical:not(.charging) {
-	color: @orange;
-	border-color: alpha(@orange, 0.35);
-	box-shadow: 0 0 16px alpha(@orange, 0.35);
+	color: @red;
+	border-color: alpha(@red, 0.35);
+	box-shadow: 0 0 16px alpha(@red, 0.35);
 }
 
 /* Tray */
@@ -189,15 +176,15 @@ window#waybar {
 /* ── Tooltips ── */
 
 tooltip {
-	background-color: @bg1;
-	color: @fg;
+	background-color: @background;
+	color: @foreground;
 	border-radius: 14px;
-	border: 1px solid alpha(@fg, 0.08);
+	border: 1px solid alpha(@foreground, 0.08);
 	padding: 8px 14px;
-	box-shadow: 0 4px 20px alpha(@bg0, 0.8);
+	box-shadow: 0 4px 20px alpha(@background, 0.8);
 }
 
 tooltip label {
-	color: @fg;
+	color: @foreground;
 	padding: 2px 0;
 }
