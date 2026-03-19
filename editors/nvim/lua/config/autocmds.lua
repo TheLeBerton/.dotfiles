@@ -14,6 +14,9 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	end,
 })
 
+-- Watch WAL colors file and reload theme automatically
+require("config.wal").watch()
+
 -- Open PDF files with PDFview plugin
 vim.api.nvim_create_autocmd("BufReadPost", {
 	pattern = "*.pdf",
