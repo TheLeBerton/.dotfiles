@@ -3,7 +3,7 @@
 
 options="Gruvbox\nNord\nTokyo Night\nCatppuccin\nDracula"
 chosen=$(echo -e "$options" | rofi -dmenu -p "Theme" -theme ~/.config/rofi/pywal.rasi)
-WALLPAPER_DIR="$HOME/Pictures/wallpapers"
+WALLPAPER_DIR="$HOME/.dotfiles/desktop/wallpapers"
 
 case $chosen in
 	"Gruvbox")
