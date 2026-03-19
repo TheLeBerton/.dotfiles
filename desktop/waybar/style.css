@@ -1,92 +1,203 @@
-@import "/home/leberton/.cache/wal/colors-waybar.css";
+/* Gruvbox Dark — same palette as hyprland colors.conf */
+@define-color bg0  #1d2021;
+@define-color bg1  #282828;
+@define-color bg2  #3c3836;
+@define-color bg3  #504945;
+@define-color fg   #ebdbb2;
+@define-color red    #cc241d;
+@define-color orange #d65d0e;
+@define-color yellow #d79921;
+@define-color green  #98971a;
+@define-color aqua   #689d6a;
+@define-color blue   #458588;
+@define-color purple #b16286;
+@define-color gray0  #a89984;
 
 * {
 	all: unset;
-	font-family: "JetBrainsMono Nerd Font", "Nerd Font", monospace;
+	font-family: "JetBrainsMono Nerd Font", monospace;
+	font-size: 13px;
 }
 
 window#waybar {
 	background: transparent;
 }
 
-.modules-center {
-	background-color: @bg4;
-	padding: 2px 12px;
+/* ── Left ── */
+
+#custom-logo {
+	font-size: 1.3rem;
+	padding: 6px 18px;
+	background-color: alpha(@bg1, 0.92);
+	border: 1px solid alpha(@fg, 0.08);
 	border-radius: 99px;
-	margin: 12px 0 0 0;
+	color: @aqua;
+	box-shadow: 0 2px 16px alpha(@bg0, 0.6);
+	transition: all 0.3s ease;
+}
+
+#custom-logo:hover {
+	color: @blue;
+	border-color: alpha(@blue, 0.4);
+	box-shadow: 0 0 18px alpha(@blue, 0.3);
+}
+
+/* ── Center ── */
+
+.modules-center {
+	background-color: alpha(@bg1, 0.92);
+	border: 1px solid alpha(@fg, 0.08);
+	padding: 3px 14px;
+	border-radius: 99px;
+	box-shadow: 0 2px 16px alpha(@bg0, 0.6);
 }
 
 #clock {
-	font-weight: 400;
-	padding: 0 8px;
+	font-weight: 700;
+	font-size: 14px;
+	padding: 0 12px 0 4px;
+	color: @fg;
+	letter-spacing: 0.5px;
 }
 
 #workspaces {
-	background-color: @bg2;
-	padding: 2px 4px;
-	margin: 2px 0;
+	background-color: alpha(@bg2, 0.7);
+	padding: 3px 4px;
+	margin: 3px 0;
 	border-radius: 99px;
 }
 
 #workspaces button {
-	background-color: @bg3;
-	padding: 2px 4px;
+	padding: 2px 10px;
 	border-radius: 99px;
 	margin: 0 2px;
-	transition: all 0.3s ease-in-out;
-	min-width: 1rem;
+	color: alpha(@fg, 0.3);
+	min-width: 1.2rem;
+	transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#workspaces button:hover {
+	background-color: alpha(@fg, 0.08);
+	color: alpha(@fg, 0.75);
 }
 
 #workspaces button.empty {
-	color: @gray0;
+	color: alpha(@fg, 0.18);
 }
 
 #workspaces button.active {
-	background-color: @green;
-	color: @bg1;
-	min-width: 1.5rem;
-	font-weight: 500;
+	background-color: @aqua;
+	color: @bg0;
+	min-width: 2.4rem;
+	font-weight: 700;
+	box-shadow: 0 0 14px alpha(@aqua, 0.5);
 }
 
-#custom-logo {
-	font-size: 1.2rem;
-	padding: 0 12px;
-	margin: 12px 0 0 0;
-	color: @fg;
+#workspaces button.urgent {
+	background-color: @yellow;
+	color: @bg0;
 }
+
+/* ── Right ── */
 
 #pulseaudio,
 #network,
-#battery {
-	background-color: @bg2;
+#battery,
+#tray {
+	background-color: alpha(@bg1, 0.92);
+	border: 1px solid alpha(@fg, 0.08);
 	border-radius: 99px;
-	padding: 4px 14px;
-	margin: 12px 4px 0 4px;
-	font-size: 1.4rem;
-	min-width: 1rem;
+	padding: 5px 16px;
+	margin: 0 3px;
+	box-shadow: 0 2px 16px alpha(@bg0, 0.5);
+	transition: all 0.25s ease;
+	font-size: 12px;
 }
+
+/* Audio */
 
 #pulseaudio {
 	color: @blue;
 }
 
-#network {
-	color: @purple;
-	padding: 4px 14px 4px 7px;
+#pulseaudio:hover {
+	border-color: alpha(@blue, 0.4);
+	box-shadow: 0 0 16px alpha(@blue, 0.25);
 }
 
-#battery {
-	color: @yellow;
+#pulseaudio.muted {
+	color: alpha(@fg, 0.3);
 }
+
+/* Network */
+
+#network {
+	color: @purple;
+}
+
+#network:hover {
+	border-color: alpha(@purple, 0.4);
+	box-shadow: 0 0 16px alpha(@purple, 0.25);
+}
+
+#network.disconnected {
+	color: @yellow;
+	border-color: alpha(@yellow, 0.2);
+}
+
+/* Battery */
+
+#battery {
+	color: @green;
+}
+
+#battery:hover {
+	border-color: alpha(@green, 0.4);
+	box-shadow: 0 0 16px alpha(@green, 0.25);
+}
+
+#battery.charging {
+	color: @green;
+	box-shadow: 0 0 12px alpha(@green, 0.35);
+}
+
+#battery.warning:not(.charging) {
+	color: @yellow;
+	border-color: alpha(@yellow, 0.25);
+}
+
+#battery.critical:not(.charging) {
+	color: @orange;
+	border-color: alpha(@orange, 0.35);
+	box-shadow: 0 0 16px alpha(@orange, 0.35);
+}
+
+/* Tray */
+
+#tray {
+	padding: 5px 12px;
+}
+
+#tray > .passive {
+	-gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+	-gtk-icon-effect: highlight;
+}
+
+/* ── Tooltips ── */
 
 tooltip {
 	background-color: @bg1;
 	color: @fg;
-	padding: 10px;
-	border-radius: 12px;
+	border-radius: 14px;
+	border: 1px solid alpha(@fg, 0.08);
+	padding: 8px 14px;
+	box-shadow: 0 4px 20px alpha(@bg0, 0.8);
 }
 
-tooltip box {
+tooltip label {
 	color: @fg;
-	margin: 10px;
+	padding: 2px 0;
 }
