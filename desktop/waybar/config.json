@@ -1,9 +1,14 @@
 {
 	"layer": "top",
-	"spacing": 18,
-	"modules-left": [],
-	"modules-center": ["clock", "hyprland/workspaces", "pulseaudio", "network", "battery"],
-	"modules-right": [],
+	"spacing": 8,
+	"modules-left": ["custom/logo"],
+	"modules-center": ["clock", "hyprland/workspaces"],
+	"modules-right": ["pulseaudio", "network", "battery"],
+
+	"custom/logo": {
+		"format": "◆",
+		"tooltip": false
+	},
 
 	"clock": {
 		"interval": 60,
@@ -13,35 +18,22 @@
 	"hyprland/workspaces": {
 		"format": "{name}",
 		"on-click": "activate",
-		"format-icons": {
-			"1": "1",
-			"2": "2",
-			"3": "3",
-			"4": "4",
-			"5": "5",
-			"urgent": "",
-			"active": "",
-			"default": ""
-		},
 		"sort-by-number": true,
 		"persistent-workspaces": { "*": 5 }
 	},
 	"pulseaudio": {
 		"format": "{icon}",
-		"format-bluetooth": "{volume}% {icon}",
+		"format-bluetooth": "{volume}% {icon}",
 		"tooltip-format": "{volume}% {desc}",
-		"format-muted": "",
+		"format-muted": "󰝟",
 		"format-icons": {
-			"alsa_output.pci-0000_00_1f.3.analog-stereo": "",
-			"alsa_output.pci-0000_00_1f.3.analog-stereo-muted": "",
-			"headphone": "",
-			"hands-free": "",
-			"headset": "",
-			"phone": "",
-			"phone-muted": "",
-			"portable": "",
-			"car": "",
-			"default": ["", "", ""]
+			"headphone": "󰋋",
+			"hands-free": "󰋎",
+			"headset": "󰋎",
+			"phone": "󰏲",
+			"portable": "󰏲",
+			"car": "󰄋",
+			"default": ["󰕿", "󰖀", "󰕾"]
 		},
 		"scroll-step": 1,
 		"on-click": "pavucontrol",
@@ -49,19 +41,16 @@
 	},
 	"network": {
 		"interface": "wlp1s0f0",
-		"format": "{ifname}",
 		"format-wifi": "{icon}",
-		"format-icons": [ "󰤯", "󰤟", "󰤢", "󰤥", "󰤨" ],
-		"format-ethernet": "{ipaddr}/{cidr} 󰊗",
-		"format-disconnected": "", //An empty format will hide the module.
-		"tooltip-format": "{ifname} via {gwaddr}",
+		"format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+		"format-ethernet": "󰊗",
+		"format-disconnected": "",
 		"tooltip-format-wifi": "{essid} ({signalStrength}%)",
-		"tooltip-format-ethernet": "{ifname} ",
-		"tooltip-format-disconnected": "Disconnected",
-		"max-length": 50
+		"tooltip-format-ethernet": "{ifname}",
+		"tooltip-format-disconnected": "Disconnected"
 	},
-    "battery": {
-        "format": "{icon}",
-        "format-icons": ["", "", "", "", ""]
-    }
+	"battery": {
+		"format": "{icon}",
+		"format-icons": ["󰁺", "󰁼", "󰁾", "󰂀", "󰂂"]
+	}
 }
