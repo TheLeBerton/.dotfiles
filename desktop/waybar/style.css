@@ -1,11 +1,16 @@
-@import "pencils.css";
+@import "/home/leberton/.cache/wal/colors-waybar.css";
 
 * {
 	all: unset;
+	font-family: "JetBrainsMono Nerd Font", "Nerd Font", monospace;
+}
+
+window#waybar {
+	background: transparent;
 }
 
 .modules-center {
-	background-color: @bg1;
+	background-color: @bg4;
 	padding: 2px 12px;
 	border-radius: 99px;
 	margin: 12px 0 0 0;
@@ -13,18 +18,7 @@
 
 #clock {
 	font-weight: 400;
-}
-
-tooltip {
-	background-color: @bg1;
-	color: @fg;
-	padding: 10px;
-	border-radius: 12px;
-}
-
-tooltip box {
-	color: @fg;
-	margin: 10px;
+	padding: 0 8px;
 }
 
 #workspaces {
@@ -34,7 +28,7 @@ tooltip box {
 	border-radius: 99px;
 }
 
-#workspaces button{
+#workspaces button {
 	background-color: @bg3;
 	padding: 2px 4px;
 	border-radius: 99px;
@@ -54,17 +48,45 @@ tooltip box {
 	font-weight: 500;
 }
 
+#custom-logo {
+	font-size: 1.2rem;
+	padding: 0 12px;
+	margin: 12px 0 0 0;
+	color: @fg;
+}
+
+#pulseaudio,
+#network,
+#battery {
+	background-color: @bg2;
+	border-radius: 99px;
+	padding: 4px 14px;
+	margin: 12px 4px 0 4px;
+	font-size: 1.4rem;
+	min-width: 1rem;
+}
+
 #pulseaudio {
 	color: @blue;
-	font-size: 1.5rem;
 }
 
 #network {
 	color: @purple;
-	font-size: 1.5rem;
+	padding: 4px 14px 4px 7px;
 }
 
 #battery {
 	color: @yellow;
-	font-size: 1.5rem;
+}
+
+tooltip {
+	background-color: @bg1;
+	color: @fg;
+	padding: 10px;
+	border-radius: 12px;
+}
+
+tooltip box {
+	color: @fg;
+	margin: 10px;
 }
