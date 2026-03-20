@@ -1,0 +1,187 @@
+@import "/home/leberton/.cache/wal/colors-swaync.css";
+
+* {
+	font-family: "JetBrainsMono Nerd Font", monospace;
+	font-size: 13px;
+}
+
+/* ── Notification window ── */
+
+.notification-row {
+	outline: none;
+	margin: 4px 0;
+}
+
+.notification-row:focus,
+.notification-row:hover {
+	background: transparent;
+}
+
+.notification {
+	background-color: alpha(@background, 0.92);
+	border: 1px solid alpha(@foreground, 0.08);
+	border-radius: 14px;
+	padding: 12px;
+	margin: 6px 12px;
+	box-shadow: 0 4px 20px alpha(@background, 0.6);
+}
+
+.notification-content {
+	padding: 4px 0;
+}
+
+.notification-default-action {
+	border-radius: 12px;
+	padding: 0;
+	background: transparent;
+}
+
+.notification-default-action:hover {
+	background-color: alpha(@foreground, 0.05);
+}
+
+.summary {
+	font-weight: 700;
+	font-size: 14px;
+	color: @foreground;
+}
+
+.time {
+	font-size: 11px;
+	color: @gray;
+}
+
+.body {
+	font-size: 12px;
+	color: alpha(@foreground, 0.75);
+}
+
+.app-name {
+	font-size: 11px;
+	color: @blue;
+}
+
+/* Urgency */
+
+.low .notification {
+	border-color: alpha(@foreground, 0.06);
+}
+
+.normal .notification {
+	border-color: alpha(@blue, 0.25);
+}
+
+.critical .notification {
+	border-color: alpha(@red, 0.5);
+	box-shadow: 0 0 16px alpha(@red, 0.3);
+}
+
+/* Buttons */
+
+.notification-action {
+	background-color: alpha(@background_alt, 0.6);
+	border: 1px solid alpha(@foreground, 0.07);
+	border-radius: 8px;
+	color: @foreground;
+	margin: 4px 2px 0 2px;
+	padding: 4px 10px;
+}
+
+.notification-action:hover {
+	background-color: alpha(@blue, 0.2);
+	border-color: alpha(@blue, 0.3);
+}
+
+.close-button {
+	background-color: transparent;
+	border: none;
+	border-radius: 99px;
+	color: @gray;
+	padding: 2px 6px;
+	min-width: 0;
+}
+
+.close-button:hover {
+	background-color: alpha(@red, 0.2);
+	color: @red;
+}
+
+/* ── Control center ── */
+
+.control-center {
+	background-color: alpha(@background, 0.95);
+	border: 1px solid alpha(@foreground, 0.08);
+	border-radius: 16px;
+	padding: 8px;
+	box-shadow: 0 8px 32px alpha(@background, 0.8);
+}
+
+.control-center-list {
+	background: transparent;
+}
+
+.control-center-list-placeholder {
+	color: alpha(@foreground, 0.3);
+	font-size: 13px;
+}
+
+.blank-window {
+	background: transparent;
+}
+
+/* Header */
+
+.top-action-title {
+	color: @foreground;
+	font-weight: 700;
+	font-size: 15px;
+}
+
+/* Clear button */
+
+.control-center .notification-row .notification {
+	margin: 4px 6px;
+}
+
+button.clear-all-button {
+	background-color: alpha(@background_alt, 0.6);
+	border: 1px solid alpha(@foreground, 0.07);
+	border-radius: 8px;
+	color: @foreground;
+	padding: 4px 14px;
+	margin: 4px;
+}
+
+button.clear-all-button:hover {
+	background-color: alpha(@red, 0.15);
+	border-color: alpha(@red, 0.3);
+	color: @red;
+}
+
+/* Do not disturb toggle */
+
+.widget-dnd {
+	margin: 8px 4px;
+}
+
+.widget-dnd > switch {
+	border-radius: 99px;
+	background-color: alpha(@background_alt, 0.6);
+	border: 1px solid alpha(@foreground, 0.08);
+}
+
+.widget-dnd > switch:checked {
+	background-color: alpha(@blue, 0.3);
+	border-color: alpha(@blue, 0.4);
+}
+
+.widget-dnd > switch slider {
+	background-color: @foreground;
+	border-radius: 99px;
+	min-width: 16px;
+	min-height: 16px;
+}
+
+.widget-dnd > switch:checked slider {
+	background-color: @blue;
+}
