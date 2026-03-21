@@ -45,7 +45,6 @@
 	},
 
 	"network": {
-		"interface": "wlp1s0f0",
 		"format-wifi": "{icon}  {signalStrength}%",
 		"format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
 		"format-ethernet": "󰊗  eth",
