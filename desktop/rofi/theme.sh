@@ -28,11 +28,11 @@ case $chosen in
 		;;
 	"Catppuccin Latte")
 		wal --theme catppuccin-latte -l
-		swww img "$WALLPAPER_DIR/catppuccin-latte.jpg" --transition-type wipe --transition-duration 1
+		swww img "$WALLPAPER_DIR/catppuccin_latte.jpg" --transition-type wipe --transition-duration 1
 		;;
 	"Rose Pine Dawn")
 		wal --theme rose-pine-dawn -l
-		swww img "$WALLPAPER_DIR/rose-pine-dawn.jpg" --transition-type wipe --transition-duration 1
+		swww img "$WALLPAPER_DIR/catppuccin_latte.jpg" --transition-type wipe --transition-duration 1
 		;;
 esac
 
