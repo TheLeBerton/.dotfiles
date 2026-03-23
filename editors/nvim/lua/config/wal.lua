@@ -12,21 +12,22 @@ function M.apply()
 
 	require("kanagawa").setup({
 		transparent = true,
-		dimInactive = true,
+		dimInactive = false,
 		overrides = function(colors)
 			local theme = colors.theme
 			local base = {
-				NormalFloat = { bg = theme.ui.bg },
-				FloatBorder = { bg = theme.ui.bg, fg = theme.ui.nontext },
-				FloatTitle  = { bg = theme.ui.bg },
+				NormalFloat            = { bg = theme.ui.bg },
+				FloatBorder            = { bg = theme.ui.bg, fg = theme.ui.nontext },
+				FloatTitle             = { bg = theme.ui.bg },
 				TelescopeBorder        = { fg = theme.ui.nontext, bg = "none" },
 				TelescopeNormal        = { bg = "none" },
 				TelescopePromptNormal  = { bg = "none" },
 				TelescopeResultsNormal = { bg = "none" },
 				TelescopePreviewNormal = { bg = "none" },
+				ZenBg                  = { bg = "none" },
 			}
 			if wal then
-				local w = wal
+				local w                        = wal
 				base.Function                  = { fg = w.blue }
 				base.Keyword                   = { fg = w.purple, bold = true }
 				base.Statement                 = { fg = w.purple }
