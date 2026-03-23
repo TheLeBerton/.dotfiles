@@ -40,6 +40,7 @@ require("lazy").setup({
 	require("plugins.snacks"),
 	require("plugins.scrollbar"),
 	require("plugins.typr"),
+	require("plugins.zen-mode"),
 
 }, {
 	ui = {
