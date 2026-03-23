@@ -9,10 +9,10 @@ return {
 				hide_if_all_visible = true,
 			},
 			marks = {
-				Error = { text = " ", color = "#F7768E" },
-				Warn = { text = " ", color = "#E0AF68" },
-				Info = { text = " ", color = "#7DCFFF" },
-				Hint = { text = " ", color = "#9ECE6A" },
+				Error = { text = {" "}, color = "#F7768E" },
+				Warn = { text = {" "}, color = "#E0AF68" },
+				Info = { text = {" "}, color = "#7DCFFF" },
+				Hint = { text = {" "}, color = "#9ECE6A" },
 			},
 		})
 	end,
