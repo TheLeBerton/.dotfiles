@@ -1,0 +1,79 @@
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+
+#window {
+    background-color: @background;
+    border: 0;
+    padding: 1ch;
+}
+
+#mainbox {
+    border: 0;
+    padding: 0;
+}
+
+#inputbar {
+    spacing: 0;
+    text-color: @normal-foreground;
+    padding: 4px;
+    children: [ prompt, textbox-prompt-colon, entry, case-indicator ];
+}
+
+#textbox-prompt-colon {
+    expand: false;
+    str: ":";
+    margin: 0px 0.3em 0em 0em;
+    text-color: @normal-foreground;
+}
+
+#entry {
+    spacing: 0;
+    text-color: @normal-foreground;
+}
+
+#prompt {
+    spacing: 0;
+    text-color: @normal-foreground;
+}
+
+#case-indicator {
+    spacing: 0;
+    text-color: @normal-foreground;
+}
+
+#listview {
+    border: 2px 0px 0px;
+    border-color: @border-color;
+    padding: 4px 0px 0px;
+    orientation: vertical;
+    lines: 1;
+    columns: 1;
+    fixed-height: 1;
+    scrollbar: false;
+}
+
+#element {
+    border: 0;
+    padding: 4px;
+    orientation: vertical;
+}
+
+#element-icon {
+    size: 500;
+    background-color: inherit;
+}
+
+#element-text {
+    background-color: inherit;
+    text-color: inherit;
+    horizontal-align: 0.5;
+}
+
+#element.normal.normal {
+    background-color: @normal-background;
+    text-color: @normal-foreground;
+}
+
+#element.selected.normal {
+    background-color: @selected-normal-background;
+    text-color: @selected-normal-foreground;
+}
