@@ -6,14 +6,15 @@ DARK_THEMES=("Gruvbox" "Nord" "Tokyo Night" "Catppuccin Mocha" "Dracula")
 LIGHT_THEMES=("Catppuccin Latte" "Rose Pine Dawn")
 
 declare -A THEME_DATA=(
-	["Gruvbox"]="base16-gruvbox-hard gruvbox.png"
-	["Nord"]="base16-nord nord.jpg"
-	["Tokyo Night"]="tokyonight-moon tokyo-night.jpg"
-	["Catppuccin Mocha"]="catppuccin-mocha catppuccin.jpg"
-	["Dracula"]="base16-dracula dracula.jpg"
-	["Catppuccin Latte"]="catppuccin-latte catppuccin_latte.jpg"
-	["Rose Pine Dawn"]="rose-pine-dawn catppuccin_latte.jpg"
+	["Gruvbox"]="base16-gruvbox-hard gruvbox.png 0"
+	["Nord"]="base16-nord nord.jpg 0"
+	["Tokyo Night"]="tokyonight-moon tokyo-night.jpg 10"
+	["Catppuccin Mocha"]="catppuccin-mocha catppuccin.jpg 10"
+	["Dracula"]="base16-dracula dracula.jpg 0"
+	["Catppuccin Latte"]="catppuccin-latte catppuccin_latte.jpg 10"
+	["Rose Pine Dawn"]="rose-pine-dawn catppuccin_latte.jpg 0"
 )
+
 
 pick_da_theeme() {
 	local mode
@@ -29,11 +30,12 @@ pick_da_theeme() {
 	fi
 	[ -z "$theme" ] && return
 
-	read -r theme_name wallpaper <<< "${THEME_DATA[$theme]}"
+	read -r theme_name wallpaper rounding <<< "${THEME_DATA[$theme]}"
 	wal --theme "$theme_name" $flags
 	swww img "$WALLPAPER_DIR/$wallpaper" --transition-type wipe --transition-duration 1
 	pywalfox update
 	$HOME/.config/hypr/apply-colors.sh
+	hyprctl keyword decoration:rounding "$rounding"
 }
 
 pick_da_theeme
