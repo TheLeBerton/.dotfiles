@@ -1,6 +1,6 @@
 #!/bin/bash
 
-THEME=~/.config/rofi/pywal.rasi
+THEME="$HOME/.config/rofi/squared.rasi"
 
 ANALOG_SINK="alsa_output.pci-0000_07_00.4.analog-stereo"
 HEADPHONE_PORT="analog-output-headphones"
