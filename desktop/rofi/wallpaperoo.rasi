@@ -1,0 +1,92 @@
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+
+* {
+    foreground-alt: @active-background;
+    background-alt: @alternate-normal-background;
+}
+
+#window {
+    background-color: @background;
+    border: 0;
+    padding: 16px;
+    width: 520px;
+}
+
+#mainbox {
+    border: 0;
+    padding: 0;
+    children: [ listview, message, inputbar ];
+    spacing: 10px;
+}
+
+#inputbar {
+    spacing: 6px;
+    text-color: @normal-foreground;
+    padding: 6px 8px;
+    background-color: @background-alt;
+    children: [ prompt, entry ];
+}
+
+#prompt {
+    spacing: 0;
+    text-color: @foreground-alt;
+}
+
+#entry {
+    spacing: 0;
+    text-color: @normal-foreground;
+    placeholder: "search...";
+    placeholder-color: @foreground-alt;
+}
+
+#message {
+    padding: 0;
+    background-color: transparent;
+}
+
+#textbox {
+    text-color: @foreground-alt;
+    background-color: transparent;
+    horizontal-align: 0.5;
+    font: "monospace 9";
+}
+
+#listview {
+    border: 0;
+    padding: 0;
+    orientation: vertical;
+    lines: 1;
+    columns: 1;
+    fixed-height: 1;
+    scrollbar: false;
+}
+
+#element {
+    border: 0;
+    padding: 0;
+    orientation: vertical;
+    spacing: 8px;
+}
+
+#element-icon {
+    size: 450px;
+    background-color: transparent;
+}
+
+#element-text {
+    background-color: transparent;
+    text-color: inherit;
+    horizontal-align: 0.5;
+    font: "monospace 10";
+    padding: 0 0 4px 0;
+}
+
+#element.normal.normal {
+    background-color: @background;
+    text-color: @normal-foreground;
+}
+
+#element.selected.normal {
+    background-color: @background;
+    text-color: @selected-normal-foreground;
+}
