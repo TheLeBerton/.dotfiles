@@ -4,6 +4,7 @@ THEME="~/.config/rofi/squared.rasi"
 DOTFILES="$HOME/.dotfiles"
 
 declare -A scripts=(
+		["Timer"]="$DOTFILES/desktop/rofi/timer_menu.sh"
 		["Toggle Waybar"]="$DOTFILES/desktop/waybar/scripts/launch_me.sh"
 		["Switcheroo"]="$DOTFILES/desktop/rofi/switcheroo.sh"
 		["Wallpaperoo"]="$DOTFILES/desktop/rofi/wallpaperoo.sh"
