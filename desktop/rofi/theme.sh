@@ -2,7 +2,7 @@
 
 WALLPAPER_DIR="$HOME/.dotfiles/desktop/wallpapers"
 THEME="$HOME/.config/rofi/squared.rasi"
-DARK_THEMES=("Gruvbox" "Nord" "Tokyo Night" "Catppuccin Mocha" "Dracula")
+DARK_THEMES=("Gruvbox" "Nord" "Tokyo Night" "Catppuccin Mocha" "Dracula" "Gray")
 LIGHT_THEMES=("Catppuccin Latte" "Rose Pine Dawn")
 
 declare -A THEME_DATA=(
@@ -11,6 +11,7 @@ declare -A THEME_DATA=(
 	["Tokyo Night"]="tokyonight-moon tokyo-night.jpg 10"
 	["Catppuccin Mocha"]="catppuccin-mocha catppuccin.jpg 10"
 	["Dracula"]="base16-dracula dracula.jpg 0"
+	["Gray"]="gray gray.jpg 0"
 	["Catppuccin Latte"]="catppuccin-latte catppuccin_latte.jpg 10"
 	["Rose Pine Dawn"]="rose-pine-dawn catppuccin_latte.jpg 0"
 )
