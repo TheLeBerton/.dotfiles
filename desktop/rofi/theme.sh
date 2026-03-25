@@ -6,14 +6,14 @@ DARK_THEMES=("Gruvbox" "Nord" "Tokyo Night" "Catppuccin Mocha" "Dracula" "Gray")
 LIGHT_THEMES=("Catppuccin Latte" "Rose Pine Dawn")
 
 declare -A THEME_DATA=(
-	["Gruvbox"]="base16-gruvbox-hard gruvbox.png 0 squared.css"
-	["Nord"]="base16-nord nord.jpg 0 squared.css"
-	["Tokyo Night"]="tokyonight-moon tokyo-night.jpg 10 style.css"
-	["Catppuccin Mocha"]="catppuccin-mocha catppuccin.jpg 10 style.css"
-	["Dracula"]="base16-dracula dracula.jpg 0 squared.css"
-	["Gray"]="gray gray.jpg 0 squared.css"
-	["Catppuccin Latte"]="catppuccin-latte catppuccin_latte.jpg 10 style.css"
-	["Rose Pine Dawn"]="rose-pine-dawn catppuccin_latte.jpg 0 squared.css"
+	["Gruvbox"]="base16-gruvbox-hard gruvbox.png 0 squared.css gruvbox"
+	["Nord"]="base16-nord nord.jpg 0 squared.css nord"
+	["Tokyo Night"]="tokyonight-moon tokyo-night.jpg 10 style.css tokyonight-moon"
+	["Catppuccin Mocha"]="catppuccin-mocha catppuccin.jpg 10 style.css catppuccin-mocha"
+	["Dracula"]="base16-dracula dracula.jpg 0 squared.css dracula"
+	["Gray"]="gray gray.jpg 0 squared.css kanagawa-wave"
+	["Catppuccin Latte"]="catppuccin-latte catppuccin_latte.jpg 10 style.css catppuccin-latte"
+	["Rose Pine Dawn"]="rose-pine-dawn catppuccin_latte.jpg 0 squared.css rose-pine-dawn"
 )
 
 
@@ -31,11 +31,11 @@ pick_da_theeme() {
 	fi
 	[ -z "$theme" ] && return
 
-	read -r theme_name wallpaper rounding waybar_style <<< "${THEME_DATA[$theme]}"
+	read -r theme_name wallpaper rounding waybar_style nvim_theme <<< "${THEME_DATA[$theme]}"
 	wal --theme "$theme_name" $flags
 	swww img "$WALLPAPER_DIR/$wallpaper" --transition-type wipe --transition-duration 1
 	pywalfox update
-	$HOME/.config/hypr/apply-colors.sh "$waybar_style"
+	$HOME/.config/hypr/apply-colors.sh "$waybar_style" "$nvim_theme"
 	hyprctl keyword decoration:rounding "$rounding"
 }
 
