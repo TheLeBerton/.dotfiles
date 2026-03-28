@@ -1,0 +1,78 @@
+local M = {}
+
+local setup_treesitter = function()
+	vim.pack.add({
+		{ src = "https://github.com/nvim-treesitter/nvim-treesitter" }
+	})
+	require("nvim-treesitter").setup({
+		ensure_installed = {
+			"bash", "blade", "c", "comment", "css", "diff", "dockerfile",
+			"fish", "gitignore", "go", "gomod", "gosum", "gowork", "html",
+			"ini", "javascript", "jsdoc", "json", "lua", "luadoc", "luap",
+			"make", "markdown", "markdown_inline", "nginx", "nix", "proto",
+			"python", "query", "regex", "rust", "scss", "sql", "terraform",
+			"toml", "tsx", "typescript", "vim", "vimdoc", "xml", "yaml", "zig",
+		}
+	})
+end
+
+
+local setup_colorscheme = function()
+	vim.pack.add({
+		{ src = "https://github.com/catppuccin/nvim.git", name = "catppuccin" },
+		{ src = "https://github.com/rebelot/kanagawa.nvim", name="kanagawa" },
+		{ src = "https://github.com/ellisonleao/gruvbox.nvim", name="gruvbox" },
+		{ src = 'https://github.com/shaunsingh/nord.nvim', name="nord" },
+		{ src = "https://github.com/folke/tokyonight.nvim", name="tokyonight" },
+		{ src = 'https://github.com/Mofiqul/dracula.nvim', name="dracula" },
+		{ src = "https://github.com/rose-pine/neovim", name = "rose-pine" }
+	})
+	local wal = require( "wal" )
+	wal.apply()
+	wal.watch()
+end
+
+
+local setup_oil = function()
+	vim.pack.add({
+		{ src = "https://github.com/stevearc/oil.nvim" },
+		{ src = "https://github.com/refractalize/oil-git-status.nvim" },
+		{ src = "https://github.com/nvim-tree/nvim-web-devicons" }
+	})
+	require( "oil" ).setup({
+		default_file_explorer = true,
+		view_options = {
+			show_hidden = true,
+		},
+		win_options = {
+			signcolumn = "yes:2"
+		},
+		keymaps = {
+			["q"] = "actions.close",
+			["<C-c>"] = "actions.close",
+		},
+	})
+	require( "oil-git-status" ).setup()
+end
+
+
+local setup_telescope = function()
+	vim.pack.add({
+		{ src = "https://github.com/nvim-telescope/telescope.nvim" },
+		{ src = "https://github.com/nvim-lua/plenary.nvim" },
+		{ src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" }
+	})
+	local telescope = require( "telescope" )
+	telescope.setup()
+end
+
+
+M.setup = function()
+	setup_treesitter()
+	setup_colorscheme()
+	setup_oil()
+	setup_telescope()
+end
+
+
+return M
