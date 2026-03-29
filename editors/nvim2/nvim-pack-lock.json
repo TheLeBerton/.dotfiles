@@ -12,6 +12,10 @@
       "rev": "34a564c81f36047f50e593c1656f4580ff75ccca",
       "src": "https://github.com/junegunn/fzf.vim"
     },
+    "gitsigns.nvim": {
+      "rev": "50c205548d8b037b7ff6378fca6d21146f0b6161",
+      "src": "https://github.com/lewis6991/gitsigns.nvim"
+    },
     "gruvbox": {
       "rev": "334d5fd49fc8033f26408425366c66c6390c57bb",
       "src": "https://github.com/ellisonleao/gruvbox.nvim"
