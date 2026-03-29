@@ -3,7 +3,7 @@ local M = {}
 
 M.servers = {
 	["lua_ls"] = { cmd = { "lua-language-server" }, filetypes = { "lua" }, settings = { Lua = { diagnostics = { globals = { "vim" } } } } },
-	["pyright"] = { cmd = { "pyright-langserver", "--stdio" }, filetypes = { "python" }, root_markers = { "pyrightconfig.json", ".git" } },
+	["pyright"] = { cmd = { "pyright-langserver", "--stdio" }, filetypes = { "python" }, root_markers = { "pyrightconfig.json", ".git" }, settings = { python = { analysis = { autoSearchPaths = true, useLibraryCodeForTypes = true, diagnosticMode = "workspace" } } } },
 	["clangd"] = { cmd = { "clangd" }, filetypes = { "c", "cpp" } }
 }
 
