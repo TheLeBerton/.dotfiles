@@ -62,8 +62,14 @@ local setup_telescope = function()
 		{ src = "https://github.com/nvim-lua/plenary.nvim" },
 		{ src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" }
 	})
-	local telescope = require( "telescope" )
-	telescope.setup()
+	require( "telescope" ).setup()
+end
+
+local setup_gitsigns = function()
+	vim.pack.add({
+		{ src = "https://github.com/lewis6991/gitsigns.nvim" }
+	})
+	require( "gitsigns" ).setup()
 end
 
 
@@ -72,6 +78,7 @@ M.setup = function()
 	setup_colorscheme()
 	setup_oil()
 	setup_telescope()
+	setup_gitsigns()
 end
 
 
