@@ -73,12 +73,33 @@ local setup_gitsigns = function()
 end
 
 
+local setup_blink = function()
+	vim.pack.add({
+		{ src = "https://github.com/saghen/blink.cmp" }
+	})
+	require( "blink.cmp" ).setup({
+		keymap = { preset = 'super-tab' },
+		fuzzy = { implementation = "lua" },
+		sources = { default = { "lsp", "buffer", "path" } },
+		completion = {
+			menu = { border = "none" },
+			documentation = {
+				auto_show = true,
+				window = { border = "none" }
+			},
+			ghost_text = { enabled = true }
+		}
+	})
+end
+
+
 M.setup = function()
 	setup_treesitter()
 	setup_colorscheme()
 	setup_oil()
 	setup_telescope()
 	setup_gitsigns()
+	setup_blink()
 end
 
 
