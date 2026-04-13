@@ -78,7 +78,11 @@ local setup_blink = function()
 		{ src = "https://github.com/saghen/blink.cmp" }
 	})
 	require( "blink.cmp" ).setup({
-		keymap = { preset = 'super-tab' },
+		keymap = {
+			[ "<Tab>" ] = { "select_next", "fallback" },
+			[ "<S-Tab>" ] = { "select_prev", "fallback" },
+			[ "<CR>" ] = { "select_and_accept" }
+		},
 		fuzzy = { implementation = "lua" },
 		sources = { default = { "lsp", "buffer", "path" } },
 		completion = {
