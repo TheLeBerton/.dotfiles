@@ -81,7 +81,7 @@ local setup_blink = function()
 		keymap = {
 			[ "<Tab>" ] = { "select_next", "fallback" },
 			[ "<S-Tab>" ] = { "select_prev", "fallback" },
-			[ "<CR>" ] = { "select_and_accept" }
+			[ "<CR>" ] = { "select_and_accept", "fallback" }
 		},
 		fuzzy = { implementation = "lua" },
 		sources = { default = { "lsp", "buffer", "path" } },
