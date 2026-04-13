@@ -52,7 +52,7 @@ local setup_oil = function()
 			["<C-c>"] = "actions.close",
 		},
 	})
-	require( "oil-git-status" ).setup()
+	require( "oil-git-status" ).setup({})
 end
 
 
@@ -63,6 +63,7 @@ local setup_telescope = function()
 		{ src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" }
 	})
 	require( "telescope" ).setup()
+	require( "telescope" ).load_extension( "fzf" )
 end
 
 local setup_gitsigns = function()
@@ -71,7 +72,6 @@ local setup_gitsigns = function()
 	})
 	require( "gitsigns" ).setup()
 end
-
 
 local setup_blink = function()
 	vim.pack.add({
@@ -96,6 +96,11 @@ local setup_blink = function()
 	})
 end
 
+local install_loved2d = function ()
+	vim.pack.add({
+		{ src = "https://github.com/S1M0N38/love2d.nvim" }
+	})
+end
 
 M.setup = function()
 	setup_treesitter()
@@ -104,6 +109,7 @@ M.setup = function()
 	setup_telescope()
 	setup_gitsigns()
 	setup_blink()
+	install_loved2d()
 end
 
 

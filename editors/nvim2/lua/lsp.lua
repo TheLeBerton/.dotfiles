@@ -19,24 +19,15 @@ end
 
 
 local start_servers = function()
-	for name, _ in pairs( M.servers ) do
-		vim.lsp.config( name, M.servers[name] )
+	for name, config in pairs( M.servers ) do
+		vim.lsp.config( name, config )
 		vim.lsp.enable( name )
 	end
 end
 
-local function init_loved2d()
-	vim.pack.add({
-		{ src = "https://github.com/S1M0N38/love2d.nvim" }
-	})
-	require( "love2d" ).setup()
-end
-
-
 M.setup = function()
 	init_mason()
 	start_servers()
-	init_loved2d()
 end
 
 
