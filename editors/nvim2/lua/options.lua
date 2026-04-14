@@ -13,7 +13,6 @@ function M.setup()
 	vim.o.termguicolors = true
 	vim.o.wrap = false
 	vim.o.clipboard = "unnamedplus"
-	vim.o.completeopt = "menuone,noinsert,noselect"
 end
 
 return M

@@ -3,7 +3,7 @@ local M = {}
 local wal_file = vim.fn.expand("~/.cache/wal/nvim-theme")
 
 function M.apply()
-	local f = io.open(vim.fn.expand("~/.cache/wal/nvim-theme"), "r")
+	local f = io.open( wal_file, "r" )
 	local theme = f and f:read("*l") or "kanagawa-wave"
 	if f then f:close() end
 	vim.cmd.colorscheme(theme)

@@ -83,7 +83,7 @@ local setup_blink = function()
 			[ "<S-Tab>" ] = { "select_prev", "fallback" },
 			[ "<CR>" ] = { "select_and_accept", "fallback" }
 		},
-		fuzzy = { implementation = "lua" },
+		fuzzy = { implementation = "prefer_rust" },
 		sources = { default = { "lsp", "buffer", "path" } },
 		completion = {
 			menu = { border = "none" },
