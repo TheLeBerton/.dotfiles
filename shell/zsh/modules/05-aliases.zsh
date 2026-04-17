@@ -53,9 +53,9 @@ alias myip="curl ifconfig.me"
 alias ports="lsof -i -P | grep LISTEN"
 
 # Make
-if command -v bear &>/dev/null; then
-	alias make="bear -- make"
-fi
+# if command -v bear &>/dev/null; then
+# 	alias make="bear -- make"
+# fi
 
 alias money="python3 $HOME/dev/playground/money/main.py"
 
