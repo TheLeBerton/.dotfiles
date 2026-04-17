@@ -102,6 +102,33 @@ local install_loved2d = function ()
 	})
 end
 
+local setup_conform = function ()
+	vim.pack.add({
+		{ src = "https://github.com/stevearc/conform.nvim" }
+	})
+	-- require( "conform.nvim" ).setup()
+end
+
+local setup_zen = function ()
+	vim.pack.add({
+		{ src = "https://github.com/folke/zen-mode.nvim" }
+	})
+	require( "zen-mode" ).setup()
+end
+
+local setup_markview = function ()
+	vim.pack.add({
+		{ src = "https://github.com/OXY2DEV/markview.nvim" }
+	})
+end
+
+local setup_which_key = function ()
+	vim.pack.add({
+		{ src = "https://github.com/folke/which-key.nvim" }
+	})
+	require( "which-key" ).setup()
+end
+
 M.setup = function()
 	setup_treesitter()
 	setup_colorscheme()
@@ -109,7 +136,11 @@ M.setup = function()
 	setup_telescope()
 	setup_gitsigns()
 	setup_blink()
+	setup_conform()
 	install_loved2d()
+	setup_zen()
+	setup_markview()
+	setup_which_key()
 end
 
 

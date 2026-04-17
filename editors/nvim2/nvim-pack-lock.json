@@ -8,6 +8,10 @@
       "rev": "a7788416689dbefea659d9e9415c87926b0ba5d8",
       "src": "https://github.com/catppuccin/nvim.git"
     },
+    "conform.nvim": {
+      "rev": "086a40dc7ed8242c03be9f47fbcee68699cc2395",
+      "src": "https://github.com/stevearc/conform.nvim"
+    },
     "dracula": {
       "rev": "ae752c13e95fb7c5f58da4b5123cb804ea7568ee",
       "src": "https://github.com/Mofiqul/dracula.nvim"
@@ -31,6 +35,10 @@
     "love2d.nvim": {
       "rev": "25715394680590f56aab90390d430cab0dc46808",
       "src": "https://github.com/S1M0N38/love2d.nvim"
+    },
+    "markview.nvim": {
+      "rev": "5a890277ba7edd7823d20f4d0525132d277aea9a",
+      "src": "https://github.com/OXY2DEV/markview.nvim"
     },
     "mason-lspconfig.nvim": {
       "rev": "38499e0bda64bc0f3ec6e7f03f8e13dd11c0fa00",
@@ -87,6 +95,14 @@
     "tokyonight": {
       "rev": "cdc07ac78467a233fd62c493de29a17e0cf2b2b6",
       "src": "https://github.com/folke/tokyonight.nvim"
+    },
+    "which-key.nvim": {
+      "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
+      "src": "https://github.com/folke/which-key.nvim"
+    },
+    "zen-mode.nvim": {
+      "rev": "8564ce6d29ec7554eb9df578efa882d33b3c23a7",
+      "src": "https://github.com/folke/zen-mode.nvim"
     }
   }
 }
