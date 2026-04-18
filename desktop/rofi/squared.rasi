@@ -2,8 +2,8 @@
 
 * {
     font:             "JetBrainsMono Nerd Font Medium 12";
-    bg0:              @color0;
-    bg1:              @color8;
+    bg0:              @background;
+    bg1:              @color0;
     fg0:              @foreground;
     accent-color:     @color4;
     urgent-color:     @color1;
