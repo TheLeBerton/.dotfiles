@@ -1,0 +1,24 @@
+#!/bin/bash
+
+source ~/.cache/wal/colors.sh
+
+printf "%-10s %-10s %s\n" "name" "hex" "preview"
+printf "%-10s %-10s %s\n" "----" "---" "-------"
+
+print_color() {
+    local name=$1
+    local hex=$2
+    local r=$((16#${hex:1:2}))
+    local g=$((16#${hex:3:2}))
+    local b=$((16#${hex:5:2}))
+    printf "%-10s %-10s \e[48;2;%d;%d;%dm      \e[0m\n" "$name" "$hex" "$r" "$g" "$b"
+}
+
+print_color "background" "$background"
+print_color "foreground" "$foreground"
+print_color "cursor"     "$cursor"
+echo ""
+for i in {0..15}; do
+    var="color$i"
+    print_color "color$i" "${!var}"
+done

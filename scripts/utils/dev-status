@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+DEV="$HOME/dev"
+
+SUCCESS="✔"
+WARNING="⚠"
+ERROR="✘"
+ARROW="➔"
+
+latest_mtime() {
+	find "$1" -not -path '*/.git/*' -printf "%T@\n" 2>/dev/null | sort -n | tail -1
+}
+
+age_days() {
+	echo $(( ( $(date +%s) - ${1%.*} ) / 86400 ))
+}
+
+status_icon() {
+	if [[ $1 -lt 14 ]]; then
+		echo "$SUCCESS"
+	elif [[ $1 -lt 30 ]]; then
+		echo "$WARNING"
+	else
+		echo "$ERROR"
+	fi
+}
+
+collect_projects() {
+	find "$DEV/lab" "$DEV/42" "$DEV/playground" \
+		-mindepth 1 -maxdepth 1 -type d 2>/dev/null
+}
+
+main() {
+	echo -e "\n[ dev projects ]"
+
+	declare -a entries
+	while IFS= read -r project; do
+		mtime=$(latest_mtime "$project")
+		[[ -z "$mtime" ]] && mtime=0
+		entries+=("$mtime $project")
+	done < <(collect_projects)
+
+	while IFS= read -r entry; do
+		mtime="${entry%% *}"
+		project="${entry#* }"
+		days=$(age_days "$mtime")
+		icon=$(status_icon "$days")
+		printf "\t%s  %-30s (%dd)\n" "$icon" "$(basename "$project")" "$days"
+	done < <(printf '%s\n' "${entries[@]}" | sort -rn)
+
+	echo
+}
+
+main
