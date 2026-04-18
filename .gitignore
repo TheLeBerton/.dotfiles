@@ -6,6 +6,7 @@
 *~
 *.swp
 *.swo
+nvim-pack-lock.json
 
 # Fichiers de backup génériques
 *.bak
