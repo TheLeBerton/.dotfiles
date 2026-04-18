@@ -72,4 +72,4 @@
 	sort = -taggerdate
 
 [commit]
-	template = ~/.dotfiles/templates/.gitmessage.txt
+	template = ~/.dotfiles/git/.gitmessage.txt

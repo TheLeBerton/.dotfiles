@@ -2,12 +2,12 @@
 
 DOTFILES="$HOME/.dotfiles"
 THEME="$HOME/.config/rofi/wallpaperoo.rasi"
-WALLPAPER_DIR="$DOTFILES/desktop/wallpapers"
+WALLPAPER_DIR="$HOME/.local/share/wallpapers"
 
 
 entries=""
 count=0
-for f in $DOTFILES/desktop/wallpapers/*; do
+for f in "$WALLPAPER_DIR"/*; do
 	name=$(basename "$f" | sed 's/\.[^.]*$//')
 	entries+="$name\0icon\x1f$HOME/.cache/wallpaper-thumbs/$(basename $f)\n"
 	((count++))

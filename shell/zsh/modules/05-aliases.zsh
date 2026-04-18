@@ -59,4 +59,3 @@ alias ports="lsof -i -P | grep LISTEN"
 
 alias money="python3 $HOME/dev/playground/money/main.py"
 
-eval "$(starship init zsh)"

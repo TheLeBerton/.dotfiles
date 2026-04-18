@@ -17,8 +17,11 @@
 **/*.log
 logs/
 
-# Plugin lock files
-editors/nvim/lazy-lock.json
+# Local Claude Code settings
+**/settings.local.json
+
+# Wallpapers
+desktop/wallpapers/
 
 # Cache directories
 **/cache/

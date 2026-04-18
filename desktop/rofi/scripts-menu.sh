@@ -8,7 +8,7 @@ declare -A scripts=(
 		["Toggle Waybar"]="$DOTFILES/desktop/waybar/scripts/launch_me.sh"
 		["Switcheroo"]="$DOTFILES/desktop/rofi/switcheroo.sh"
 		["Wallpaperoo"]="$DOTFILES/desktop/rofi/wallpaperoo.sh"
-		["Fix Speaker"]="$DOTFILES/desktop/scripts/fix-lineout.sh"
+		["Fix Speaker"]="$DOTFILES/scripts/utils/fix-lineout.sh"
 )
 
 chosen=$(printf '%s\n' "${!scripts[@]}" | rofi -dmenu -p "Scripts" -theme "$THEME")

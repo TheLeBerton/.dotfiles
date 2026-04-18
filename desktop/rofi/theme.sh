@@ -1,6 +1,6 @@
 #!/bin/bash
 
-WALLPAPER_DIR="$HOME/.dotfiles/desktop/wallpapers"
+WALLPAPER_DIR="$HOME/.local/share/wallpapers"
 THEME="$HOME/.config/rofi/squared.rasi"
 DARK_THEMES=("Gruvbox" "Nord" "Tokyo Night" "Catppuccin Mocha" "Dracula" "Gray")
 LIGHT_THEMES=("Catppuccin Latte" "Rose Pine Dawn")

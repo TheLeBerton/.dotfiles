@@ -8,6 +8,8 @@ for module in "$DOTFILES_DIR"/shell/zsh/modules/*.zsh; do
 	fi
 done
 
+eval "$(starship init zsh)"
+
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
 [[ -f "$DOTFILES_DIR/local/.zshrc.$OS" ]] && source "$DOTFILES_DIR/local/.zshrc.$OS"
 
