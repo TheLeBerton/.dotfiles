@@ -19,6 +19,7 @@ end
 
 local setup_colorscheme = function()
 	vim.pack.add({
+		{ src = "https://github.com/olimorris/onedarkpro.nvim", name = "onedarkpro" },
 		{ src = "https://github.com/catppuccin/nvim.git", name = "catppuccin" },
 		{ src = "https://github.com/rebelot/kanagawa.nvim", name="kanagawa" },
 		{ src = "https://github.com/ellisonleao/gruvbox.nvim", name="gruvbox" },
