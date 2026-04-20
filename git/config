@@ -1,6 +1,6 @@
 [user]
-	name = TheLeberton
-	email = leomac@gmail.com
+	name = TheLeBerton
+	email = theleberton@gmail.com
 
 [core]
 	compression = 9
@@ -12,7 +12,7 @@
 	pushNonFastForward = false
 	statusHints = false
 
-[url "git@github.com:LeoTrain/"]
+[url "git@github.com:TheLeBerton/"]
 	insteadOf = "cj:"
 
 [url "git@github.com"]
