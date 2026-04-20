@@ -16,6 +16,14 @@ local setup_treesitter = function()
 	})
 end
 
+local setup_themery = function ()
+	vim.pack.add( {
+		{ src = "https://github.com/zaldih/themery.nvim" }
+	})
+	require( "themery" ).setup({
+		themes = vim.fn.getcompletion( "", "color" )
+	})
+end
 
 local setup_colorscheme = function()
 	vim.pack.add({
@@ -28,6 +36,7 @@ local setup_colorscheme = function()
 		{ src = 'https://github.com/Mofiqul/dracula.nvim', name="dracula" },
 		{ src = "https://github.com/rose-pine/neovim", name = "rose-pine" }
 	})
+	setup_themery()
 	local wal = require( "wal" )
 	wal.apply()
 	wal.watch()
@@ -129,6 +138,7 @@ local setup_which_key = function ()
 	})
 	require( "which-key" ).setup()
 end
+
 
 M.setup = function()
 	setup_treesitter()
