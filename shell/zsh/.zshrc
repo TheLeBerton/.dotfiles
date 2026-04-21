@@ -17,5 +17,3 @@ unset DOTFILES_DIR
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - zsh)"
-
-/usr/bin/cat ~/.cache/wal/sequences &

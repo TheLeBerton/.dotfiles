@@ -15,5 +15,3 @@ else
     start_agent
 fi
 
-echo "Exiting zprofile"
-
