@@ -1,6 +1,6 @@
 Welcome to my personal dotfiles! This repository contains my development environment configurations, designed for **multi-platform use** across macOS, Linux (Ubuntu, Fedora), and specialized environments like 42 school.
 
-## ✨ Overview
+## Overview
 
 These dotfiles feature a **modular, category-based structure** with intelligent platform detection and automated installation. Everything is organized by function rather than tool, making it easy to install only what you need.
 
