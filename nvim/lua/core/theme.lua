@@ -17,4 +17,9 @@ function M.watch()
 	end))
 end
 
+function M.setup()
+	M.apply()
+	M.watch()
+end
+
 return M

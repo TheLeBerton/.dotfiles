@@ -1,4 +1,4 @@
-require( "options" ).setup()
-require( "keymaps" ).setup()
+require( "core" ).setup()
 require( "lsp" ).setup()
 require( "plugins" ).setup()
+require( "core" ).after()
