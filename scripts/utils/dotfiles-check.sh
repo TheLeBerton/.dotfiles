@@ -10,10 +10,11 @@ if ! is_connected; then
 	exit 0
 fi
 
+echo "[ SCRIPT ] checking '.dotfiles' commits..."
 git -C "$DOTFILES" fetch --quiet 2>/dev/null
 behind=$(git -C "$DOTFILES" rev-list --count HEAD..@{u})
 if [[ $behind -ne 0 ]]; then
-	echo "[ DOTFILES ] $behind commits behind origin"
+	echo "[ SCRIPT ][ WARNING ] you are $behind commits behind origin"
 fi
 
 
