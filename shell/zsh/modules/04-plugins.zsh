@@ -1,9 +1,12 @@
 #!/usr/bin/env zsh
 
 if command -v fzf &>/dev/null; then
-	source <(fzf --zsh) 2>/dev/null || {
-		[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
-	}
+	if [[ -f ~/.fzf.zsh ]]; then
+		source ~/.fzf.zsh
+	elif [[ -f /usr/share/fzf/key-bindings.zsh ]]; then
+		source /usr/share/fzf/key-bindings.zsh
+		source /usr/share/fzf/completion.zsh
+	fi
 fi
 
 if [[ $IS_MAC -eq 1 ]]; then
