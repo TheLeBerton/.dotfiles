@@ -51,11 +51,11 @@ disabled = false
 disabled = false
 modified = '[!${count} ](bold yellow)'
 staged = '[+${count} ](bold green)'
-untracked = '[?${count}](bold red)'
-ahead = '[^${count}](bold white)'
-behind = '[v${count}](bold white)'
+untracked = '[?${count} ](bold red)'
+ahead = '[^${count} ](bold cyan)'
+behind = '[v${count} ](bold magenta)'
 style = 'bold white'
-format = '[$all_status$ahead$behind ]($style)\]'
+format = '[$all_status$ahead_behind]($style)\]'
 
 [character]
 format = " > "
