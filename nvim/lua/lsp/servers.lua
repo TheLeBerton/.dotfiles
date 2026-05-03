@@ -2,6 +2,7 @@ return {
 	["lua_ls"] = {
 		cmd = { "lua-language-server" },
 		filetypes = { "lua" },
+		root_markers = { ".luarc.json", ".luarc.jsonc", "main.lua", ".git" },
 		settings = {
 			Lua = {
 				diagnostics = { globals = { "vim" } },
